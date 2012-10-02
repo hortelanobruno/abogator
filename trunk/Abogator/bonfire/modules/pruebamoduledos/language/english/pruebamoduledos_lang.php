@@ -1,0 +1,30 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+$lang['pruebamoduledos_manage']			= 'Manage PruebaModuleDos';
+$lang['pruebamoduledos_edit']				= 'Edit';
+$lang['pruebamoduledos_true']				= 'True';
+$lang['pruebamoduledos_false']				= 'False';
+$lang['pruebamoduledos_create']			= 'Create';
+$lang['pruebamoduledos_list']				= 'List';
+$lang['pruebamoduledos_new']				= 'New';
+$lang['pruebamoduledos_edit_text']			= 'Edit this to suit your needs';
+$lang['pruebamoduledos_no_records']			= 'There aren\'t any pruebamoduledos in the system.';
+$lang['pruebamoduledos_create_new']			= 'Create a new PruebaModuleDos.';
+$lang['pruebamoduledos_create_success']			= 'PruebaModuleDos successfully created.';
+$lang['pruebamoduledos_create_failure']			= 'There was a problem creating the pruebamoduledos: ';
+$lang['pruebamoduledos_create_new_button']			= 'Create New PruebaModuleDos';
+$lang['pruebamoduledos_invalid_id']			= 'Invalid PruebaModuleDos ID.';
+$lang['pruebamoduledos_edit_success']			= 'PruebaModuleDos successfully saved.';
+$lang['pruebamoduledos_edit_failure']			= 'There was a problem saving the pruebamoduledos: ';
+$lang['pruebamoduledos_delete_success']			= 'record(s) successfully deleted.';
+$lang['pruebamoduledos_delete_failure']			= 'We could not delete the record: ';
+$lang['pruebamoduledos_delete_error']			= 'You have not selected any records to delete.';
+$lang['pruebamoduledos_actions']			= 'Actions';
+$lang['pruebamoduledos_cancel']			= 'Cancel';
+$lang['pruebamoduledos_delete_record']			= 'Delete this PruebaModuleDos';
+$lang['pruebamoduledos_delete_confirm']			= 'Are you sure you want to delete this pruebamoduledos?';
+$lang['pruebamoduledos_edit_heading']			= 'Edit PruebaModuleDos';
+
+// Activities
+$lang['pruebamoduledos_act_create_record']			= 'Created record with ID';
+$lang['pruebamoduledos_act_edit_record']			= 'Updated record with ID';
+$lang['pruebamoduledos_act_delete_record']			= 'Deleted record with ID';

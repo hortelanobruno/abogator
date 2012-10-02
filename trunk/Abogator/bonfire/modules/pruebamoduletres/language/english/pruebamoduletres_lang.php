@@ -1,0 +1,30 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+$lang['pruebamoduletres_manage']			= 'Manage PruebaModuleTres';
+$lang['pruebamoduletres_edit']				= 'Edit';
+$lang['pruebamoduletres_true']				= 'True';
+$lang['pruebamoduletres_false']				= 'False';
+$lang['pruebamoduletres_create']			= 'Create';
+$lang['pruebamoduletres_list']				= 'List';
+$lang['pruebamoduletres_new']				= 'New';
+$lang['pruebamoduletres_edit_text']			= 'Edit this to suit your needs';
+$lang['pruebamoduletres_no_records']			= 'There aren\'t any pruebamoduletres in the system.';
+$lang['pruebamoduletres_create_new']			= 'Create a new PruebaModuleTres.';
+$lang['pruebamoduletres_create_success']			= 'PruebaModuleTres successfully created.';
+$lang['pruebamoduletres_create_failure']			= 'There was a problem creating the pruebamoduletres: ';
+$lang['pruebamoduletres_create_new_button']			= 'Create New PruebaModuleTres';
+$lang['pruebamoduletres_invalid_id']			= 'Invalid PruebaModuleTres ID.';
+$lang['pruebamoduletres_edit_success']			= 'PruebaModuleTres successfully saved.';
+$lang['pruebamoduletres_edit_failure']			= 'There was a problem saving the pruebamoduletres: ';
+$lang['pruebamoduletres_delete_success']			= 'record(s) successfully deleted.';
+$lang['pruebamoduletres_delete_failure']			= 'We could not delete the record: ';
+$lang['pruebamoduletres_delete_error']			= 'You have not selected any records to delete.';
+$lang['pruebamoduletres_actions']			= 'Actions';
+$lang['pruebamoduletres_cancel']			= 'Cancel';
+$lang['pruebamoduletres_delete_record']			= 'Delete this PruebaModuleTres';
+$lang['pruebamoduletres_delete_confirm']			= 'Are you sure you want to delete this pruebamoduletres?';
+$lang['pruebamoduletres_edit_heading']			= 'Edit PruebaModuleTres';
+
+// Activities
+$lang['pruebamoduletres_act_create_record']			= 'Created record with ID';
+$lang['pruebamoduletres_act_edit_record']			= 'Updated record with ID';
+$lang['pruebamoduletres_act_delete_record']			= 'Deleted record with ID';
