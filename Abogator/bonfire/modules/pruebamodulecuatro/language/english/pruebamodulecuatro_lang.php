@@ -1,0 +1,30 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+$lang['pruebamodulecuatro_manage']			= 'Manage PruebaModuleCuatro';
+$lang['pruebamodulecuatro_edit']				= 'Edit';
+$lang['pruebamodulecuatro_true']				= 'True';
+$lang['pruebamodulecuatro_false']				= 'False';
+$lang['pruebamodulecuatro_create']			= 'Create';
+$lang['pruebamodulecuatro_list']				= 'List';
+$lang['pruebamodulecuatro_new']				= 'New';
+$lang['pruebamodulecuatro_edit_text']			= 'Edit this to suit your needs';
+$lang['pruebamodulecuatro_no_records']			= 'There aren\'t any pruebamodulecuatro in the system.';
+$lang['pruebamodulecuatro_create_new']			= 'Create a new PruebaModuleCuatro.';
+$lang['pruebamodulecuatro_create_success']			= 'PruebaModuleCuatro successfully created.';
+$lang['pruebamodulecuatro_create_failure']			= 'There was a problem creating the pruebamodulecuatro: ';
+$lang['pruebamodulecuatro_create_new_button']			= 'Create New PruebaModuleCuatro';
+$lang['pruebamodulecuatro_invalid_id']			= 'Invalid PruebaModuleCuatro ID.';
+$lang['pruebamodulecuatro_edit_success']			= 'PruebaModuleCuatro successfully saved.';
+$lang['pruebamodulecuatro_edit_failure']			= 'There was a problem saving the pruebamodulecuatro: ';
+$lang['pruebamodulecuatro_delete_success']			= 'record(s) successfully deleted.';
+$lang['pruebamodulecuatro_delete_failure']			= 'We could not delete the record: ';
+$lang['pruebamodulecuatro_delete_error']			= 'You have not selected any records to delete.';
+$lang['pruebamodulecuatro_actions']			= 'Actions';
+$lang['pruebamodulecuatro_cancel']			= 'Cancel';
+$lang['pruebamodulecuatro_delete_record']			= 'Delete this PruebaModuleCuatro';
+$lang['pruebamodulecuatro_delete_confirm']			= 'Are you sure you want to delete this pruebamodulecuatro?';
+$lang['pruebamodulecuatro_edit_heading']			= 'Edit PruebaModuleCuatro';
+
+// Activities
+$lang['pruebamodulecuatro_act_create_record']			= 'Created record with ID';
+$lang['pruebamodulecuatro_act_edit_record']			= 'Updated record with ID';
+$lang['pruebamodulecuatro_act_delete_record']			= 'Deleted record with ID';
