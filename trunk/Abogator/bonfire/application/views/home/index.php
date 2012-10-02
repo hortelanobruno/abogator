@@ -42,6 +42,26 @@ Vacaciones completas: <?php echo $vacaciones_completas ?>
 <br/>
 Vacaciones proporcionales: <?php echo $vacaciones_proporcionales ?>
 <br/>
+SAC / Vacaciones completas: <?php echo $sac_sobre_vacaciones_completas ?>
+<br/>
+SAC / Vacaciones proporcionales: <?php echo $sac_sobre_vacaciones_proporcionales ?>
+<br/>
+SAC: <?php echo $sac ?>
+<br/>
+SAC Proporcional: <?php echo $sac_proporcional ?>
+<br/>
+Ley 25323 Art 1: <?php echo $ley_25323_1 ?>
+<br/>
+Ley 25323 Art 2: <?php echo $ley_25323_2 ?>
+<br/>
+Ley 24013 Art 8: <?php echo $ley_24013_8 ?>
+<br/>
+Ley 24013 Art 9: <?php echo $ley_24013_9 ?>
+<br/>
+Ley 24013 Art 10: <?php echo $ley_24013_10 ?>
+<br/>
+
+
 
 <br/>
 <br/>
