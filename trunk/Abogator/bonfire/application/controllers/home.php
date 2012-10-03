@@ -230,7 +230,7 @@ class Home extends Front_Controller {
         
         $valor_dia = $sueldo/30;
         
-        return (360*$valor_dia)/4;
+        return (373*$valor_dia)/4;
     }
 
     public function calculoLey24013Art10($sueldo, $fecha_ingreso, $fecha_egreso) {
