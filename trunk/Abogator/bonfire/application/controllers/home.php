@@ -43,6 +43,13 @@ class Home extends Front_Controller {
         $data = $this->calcularLiquidacion();
         $this->load->view('home/index', $data);
     }
+    
+    public function prueba() {
+//        Template::render();
+
+        $data = $this->calcularLiquidacion();
+        $this->load->view('home/prueba', $data);
+    }
 
 //end index()
 
@@ -68,12 +75,12 @@ class Home extends Front_Controller {
         $data['sac_sobre_vacaciones_completas'] = $this->calculoSACSobreVacacionesCompletas($data);
         $data['sac_sobre_vacaciones_proporcionales'] = $this->calculoSACSobreVacacionesProporcionales($data);
         $data['sac'] = $this->calculoSAC($sueldo_real);
-        $data['sac_proporcional'] = $this->calculoSACProporcional($sueldo_real);
+        $data['sac_proporcional'] = $this->calculoSACProporcional($sueldo_real,$fecha_egreso);
         $data['ley_25323_1'] = $this->calculoLey25324Art1($data);
         $data['ley_25323_2'] = $this->calculoLey25324Art2($data);
         $data['ley_24013_8'] = $this->calculoLey24013Art8($sueldo_real, $fecha_ingreso_real, $fecha_egreso);
         $data['ley_24013_9'] = $this->calculoLey24013Art9($sueldo_real, $fecha_ingreso_real, $fecha_ingreso_false);
-        $data['ley_24013_10'] = $this->calculoLey24013Art10($sueldo_real, $sueldo_falsa, $fecha_ingreso_real, $fecha_egreso);
+        $data['ley_24013_10'] = $this->calculoLey24013Art10($sueldo_real, $sueldo_falsa, $fecha_ingreso_false, $fecha_egreso);
         $data['ley_24013_15'] = $this->calculoLey24013Art15($data);
         $data['ley_20744_80'] = $this->calculoLey20744Art80($sueldo_real);
         $data['ley_20744_132_bis'] = $this->calculoLey20744Art132Bis($sueldo_real, $fecha_egreso, $fecha_presentacion_demanda);
@@ -219,8 +226,17 @@ class Home extends Front_Controller {
         return $sueldo / 2;
     }
 
-    public function calculoSACProporcional($sueldo) {
-        return -1;
+    public function calculoSACProporcional($sueldo,$fecha_egreso) {
+        $valor_dia = $sueldo/30;
+        
+        $d1 = strtotime(strtok($fecha_egreso, '-') . "-01-01");
+        $d2 = strtotime($fecha_egreso);
+        $datediff = $d2 - $d1;
+        $count_days = floor($datediff / (60 * 60 * 24)) + 1;
+        
+        
+        
+        return ($valor_dia * $count_days ) / 360 ;
     }
 
     public function calculoLey25324Art1($data) {
@@ -247,7 +263,7 @@ class Home extends Front_Controller {
 
         $valor_dia = $sueldo / 30;
 
-        return (373 * $valor_dia) / 4;
+        return (360 * $valor_dia) / 4;
     }
 
     public function calculoLey24013Art10($sueldo_real, $sueldo_falsa, $fecha_ingreso, $fecha_egreso) {
@@ -257,18 +273,20 @@ class Home extends Front_Controller {
         $d2 = strtotime($fecha_egreso);
         $datediff = $d2 - $d1;
         $count_days = floor($datediff / (60 * 60 * 24));
+        
+        return ($count_days*$dif)/4;
 
-        if ($count_days >= 180 && $count_days < 360 * 5) {
-            return ($dif * 14) / 4;
-        } else if ($count_days >= 360 * 5 && $count_days < 360 * 10) {
-            return ($dif * 21) / 4;
-        } else if ($count_days >= 360 * 10 && $count_days < 360 * 20) {
-            return ($dif * 28) / 4;
-        } else if ($count_days >= 360 * 20) {
-            return ($dif * 35) / 4;
-        } else {
-            return 0;
-        }
+//        if ($count_days >= 180 && $count_days < 360 * 5) {
+//            return ($dif * 14) / 4;
+//        } else if ($count_days >= 360 * 5 && $count_days < 360 * 10) {
+//            return ($dif * 21) / 4;
+//        } else if ($count_days >= 360 * 10 && $count_days < 360 * 20) {
+//            return ($dif * 28) / 4;
+//        } else if ($count_days >= 360 * 20) {
+//            return ($dif * 35) / 4;
+//        } else {
+//            return 0;
+//        }
     }
 
     public function calculoLey24013Art15($data) {
