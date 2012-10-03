@@ -60,6 +60,23 @@ Ley 24013 Art 9: <?php echo $ley_24013_9 ?>
 <br/>
 Ley 24013 Art 10: <?php echo $ley_24013_10 ?>
 <br/>
+Ley 24013 Art 15: <?php echo $ley_24013_15 ?>
+<br/>
+Ley 20744 Art 80: <?php echo $ley_20744_80 ?>
+<br/>
+Ley 20744 Art 132 bis: <?php echo $ley_20744_132_bis ?>
+<br/>
+Ley 20744 Art 182: <?php echo $ley_20744_182 ?>
+<br/>
+Horas extraordinarias al 50%: <?php echo $horas_extraordinarias_al_50 ?>
+<br/>
+Horas extraordinarias al 100%: <?php echo $horas_extraordinarias_al_100 ?>
+<br/>
+Horas nocturnas: <?php echo $horas_nocturnas ?>
+<br/>
+Diferencias salariales por categoria: <?php echo $diferencias_salariales_por_categoria ?>
+<br/>
+
 
 
 
