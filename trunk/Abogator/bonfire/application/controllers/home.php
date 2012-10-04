@@ -234,8 +234,6 @@ class Home extends Front_Controller {
         $datediff = $d2 - $d1;
         $count_days = floor($datediff / (60 * 60 * 24)) + 1;
         
-        
-        
         return ($valor_dia * $count_days ) / 360 ;
     }
 
