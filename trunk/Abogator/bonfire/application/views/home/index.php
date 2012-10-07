@@ -82,12 +82,17 @@
 
     <br/>
     <br/>
-
+    Test: <?php echo $test ?>
+    <br/>
+    <br/>
+    <br/>
 
     <?php
-    $a_date = "2009-11-23";
+    $a_date = "2011-11-23";
     echo date("t", strtotime($a_date));
     echo date("d", strtotime($a_date));
+    echo date("m", strtotime($a_date));
+    echo date("Y", strtotime($a_date));
     ?>
 
 
