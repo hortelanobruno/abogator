@@ -43,7 +43,7 @@ class Home extends Front_Controller {
         $data = $this->calcularLiquidacion();
         $this->load->view('home/index', $data);
     }
-    
+
     public function prueba() {
 //        Template::render();
 
@@ -75,7 +75,7 @@ class Home extends Front_Controller {
         $data['sac_sobre_vacaciones_completas'] = $this->calculoSACSobreVacacionesCompletas($data);
         $data['sac_sobre_vacaciones_proporcionales'] = $this->calculoSACSobreVacacionesProporcionales($data);
         $data['sac'] = $this->calculoSAC($sueldo_real);
-        $data['sac_proporcional'] = $this->calculoSACProporcional($sueldo_real,$fecha_egreso);
+        $data['sac_proporcional'] = $this->calculoSACProporcional($sueldo_real, $fecha_egreso);
         $data['ley_25323_1'] = $this->calculoLey25324Art1($data);
         $data['ley_25323_2'] = $this->calculoLey25324Art2($data);
         $data['ley_24013_8'] = $this->calculoLey24013Art8($sueldo_real, $fecha_ingreso_real, $fecha_egreso);
@@ -88,15 +88,30 @@ class Home extends Front_Controller {
         $data['horas_extraordinarias_al_50'] = $this->calculoHorasExtraordinariasAl50porciento($sueldo_real, $hora_min, $hora_max, $fecha_ingreso_real, $fecha_egreso);
         $data['horas_extraordinarias_al_100'] = $this->calculoHorasExtraordinariasAl100porciento($sueldo_real, $hora_finde_min, $hora_finde_max, $fecha_ingreso_real, $fecha_egreso);
         $data['horas_nocturnas'] = $this->calculoHorasNocturnas($sueldo_real, $hora_min, $hora_max, $fecha_ingreso_real, $fecha_egreso);
-        $data['diferencias_salariales_por_categoria'] = $this->calculoDiferenciasSalarialesPorCategoria($sueldo_real, $sueldo_falsa, $fecha_ingreso_real,$fecha_egreso);
-        
+        $data['diferencias_salariales_por_categoria'] = $this->calculoDiferenciasSalarialesPorCategoria($sueldo_real, $sueldo_falsa, $fecha_ingreso_real, $fecha_egreso);
 
-
-
-
-
+        $data['test'] = $this->countDaysBetweenDates($fecha_ingreso_real, $fecha_egreso);
 
         return $data;
+    }
+
+    public function countDaysBetweenDates($date1, $date2) {
+        $day1 = date("d", strtotime($date1));
+        $day2 = date("d", strtotime($date2));
+
+        $d1 = strtotime($date1);
+        $d2 = strtotime($date2);
+        $min_date = min($d1, $d2);
+        $max_date = max($d1, $d2);
+        $i = 0;
+
+        while (($min_date = strtotime("+1 MONTH", $min_date)) <= $max_date) {
+            $i++;
+        }
+
+        $days = ($i - 1) * 30 + (30 - $day1 + 1) + $day2;
+
+        return $days; // 8
     }
 
     public function calculoAntiguedad($sueldo, $fecha_ingreso, $fecha_egreso) {
@@ -143,7 +158,7 @@ class Home extends Front_Controller {
     public function calculoIntegracion($sueldo, $fecha_egreso) {
         $valor_dia = $sueldo / 30;
 
-        $days_in_month = date("t", strtotime($fecha_egreso));
+        $days_in_month = 30; //date("t", strtotime($fecha_egreso));
         $day = date("d", strtotime($fecha_egreso));
         $resto = $days_in_month - ($day + 1);
         if ($resto > 0) {
@@ -160,22 +175,34 @@ class Home extends Front_Controller {
     public function calculoDiasTrabajados($sueldo, $fecha_egreso) {
         $valor_dia = $sueldo / 30;
 
-        $d1 = strtotime(strtok($fecha_egreso, '-') . "-01-01");
-        $d2 = strtotime($fecha_egreso);
-        $datediff = $d2 - $d1;
-        $count_days = floor($datediff / (60 * 60 * 24)) + 1;
+//        $d1 = strtotime(strtok($fecha_egreso, '-') . "-01-01");
+//        $d2 = strtotime($fecha_egreso);
+//        $datediff = $d2 - $d1;
+//        $count_days = floor($datediff / (60 * 60 * 24)) + 1;
+
+        $count_days = $this->countDaysBetweenDates(strtok($fecha_egreso, '-') . "-01-01", $fecha_egreso);
         return $count_days * $valor_dia;
     }
 
     public function calculoVacacionesCompletas($sueldo, $fecha_ingreso, $fecha_egreso) {
         $valor_dia = $sueldo / 25;
 
-        $d1 = strtotime($fecha_ingreso);
-        $d2 = strtotime($fecha_egreso);
-        $datediff = $d2 - $d1;
-        $count_days = floor($datediff / (60 * 60 * 24));
+//        $d1 = strtotime($fecha_ingreso);
+//        $d2 = strtotime($fecha_egreso);
+//        $datediff = $d2 - $d1;
+//        $count_days = floor($datediff / (60 * 60 * 24));
+
+        $count_days = $this->countDaysBetweenDates($fecha_ingreso, $fecha_egreso);
 
         if ($count_days >= 180 && $count_days < 360 * 5) {
+            if ($count_days < 360) {
+                $year1 = date("Y", strtotime($date1));
+                $year2 = date("Y", strtotime($date2));
+                if ($year1 <> $year2) {
+                    //se calcula proporcional
+                    return $this->calculoVacacionesProporcionales($sueld, $fecha_ingreso, strtok($fecha_egreso, '-') . "-12-30");
+                }
+            }
             return $valor_dia * 14;
         } else if ($count_days >= 360 * 5 && $count_days < 360 * 10) {
             return $valor_dia * 21;
@@ -191,15 +218,17 @@ class Home extends Front_Controller {
     public function calculoVacacionesProporcionales($sueldo, $fecha_ingreso, $fecha_egreso) {
         $valor_dia = $sueldo / 25;
 
-        $d1 = strtotime(strtok($fecha_egreso, '-') . "-01-01");
-        $d2 = strtotime($fecha_egreso);
-        $datediff = $d2 - $d1;
-        $count_days2 = floor($datediff / (60 * 60 * 24)) + 1;
+//        $d1 = strtotime(strtok($fecha_egreso, '-') . "-01-01");
+//        $d2 = strtotime($fecha_egreso);
+//        $datediff = $d2 - $d1;
+//        $count_days2 = floor($datediff / (60 * 60 * 24)) + 1;
+        $count_days2 = $this->countDaysBetweenDates(strtok($fecha_egreso, '-') . "-01-01", $fecha_egreso);
 
-        $d1 = strtotime($fecha_ingreso);
-        $d2 = strtotime($fecha_egreso);
-        $datediff = $d2 - $d1;
-        $count_days = floor($datediff / (60 * 60 * 24));
+//        $d1 = strtotime($fecha_ingreso);
+//        $d2 = strtotime($fecha_egreso);
+//        $datediff = $d2 - $d1;
+//        $count_days = floor($datediff / (60 * 60 * 24));
+        $count_days = $this->countDaysBetweenDates($fecha_ingreso, $fecha_egreso);
 
         if ($count_days >= 180 && $count_days < 360 * 5) {
             return $valor_dia * ((14 * $count_days2) / 360);
@@ -226,15 +255,16 @@ class Home extends Front_Controller {
         return $sueldo / 2;
     }
 
-    public function calculoSACProporcional($sueldo,$fecha_egreso) {
-        $valor_dia = $sueldo/30;
-        
-        $d1 = strtotime(strtok($fecha_egreso, '-') . "-01-01");
-        $d2 = strtotime($fecha_egreso);
-        $datediff = $d2 - $d1;
-        $count_days = floor($datediff / (60 * 60 * 24)) + 1;
-        
-        return ($valor_dia * $count_days ) / 360 ;
+    public function calculoSACProporcional($sueldo, $fecha_egreso) {
+        $valor_dia = $sueldo / 30;
+
+//        $d1 = strtotime(strtok($fecha_egreso, '-') . "-01-01");
+//        $d2 = strtotime($fecha_egreso);
+//        $datediff = $d2 - $d1;
+//        $count_days = floor($datediff / (60 * 60 * 24)) + 1;
+        $count_days = $this->countDaysBetweenDates(strtok($fecha_egreso, '-') . "-01-01", $fecha_egreso);
+
+        return ($valor_dia * $count_days ) / 360;
     }
 
     public function calculoLey25324Art1($data) {
@@ -246,45 +276,36 @@ class Home extends Front_Controller {
     }
 
     public function calculoLey24013Art8($sueldo, $fecha_ingreso, $fecha_egreso) {
-        $d1 = strtotime($fecha_ingreso);
-        $d2 = strtotime($fecha_egreso);
-        $datediff = $d2 - $d1;
-        $count_days = floor($datediff / (60 * 60 * 24));
+//        $d1 = strtotime($fecha_ingreso);
+//        $d2 = strtotime($fecha_egreso);
+//        $datediff = $d2 - $d1;
+//        $count_days = floor($datediff / (60 * 60 * 24));
+        $count_days = $this->countDaysBetweenDates($fecha_ingreso, $fecha_egreso);
         return ($sueldo / 30 * $count_days) / 4;
     }
 
     public function calculoLey24013Art9($sueldo, $fecha_ingreso_real, $fecha_ingreso_false) {
-        $d1 = strtotime($fecha_ingreso_real);
-        $d2 = strtotime($fecha_ingreso_false);
-        $datediff = $d2 - $d1;
-        $count_days = floor($datediff / (60 * 60 * 24));
+//        $d1 = strtotime($fecha_ingreso_real);
+//        $d2 = strtotime($fecha_ingreso_false);
+//        $datediff = $d2 - $d1;
+//        $count_days = floor($datediff / (60 * 60 * 24));
+        $count_days = $this->countDaysBetweenDates($fecha_ingreso_real, $fecha_ingreso_false);
 
         $valor_dia = $sueldo / 30;
 
-        return (360 * $valor_dia) / 4;
+        return ($count_days * $valor_dia) / 4;
     }
 
     public function calculoLey24013Art10($sueldo_real, $sueldo_falsa, $fecha_ingreso, $fecha_egreso) {
         $dif = ($sueldo_real - $sueldo_falsa) / 30;
 
-        $d1 = strtotime($fecha_ingreso);
-        $d2 = strtotime($fecha_egreso);
-        $datediff = $d2 - $d1;
-        $count_days = floor($datediff / (60 * 60 * 24));
-        
-        return ($count_days*$dif)/4;
+//        $d1 = strtotime($fecha_ingreso);
+//        $d2 = strtotime($fecha_egreso);
+//        $datediff = $d2 - $d1;
+//        $count_days = floor($datediff / (60 * 60 * 24));
+        $count_days = $this->countDaysBetweenDates($fecha_ingreso, $fecha_egreso);
 
-//        if ($count_days >= 180 && $count_days < 360 * 5) {
-//            return ($dif * 14) / 4;
-//        } else if ($count_days >= 360 * 5 && $count_days < 360 * 10) {
-//            return ($dif * 21) / 4;
-//        } else if ($count_days >= 360 * 10 && $count_days < 360 * 20) {
-//            return ($dif * 28) / 4;
-//        } else if ($count_days >= 360 * 20) {
-//            return ($dif * 35) / 4;
-//        } else {
-//            return 0;
-//        }
+        return ($count_days * $dif) / 4;
     }
 
     public function calculoLey24013Art15($data) {
@@ -298,10 +319,11 @@ class Home extends Front_Controller {
     public function calculoLey20744Art132bis($sueldo, $fecha_egreso, $fecha_presentacion_demanda) {
         $valor_dia = $sueldo / 30;
 
-        $d1 = strtotime($fecha_egreso);
-        $d2 = strtotime($fecha_presentacion_demanda);
-        $datediff = $d2 - $d1;
-        $count_days = floor($datediff / (60 * 60 * 24));
+//        $d1 = strtotime($fecha_egreso);
+//        $d2 = strtotime($fecha_presentacion_demanda);
+//        $datediff = $d2 - $d1;
+//        $count_days = floor($datediff / (60 * 60 * 24));
+        $count_days = $this->countDaysBetweenDates($fecha_egreso, $fecha_presentacion_demanda);
 
         return $count_days * $valor_dia;
     }
@@ -314,10 +336,20 @@ class Home extends Front_Controller {
         $valor_hora = (($sueldo_real / 30) / 8) * 1.5;
         $cant_horas_extras = ($hora_max - $hora_min) - 8;
 
+//        $d1 = strtotime($fecha_ingreso_real);
+//        $d2 = strtotime($fecha_egreso);
+//        $datediff = $d2 - $d1;
+//        $count_months = floor($datediff / (60 * 60 * 24 * 30));
+
         $d1 = strtotime($fecha_ingreso_real);
         $d2 = strtotime($fecha_egreso);
-        $datediff = $d2 - $d1;
-        $count_months = floor($datediff / (60 * 60 * 24 * 30));
+        $min_date = min($d1, $d2);
+        $max_date = max($d1, $d2);
+        $count_months = 0;
+
+        while (($min_date = strtotime("+1 MONTH", $min_date)) <= $max_date) {
+            $count_months++;
+        }
 
         return $count_months * 4 * 5 * $cant_horas_extras * $valor_hora;
     }
@@ -331,10 +363,20 @@ class Home extends Front_Controller {
         }
 
 
+//        $d1 = strtotime($fecha_ingreso_real);
+//        $d2 = strtotime($fecha_egreso);
+//        $datediff = $d2 - $d1;
+//        $count_months = floor($datediff / (60 * 60 * 24 * 30));
+
         $d1 = strtotime($fecha_ingreso_real);
         $d2 = strtotime($fecha_egreso);
-        $datediff = $d2 - $d1;
-        $count_months = floor($datediff / (60 * 60 * 24 * 30));
+        $min_date = min($d1, $d2);
+        $max_date = max($d1, $d2);
+        $count_months = 0;
+
+        while (($min_date = strtotime("+1 MONTH", $min_date)) <= $max_date) {
+            $count_months++;
+        }
 
         return $count_months * 4 * $cant_horas_extras * $valor_hora;
     }
@@ -343,10 +385,19 @@ class Home extends Front_Controller {
         $valor_minuto = (($sueldo_real / 30) / 8) / 60;
 
         if (($hora_min >= 0 && $hora_min < 6) || ($hora_max >= 21 && $hora_max <= 24)) {
+//            $d1 = strtotime($fecha_ingreso_real);
+//            $d2 = strtotime($fecha_egreso);
+//            $datediff = $d2 - $d1;
+//            $count_months = floor($datediff / (60 * 60 * 24 * 30));
             $d1 = strtotime($fecha_ingreso_real);
             $d2 = strtotime($fecha_egreso);
-            $datediff = $d2 - $d1;
-            $count_months = floor($datediff / (60 * 60 * 24 * 30));
+            $min_date = min($d1, $d2);
+            $max_date = max($d1, $d2);
+            $count_months = 0;
+
+            while (($min_date = strtotime("+1 MONTH", $min_date)) <= $max_date) {
+                $count_months++;
+            }
 
             if ($hora_min >= 0 && $hora_min < 6) {
                 return (6 - $hora_min) * 8 * $valor_minuto * $count_months;
@@ -357,15 +408,16 @@ class Home extends Front_Controller {
 
         return 0;
     }
-    
-    public function calculoDiferenciasSalarialesPorCategoria($sueldo_real, $sueldo_falsa, $fecha_ingreso_real,$fecha_egreso){
-        $dif = ($sueldo_real - $sueldo_falsa)/30;
-        
-        $d1 = strtotime($fecha_ingreso_real);
-        $d2 = strtotime($fecha_egreso);
-        $datediff = $d2 - $d1;
-        $count_days = floor($datediff / (60 * 60 * 24));
-        
+
+    public function calculoDiferenciasSalarialesPorCategoria($sueldo_real, $sueldo_falsa, $fecha_ingreso_real, $fecha_egreso) {
+        $dif = ($sueldo_real - $sueldo_falsa) / 30;
+
+//        $d1 = strtotime($fecha_ingreso_real);
+//        $d2 = strtotime($fecha_egreso);
+//        $datediff = $d2 - $d1;
+//        $count_days = floor($datediff / (60 * 60 * 24));
+        $count_days = $this->countDaysBetweenDates($fecha_ingreso_real, $fecha_egreso);
+
         return $count_days * $dif;
     }
 
