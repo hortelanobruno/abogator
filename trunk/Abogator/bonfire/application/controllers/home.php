@@ -50,6 +50,15 @@ class Home extends Front_Controller {
         $data = $this->calcularLiquidacion();
         $this->load->view('home/prueba', $data);
     }
+    
+    public function testpdf() {
+        $this->load->view('home/testpdf');
+    }
+
+    public function recibo() {
+        Assets::add_js('recibo.js');
+        $this->load->view('home/recibo');
+    }
 
 //end index()
 
