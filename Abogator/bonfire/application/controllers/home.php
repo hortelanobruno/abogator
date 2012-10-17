@@ -59,6 +59,11 @@ class Home extends Front_Controller {
         Assets::add_js('recibo.js');
         $this->load->view('home/recibo');
     }
+    
+    public function liquidacion() {
+        Assets::add_js('liquidacion.js');
+        $this->load->view('home/liquidacion');
+    }
 
 //end index()
 
