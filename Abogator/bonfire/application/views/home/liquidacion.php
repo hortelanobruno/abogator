@@ -222,11 +222,7 @@
 				}
 				if(hora1max<hora1min||hora2max<hora2min){
 					return false;
-				}
-				if(sueldo_falsa){
-				
-				}
-				
+				}			
 				return true;
 			}
 			
@@ -249,10 +245,10 @@
 				var fecha_ingerso_falsa = document.getElementById('fecha_ingerso_falsa').value;
 				var fecha_egreso = document.getElementById('fecha_egreso').value;
 				var fecha_presentacion_demanda = document.getElementById('fecha_presentacion_demanda').value;
-				var hora1min = document.getElementById('hora1min').value;
-				var hora1max = document.getElementById('hora1max').value;
-				var hora2min = document.getElementById('hora2min').value;
-				var hora2max = document.getElementById('hora2max').value;
+				var hora1min = parseInt(document.getElementById('hora1min').value);
+				var hora1max = parseInt(document.getElementById('hora1max').value);
+				var hora2min = parseInt(document.getElementById('hora2min').value);
+				var hora2max = parseInt(document.getElementById('hora2max').value);
 				var date_fecha_ingreso_real = new Date(fecha_ingreso_real);
 				var date_fecha_ingerso_falsa = new Date(fecha_ingerso_falsa);
 				var date_fecha_egreso = new Date(fecha_egreso);
