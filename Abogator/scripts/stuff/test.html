@@ -1,0 +1,202 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+	<script type="text/javascript">
+	
+	/**
+ * Function : dump()
+ * Arguments: The data - array,hash(associative array),object
+ *    The level - OPTIONAL
+ * Returns  : The textual representation of the array.
+ * This function was inspired by the print_r function of PHP.
+ * This will accept some data as the argument and return a
+ * text that will be a more readable version of the
+ * array/hash/object that is given.
+ * Docs: http://www.openjs.com/scripts/others/dump_function_php_print_r.php
+ */
+function dump(arr,level) {
+	var dumped_text = "";
+	if(!level) level = 0;
+	
+	//The padding given at the beginning of the line.
+	var level_padding = "";
+	for(var j=0;j<level+1;j++) level_padding += "    ";
+	
+	if(typeof(arr) == 'object') { //Array/Hashes/Objects 
+		for(var item in arr) {
+			var value = arr[item];
+			
+			if(typeof(value) == 'object') { //If it is an array,
+				dumped_text += level_padding + "'" + item + "' ...\n";
+				dumped_text += dump(value,level+1);
+			} else {
+				dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
+			}
+		}
+	} else { //Stings/Chars/Numbers etc.
+		dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
+	}
+	return dumped_text;
+}
+
+	var mes_nombre=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+    var basico_junio=[/*Mayores de 18*/     [1293.65, 1300.56, 1324.74, 1319.56, 1329.92, 1340.28, 1371.37, 1397.28, 1435.28, 1328.19, 1340.28, 1355.83, 1328.19, 1345.46, 1402.46, 1348.92, 1380.01, 1328.19, 1380.01, 1397.28, 1435.28],
+                    /*8 horas: 16 años*/    [1260.83, 1262.56, 1264, 1260.83, 1262.56, 1264.29, 1266.01, 1262.56, 1264.29, 1264.29, 1266.01],
+                    /*8 horas: 17 años*/    [1266.01, 1267.74, 1269.14, 1266.01, 1267.74, 1269.47, 1271.2, 1267.74, 1269.47, 1273.05, 1274.63],
+                    /*6 horas: 14,15,16,17*/[1229.74, 1234.93, 1240.11, 1250.47],
+                    /*Adicional*/           [52.85, 162.7, 643.33, 0.11, 0.13, 0.13, 0.16]];
+    
+    var adcnr=[/*Adicional Acuerdos anteriores*/[29.72, 93.79, 368.67, 0.06, 0.08, 0.08, 0.09],
+               /*Adicional Acuerdo 2010*/ [[15.69, 49.04, 193.2, 0.03, 0.04, 0.04, 0.05],
+                                        [22.57, 70.43, 277.56, 0.05, 0.06, 0.06, 0.07],
+                                        [27.83, 86.77, 342.04, 0.06, 0.07, 0.07, 0.08]]];
+	var sueldo={
+            rem:[
+                ["Sueldo basico",false,0],
+                ["Antiguedad",0,0],
+                ["Presentismo",1/12,0]
+            ],
+            nrem:[
+                ["Adicional no remunerativo 2008-2009",false,0],
+                ["Adicional no remunerativo 2010",false,0],
+                ["Adicional no remunerativo 2011",false,0],
+                ["Acuerdo mayo 2012", false, 0],
+                ["Retroactivo Acuerdo mayo-2011",false,0],
+                ["Retroactivo Acuerdo mayo-2012",false,0],
+                ["Presentismo",1/12,0]
+            ],
+            desc:[
+                ["Jubilacion",0.11,0],
+                ["Ley 19032",0.03,0],
+                ["Obra social",0.03,0],
+                ["Faecys",0.005,0],
+                ["Sindicato",0.02,0],
+                ["Aporte solidario Obra social","",0],
+                ["Aporte solidario Obra social (mayo)","",0]
+            ],
+            title:"Sueldo"
+        }
+        var sac={
+            rem:[
+                ["SAC",false,0]
+            ],
+            nrem:[
+                ["SAC Adicional no remunerativo 2008-2009",false,0],
+                ["SAC Adicional no remunerativo 2010",false,0],
+                ["SAC Adicional no remunerativo 2011",false,0],
+                ["SAC Adicional no remunerativo 2012",false,0]
+            ],
+            desc:[
+                ["Jubilacion",0.11,0],
+                ["Ley 19032",0.03,0],
+                ["Obra social",0.03,0],
+                ["Faecys",0.005,0],
+                ["Sindicato",0.02,0]
+            ],
+            title:"Sueldo anual complementario"
+        }
+		
+		var data={
+		sueldo:[2000],
+		antiguedad:[1],
+		presentismo:[true],
+		mes:["2012 Diciembre"],
+		categoria:["Cat1"],
+		convenio:["Convenio1"],
+		lunes:[9,18,true],
+		martes:[9,18,true],
+		miercoles:[9,18,true],
+		jueves:[9,18,true],
+		viernes:[9,18,true],
+		sabado:[9,12,false],
+		domingo:[9,12,false]}
+		
+		function cargarDatos(){
+		
+		
+		}
+		
+		function generarDatos(){
+			var ret=[sueldo,false];
+			sueldo.rem[0][2]=data.sueldo[0];
+			sueldo.rem[1][2]=data.sueldo[0]*0.01*data.antiguedad[0];
+            sueldo.rem[2][2]=data.presentismo[0]?(sueldo.rem[0][2]+sueldo.rem[1][2])/12:0;
+            sueldo.rem.total=total(sueldo.rem);
+			
+			sueldo.nrem.total=0;
+			
+			sueldo.desc[0][2]=sueldo.desc[0][1]*sueldo.rem.total;
+            sueldo.desc[1][2]=sueldo.desc[1][1]*sueldo.rem.total;
+            sueldo.desc[2][2]=sueldo.desc[2][1]*(sueldo.rem.total+sueldo.nrem.total);
+            sueldo.desc[3][2]=sueldo.desc[3][1]*(sueldo.rem.total+sueldo.nrem.total);
+            sueldo.desc[4][2]=sueldo.desc[4][1]*(sueldo.rem.total+sueldo.nrem.total);
+            //sueldo.desc[5][2]=(mes==0||mes==12||mes==13)?50:(mes==23?100:0);
+            //sueldo.desc[6][2]=mes==24&&retro?100:0;
+            sueldo.desc.total=total(sueldo.desc);
+			
+			
+			if((data.mes[0].indexOf("Junio") != -1)||(data.mes[0].indexOf("Diciembre") != -1)){
+				ret[1]=sac;
+                
+                sac.rem[0][2]=sueldo.rem.total*0.5;
+                sac.rem.total=total(sac.rem);
+                
+                //sac.nrem[0][2]=val[1]*(1+(pre?1/12:0))*0.5;
+                //sac.nrem[1][2]=val[2]*(1+(pre?1/12:0))*0.5;
+                //sac.nrem[2][2]=val[3]*(1+(pre?1/12:0))*(mes==12?2/12:0.5);
+                //sac.nrem[3][2]=val[4]*(1+(pre?1/12:0))*(mes==24?2/12:0.5);
+                sac.nrem.total=0;
+                
+                sac.desc[0][2]=sac.desc[0][1]*sac.rem.total;
+                sac.desc[1][2]=sac.desc[1][1]*sac.rem.total;
+                sac.desc[2][2]=sac.desc[2][1]*(sac.rem.total+sac.nrem.total);
+                sac.desc[3][2]=sac.desc[3][1]*(sac.rem.total+sac.nrem.total);
+                sac.desc[4][2]=sac.desc[4][1]*(sac.rem.total+sac.nrem.total);
+                sac.desc.total=total(sac.desc); 
+			}
+			
+			function total(obj){
+                var ret=0;
+                for(var i=0;i<obj.length;i++){
+                    ret+=obj[i][2];
+                }
+                return ret;
+            }
+			
+			return ret;
+		}
+		
+		function calculate(){
+			cargarDatos();
+			var datos = generarDatos();
+			var table = document.getElementById('table');
+			for(var i=0;i<datos.length;i++){
+				for(var det in datos[i]){
+					if(!/obj|title/.test(det)){
+						for(var j=0;j<datos[i][det].length;j++){
+							if(datos[i][det][j]){
+								if(datos[i][det][j][2]){
+									  var newdiv = document.createElement('tr');
+									  newdiv.innerHTML = '<td>'+datos[i][det][j][0]+': '+datos[i][det][j][2]+'</td>';
+									  table.appendChild(newdiv);
+								}
+							}
+						}
+						var newdiv = document.createElement('tr');
+									  newdiv.innerHTML = '<td>Total: '+datos[i][det].total+'</td>';
+									  table.appendChild(newdiv);
+					}
+				}
+				
+			}
+			
+		}
+	</script>
+    <body onload="calculate()">
+        <h1>Hello World!</h1>
+		<table id="table">
+		</table>
+    </body>
+</html>
