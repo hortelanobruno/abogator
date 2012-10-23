@@ -5,55 +5,7 @@
     </head>
     <script type="text/javascript">
 	
-        /**
-         * Function : dump()
-         * Arguments: The data - array,hash(associative array),object
-         *    The level - OPTIONAL
-         * Returns  : The textual representation of the array.
-         * This function was inspired by the print_r function of PHP.
-         * This will accept some data as the argument and return a
-         * text that will be a more readable version of the
-         * array/hash/object that is given.
-         * Docs: http://www.openjs.com/scripts/others/dump_function_php_print_r.php
-         */
-        function dump(arr,level) {
-            var dumped_text = "";
-            if(!level) level = 0;
-	
-            //The padding given at the beginning of the line.
-            var level_padding = "";
-            for(var j=0;j<level+1;j++) level_padding += "    ";
-	
-            if(typeof(arr) == 'object') { //Array/Hashes/Objects 
-                for(var item in arr) {
-                    var value = arr[item];
-			
-                    if(typeof(value) == 'object') { //If it is an array,
-                        dumped_text += level_padding + "'" + item + "' ...\n";
-                        dumped_text += dump(value,level+1);
-                    } else {
-                        dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
-                    }
-                }
-            } else { //Stings/Chars/Numbers etc.
-                dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
-            }
-            return dumped_text;
-        }
-
-        var mes_nombre=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-        var meses=["2010 Junio","2010 Julio","2010 Agosto","2010 Septiembre","2010 Octubre","2010 Noviembre","2010 Diciembre","2011 Enero",
-            "2011 Febrero","2011 Marzo","2011 Abril","2011 Mayo","2011 Junio","2011 Julio","2011 Agosto","2011 Septiembre","2011 Octubre",
-            "2011 Noviembre","2011 Diciembre","2012 Enero","2012 Febrero","2012 Marzo","2012 Abril","2012 Mayo","2012 Junio","2012 Julio",
-            "2012 Agosto","2012 Septiembre","2012 Octubre","2012 Noviembre","2012 Diciembre","2013 Enero","2013 Febrero","2013 Marzo","2013 Abril"];
-        var categorias=["Maestranza y Servicios: A","Maestranza y Servicios: B","Maestranza y Servicios: C","Administrativo: A",
-            "Administrativo: B","Administrativo: C","Administrativo: D","Administrativo: E","Administrativo: F","Cajero: A","Cajero: B",
-            "Cajero: C","Personal Auxiliar: A","Personal Auxiliar: B","Personal Auxiliar: C","Auxiliar Especializado: A",
-            "Auxiliar Especializado: B","Ventas: A","Ventas: B","Ventas: C","Ventas: D"];
-        var acuerdos=["Adicional no remunerativo 2008-2009","Adicional no remunerativo 2010",
-        "Adicional no remunerativo 2011","Acuerdo Mayo 2012"]
-        var fruits = ["Banana", "Orange", "Apple", "Mango"];
-        var a = fruits.indexOf("Apple");
+        
   
         var db = [[1293.65,758.73,394.11,0,0],
             [1367.87,695.5,394.11,0,0],
@@ -810,7 +762,57 @@
             [5144.24,0,0,0,393.66],
             [5144.24,0,0,0,393.66],
             [5144.24,0,0,0,393.66],
-            [5606.37,0,0,0,0]];//mapa, indice catindex => mesindex => objeto (sueldo, valores no rem)
+            [5606.37,0,0,0,0]];//lista completa ordenada por categoria y mes, col sueldo y acuerdos
+    
+    
+        /**
+         * Function : dump()
+         * Arguments: The data - array,hash(associative array),object
+         *    The level - OPTIONAL
+         * Returns  : The textual representation of the array.
+         * This function was inspired by the print_r function of PHP.
+         * This will accept some data as the argument and return a
+         * text that will be a more readable version of the
+         * array/hash/object that is given.
+         * Docs: http://www.openjs.com/scripts/others/dump_function_php_print_r.php
+         */
+        function dump(arr,level) {
+            var dumped_text = "";
+            if(!level) level = 0;
+	
+            //The padding given at the beginning of the line.
+            var level_padding = "";
+            for(var j=0;j<level+1;j++) level_padding += "    ";
+	
+            if(typeof(arr) == 'object') { //Array/Hashes/Objects 
+                for(var item in arr) {
+                    var value = arr[item];
+			
+                    if(typeof(value) == 'object') { //If it is an array,
+                        dumped_text += level_padding + "'" + item + "' ...\n";
+                        dumped_text += dump(value,level+1);
+                    } else {
+                        dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
+                    }
+                }
+            } else { //Stings/Chars/Numbers etc.
+                dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
+            }
+            return dumped_text;
+        }
+
+        var mes_nombre=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+        var meses=["2010 Junio","2010 Julio","2010 Agosto","2010 Septiembre","2010 Octubre","2010 Noviembre","2010 Diciembre","2011 Enero",
+            "2011 Febrero","2011 Marzo","2011 Abril","2011 Mayo","2011 Junio","2011 Julio","2011 Agosto","2011 Septiembre","2011 Octubre",
+            "2011 Noviembre","2011 Diciembre","2012 Enero","2012 Febrero","2012 Marzo","2012 Abril","2012 Mayo","2012 Junio","2012 Julio",
+            "2012 Agosto","2012 Septiembre","2012 Octubre","2012 Noviembre","2012 Diciembre","2013 Enero","2013 Febrero","2013 Marzo","2013 Abril"];
+        var categorias=["Maestranza y Servicios: A","Maestranza y Servicios: B","Maestranza y Servicios: C","Administrativo: A",
+            "Administrativo: B","Administrativo: C","Administrativo: D","Administrativo: E","Administrativo: F","Cajero: A","Cajero: B",
+            "Cajero: C","Personal Auxiliar: A","Personal Auxiliar: B","Personal Auxiliar: C","Auxiliar Especializado: A",
+            "Auxiliar Especializado: B","Ventas: A","Ventas: B","Ventas: C","Ventas: D"];
+        var acuerdos=["Adicional no remunerativo 2008-2009","Adicional no remunerativo 2010",
+            "Adicional no remunerativo 2011","Acuerdo mayo 2012"]
+
     
         var sueldo={
             rem:[
@@ -859,11 +861,11 @@
         }
 		
         var data={
-            sueldo:[2000],
-            antiguedad:[1],
+            sueldo:[0],
+            antiguedad:[9],
             presentismo:[true],
-            mes:["2012 Enero"],
-            categoria:["Cat1"],
+            mes:["2011 Diciembre"],
+            categoria:["Maestranza y Servicios: A"],
             convenio:["Convenio1"],
             lunes:[9,18,true],
             martes:[9,18,true],
@@ -873,19 +875,35 @@
             sabado:[9,12,false],
             domingo:[9,12,false]}
 		
+               
         function cargarDatos(){
-		
-		
+            var indexcat = categorias.indexOf(data.categoria[0]);
+            var indexmes = meses.indexOf(data.mes[0]);
+            data.sueldo[0] = db[(indexcat*26)+indexmes][0];
+            if(indexmes>5){
+                sueldo.rem[1][1] = 0.01;
+            }else{
+                sueldo.rem[1][1] = 0.0075;
+            }
+            for(var i=1;i<=5 ;i++){
+                if(db[(indexcat*26)+indexmes][i]){
+                    sueldo.nrem[i-1][2]=db[(indexcat*26)+indexmes][i];
+                    if((data.mes[0].indexOf("Junio") != -1)||(data.mes[0].indexOf("Diciembre") != -1)){
+                        sac.nrem[i-1][2]=db[(indexcat*26)+indexmes][i]*0.5;
+                    }
+                }
+            }
         }
 		
         function generarDatos(){
             var ret=[sueldo,false];
             sueldo.rem[0][2]=data.sueldo[0];
-            sueldo.rem[1][2]=data.sueldo[0]*0.01*data.antiguedad[0];
+            sueldo.rem[1][2]=data.sueldo[0]*sueldo.rem[1][1]*data.antiguedad[0];
             sueldo.rem[2][2]=data.presentismo[0]?(sueldo.rem[0][2]+sueldo.rem[1][2])/12:0;
             sueldo.rem.total=total(sueldo.rem);
 			
-            sueldo.nrem.total=0;
+            sueldo.nrem[6][2]=data.presentismo[0]?(sueldo.nrem[0][2]+sueldo.nrem[1][2]+sueldo.nrem[2][2]+sueldo.nrem[3][2]+sueldo.nrem[4][2]+sueldo.nrem[5][2])/12:0;
+            sueldo.nrem.total=total(sueldo.nrem);
 			
             sueldo.desc[0][2]=sueldo.desc[0][1]*sueldo.rem.total;
             sueldo.desc[1][2]=sueldo.desc[1][1]*sueldo.rem.total;
@@ -903,11 +921,11 @@
                 sac.rem[0][2]=sueldo.rem.total*0.5;
                 sac.rem.total=total(sac.rem);
                 
-                //sac.nrem[0][2]=val[1]*(1+(pre?1/12:0))*0.5;
-                //sac.nrem[1][2]=val[2]*(1+(pre?1/12:0))*0.5;
-                //sac.nrem[2][2]=val[3]*(1+(pre?1/12:0))*(mes==12?2/12:0.5);
-                //sac.nrem[3][2]=val[4]*(1+(pre?1/12:0))*(mes==24?2/12:0.5);
-                sac.nrem.total=0;
+                sac.nrem[0][2]=sueldo.nrem[0][2]*(1+(data.presentismo[0]?1/12:0))*0.5;
+                sac.nrem[1][2]=sueldo.nrem[1][2]*(1+(data.presentismo[0]?1/12:0))*0.5;
+                sac.nrem[2][2]=sueldo.nrem[2][2]*(1+(data.presentismo[0]?1/12:0))*(mes==12?2/12:0.5);
+                sac.nrem[3][2]=sueldo.nrem[3][2]*(1+(data.presentismo[0]?1/12:0))*(mes==24?2/12:0.5);
+                sac.nrem.total=total(sac.nrem);
                 
                 sac.desc[0][2]=sac.desc[0][1]*sac.rem.total;
                 sac.desc[1][2]=sac.desc[1][1]*sac.rem.total;
@@ -916,7 +934,6 @@
                 sac.desc[4][2]=sac.desc[4][1]*(sac.rem.total+sac.nrem.total);
                 sac.desc.total=total(sac.desc); 
             }
-			
             function total(obj){
                 var ret=0;
                 for(var i=0;i<obj.length;i++){
@@ -924,7 +941,7 @@
                 }
                 return ret;
             }
-			
+	
             return ret;
         }
 		
@@ -933,34 +950,51 @@
             var datos = generarDatos();
             var table = document.getElementById('table');
             var w = 0;
-            var totaldiv = document.createElement('tr');
-            totaldiv.innerHTML = '<td>Total</td><td></td>';
+            var suma=[0,0,0];
             for(var i=0;i<datos.length;i++){
-                for(var det in datos[i]){
-                    if(!/obj|title/.test(det)){
-                        for(var j=0;j<datos[i][det].length;j++){
-                            if(datos[i][det][j]){
-                                if(datos[i][det][j][2]){
-                                    var newdiv = document.createElement('tr');
-                                    newdiv.innerHTML = '<td>'+datos[i][det][j][0]+'</td>';
-                                    newdiv.innerHTML = newdiv.innerHTML+'<td>5%</td>';
-                                    for(var q=0; q<=2 ; q++){
-                                        if(q==w){
-                                            newdiv.innerHTML = newdiv.innerHTML+ '<td>'+datos[i][det][j][2]+'</td>';
+                if(datos[i]){
+                    w = 0;
+                    for(var det in datos[i]){
+                        if(!/obj|title/.test(det)){
+                            for(var j=0;j<datos[i][det].length;j++){
+                                if(datos[i][det][j]){
+                                    if(datos[i][det][j][2]){
+                                        var newdiv = document.createElement('tr');
+                                        newdiv.innerHTML = '<td>'+datos[i][det][j][0]+'</td>';
+                                        if(datos[i][det][j][1]){
+                                            newdiv.innerHTML = newdiv.innerHTML+'<td>'+(datos[i][det][j][1]*100)+'%</td>';
                                         }else{
-                                            newdiv.innerHTML = newdiv.innerHTML+ '<td></td>';
+                                            newdiv.innerHTML = newdiv.innerHTML+'<td></td>';
                                         }
+                                    
+                                        for(var q=0; q<=2 ; q++){
+                                            if(q==w){
+                                                newdiv.innerHTML = newdiv.innerHTML+ '<td>'+datos[i][det][j][2]+'</td>';
+                                            }else{
+                                                newdiv.innerHTML = newdiv.innerHTML+ '<td></td>';
+                                            }
+                                        }
+                                        table.appendChild(newdiv);
                                     }
-                                    table.appendChild(newdiv);
                                 }
                             }
+                            w++;
                         }
-                        totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+datos[i][det].total+'</td>';
-                        w++;
-                    }
-                }	
+                    }	
+                    var totaldiv = document.createElement('tr');
+                    totaldiv.innerHTML = '<td>Total</td><td></td>';
+                    totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+datos[i].rem.total+'</td>';
+                    totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+datos[i].nrem.total+'</td>';
+                    totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+datos[i].desc.total+'</td>';
+                    table.appendChild(totaldiv);
+                    suma[0]+=datos[i].rem.total;
+                    suma[1]+=datos[i].nrem.total;
+                    suma[2]+=datos[i].desc.total;
+                }
             }
-            table.appendChild(totaldiv);
+            var totalfull = document.createElement('tr');
+            totalfull.innerHTML = '<td>Sueldo neto a cobrar</td><td></td><td></td><td></td><td>'+(suma[0]+suma[1]-suma[2])+'</td>';
+            table.appendChild(totalfull);
         }
     </script>
     <body onload="calculate()">
