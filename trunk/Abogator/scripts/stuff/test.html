@@ -877,19 +877,38 @@
 		
                
         function cargarDatos(){
+            data.mes[0]=meses[document.getElementById('esc_mes').value];
+            data.categoria[0]=categorias[document.getElementById('esc_cat').value];
+            
+            if(document.getElementById('esc_pre').value==1){
+                data.presentismo[0]=true;
+            }else{
+                data.presentismo[0]=false;
+            }
+            data.antiguedad[0]=document.getElementById('esc_ant').value;
+            
+            
             var indexcat = categorias.indexOf(data.categoria[0]);
             var indexmes = meses.indexOf(data.mes[0]);
-            data.sueldo[0] = db[(indexcat*26)+indexmes][0];
+            data.sueldo[0] = db[(indexcat*36)+indexmes][0];
             if(indexmes>5){
                 sueldo.rem[1][1] = 0.01;
             }else{
                 sueldo.rem[1][1] = 0.0075;
             }
+            
+            //limpio
+            for(var i=0;i<sueldo.nrem.length;i++){
+                sueldo.nrem[i][2]=0;
+            }
+            for(var i=0;i<sac.nrem.length;i++){
+                sac.nrem[i][2]=0;
+            }
             for(var i=1;i<=5 ;i++){
-                if(db[(indexcat*26)+indexmes][i]){
-                    sueldo.nrem[i-1][2]=db[(indexcat*26)+indexmes][i];
+                if(db[(indexcat*36)+indexmes][i]){
+                    sueldo.nrem[i-1][2]=db[(indexcat*36)+indexmes][i];
                     if((data.mes[0].indexOf("Junio") != -1)||(data.mes[0].indexOf("Diciembre") != -1)){
-                        sac.nrem[i-1][2]=db[(indexcat*26)+indexmes][i]*0.5;
+                        sac.nrem[i-1][2]=db[(indexcat*36)+indexmes][i]*0.5;
                     }
                 }
             }
@@ -897,6 +916,7 @@
 		
         function generarDatos(){
             var ret=[sueldo,false];
+            var indexmes = meses.indexOf(data.mes[0]);
             sueldo.rem[0][2]=data.sueldo[0];
             sueldo.rem[1][2]=data.sueldo[0]*sueldo.rem[1][1]*data.antiguedad[0];
             sueldo.rem[2][2]=data.presentismo[0]?(sueldo.rem[0][2]+sueldo.rem[1][2])/12:0;
@@ -910,7 +930,7 @@
             sueldo.desc[2][2]=sueldo.desc[2][1]*(sueldo.rem.total+sueldo.nrem.total);
             sueldo.desc[3][2]=sueldo.desc[3][1]*(sueldo.rem.total+sueldo.nrem.total);
             sueldo.desc[4][2]=sueldo.desc[4][1]*(sueldo.rem.total+sueldo.nrem.total);
-            //sueldo.desc[5][2]=(mes==0||mes==12||mes==13)?50:(mes==23?100:0);
+            sueldo.desc[5][2]=(indexmes==0||indexmes==12||indexmes==13)?50:(indexmes==23?100:0);
             //sueldo.desc[6][2]=mes==24&&retro?100:0;
             sueldo.desc.total=total(sueldo.desc);
 			
@@ -923,8 +943,8 @@
                 
                 sac.nrem[0][2]=sueldo.nrem[0][2]*(1+(data.presentismo[0]?1/12:0))*0.5;
                 sac.nrem[1][2]=sueldo.nrem[1][2]*(1+(data.presentismo[0]?1/12:0))*0.5;
-                sac.nrem[2][2]=sueldo.nrem[2][2]*(1+(data.presentismo[0]?1/12:0))*(mes==12?2/12:0.5);
-                sac.nrem[3][2]=sueldo.nrem[3][2]*(1+(data.presentismo[0]?1/12:0))*(mes==24?2/12:0.5);
+                sac.nrem[2][2]=sueldo.nrem[2][2]*(1+(data.presentismo[0]?1/12:0))*(indexmes==12?2/12:0.5);
+                sac.nrem[3][2]=sueldo.nrem[3][2]*(1+(data.presentismo[0]?1/12:0))*(indexmes==24?2/12:0.5);
                 sac.nrem.total=total(sac.nrem);
                 
                 sac.desc[0][2]=sac.desc[0][1]*sac.rem.total;
@@ -949,6 +969,9 @@
             cargarDatos();
             var datos = generarDatos();
             var table = document.getElementById('table');
+            while (table.hasChildNodes()) {
+                table.removeChild(table.lastChild);
+            }
             var w = 0;
             var suma=[0,0,0];
             for(var i=0;i<datos.length;i++){
@@ -982,7 +1005,12 @@
                         }
                     }	
                     var totaldiv = document.createElement('tr');
-                    totaldiv.innerHTML = '<td>Total</td><td></td>';
+                    if(datos.length>1){
+                        totaldiv.innerHTML = '<td>Subtotal</td><td></td>';
+                    }else{
+                        totaldiv.innerHTML = '<td>Total</td><td></td>';
+                    }
+                    
                     totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+datos[i].rem.total+'</td>';
                     totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+datos[i].nrem.total+'</td>';
                     totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+datos[i].desc.total+'</td>';
@@ -992,36 +1020,43 @@
                     suma[2]+=datos[i].desc.total;
                 }
             }
+            if(datos.length>1){
+                var totaldiv = document.createElement('tr');
+                totaldiv.innerHTML = '<td>Total</td><td></td>';
+                totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+suma[0]+'</td>';
+                totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+suma[1]+'</td>';
+                totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+suma[2]+'</td>';
+                table.appendChild(totaldiv);
+            }
             var totalfull = document.createElement('tr');
             totalfull.innerHTML = '<td>Sueldo neto a cobrar</td><td></td><td></td><td></td><td>'+(suma[0]+suma[1]-suma[2])+'</td>';
             table.appendChild(totalfull);
         }
     </script>
-    <body onload="calculate()">
-        <h1>Hello World!</h1>
-        <table id="esc_rec">
-            <caption>Recibo de sueldo</caption>
+    <body>
+        <table >
             <thead>
+                <tr>
+                <th colspan="3">
+                    Mes <select id="esc_mes"><option value="34">2013 Abril</option><option value="33">2013 Marzo</option><option value="32">2013 Febrero</option><option value="31">2013 Enero</option><option value="30">2012 Diciembre</option><option value="29">2012 Noviembre</option><option value="28">2012 Octubre</option><option value="27">2012 Septiembre</option><option value="26">2012 Agosto</option><option value="25">2012 Julio</option><option value="24">2012 Junio</option><option value="23">2012 Mayo</option><option value="22">2012 Abril</option><option value="21">2012 Marzo</option><option value="20">2012 Febrero</option><option value="19">2012 Enero</option><option value="18">2011 Diciembre</option><option value="17">2011 Noviembre</option><option value="16">2011 Octubre</option><option value="15">2011 Septiembre</option><option value="14">2011 Agosto</option><option value="13">2011 Julio</option><option value="12">2011 Junio</option><option value="11">2011 Mayo</option><option value="10">2011 Abril</option><option value="9">2011 Marzo</option><option value="8">2011 Febrero</option><option value="7">2011 Enero</option><option value="6">2010 Diciembre</option><option value="5">2010 Noviembre</option><option value="4">2010 Octubre</option><option value="3">2010 Septiembre</option><option value="2">2010 Agosto</option><option value="1">2010 Julio</option><option value="0">2010 Junio</option></select><br>
+                    Categoría <select id="esc_cat"><option value="0">Maestranza y Servicios: A</option><option value="1">Maestranza y Servicios: B</option><option value="2">Maestranza y Servicios: C</option><option value="3">Administrativo: A</option><option value="4">Administrativo: B</option><option value="5">Administrativo: C</option><option value="6">Administrativo: D</option><option value="7">Administrativo: E</option><option value="8">Administrativo: F</option><option value="9">Cajeros: A</option><option value="10">Cajeros: B</option><option value="11">Cajeros: C</option><option value="12">Personal Auxiliar: A</option><option value="13">Personal Auxiliar: B</option><option value="14">Personal Auxiliar: C</option><option value="15">Auxiliar Especializado: A</option><option value="16">Auxiliar Especializado: B</option><option value="17">Ventas: A</option><option value="18">Ventas: B</option><option value="19">Ventas: C</option><option value="20">Ventas: D</option></select>
+                </th>
+                <th colspan="2">
+                    Presentismo <select id="esc_pre"> <option value="1">Sí</option> <option selected="selected" value="0">No</option> </select><br>
+                    Antigüedad <select id="esc_ant">
+                    <script type="text/javascript">                 
+                    for(var i=0;i<=35;i++){
+                    document.write('<option value="'+i+'">'+i+' años</option>');};                         
+                    </script><option value="0">0 años</option><option value="1">1 años</option><option value="2">2 años</option><option value="3">3 años</option><option value="4">4 años</option><option value="5">5 años</option><option value="6">6 años</option><option value="7">7 años</option><option value="8">8 años</option><option value="9">9 años</option><option value="10">10 años</option><option value="11">11 años</option><option value="12">12 años</option><option value="13">13 años</option><option value="14">14 años</option><option value="15">15 años</option><option value="16">16 años</option><option value="17">17 años</option><option value="18">18 años</option><option value="19">19 años</option><option value="20">20 años</option><option value="21">21 años</option><option value="22">22 años</option><option value="23">23 años</option><option value="24">24 años</option><option value="25">25 años</option><option value="26">26 años</option><option value="27">27 años</option><option value="28">28 años</option><option value="29">29 años</option><option value="30">30 años</option><option value="31">31 años</option><option value="32">32 años</option><option value="33">33 años</option><option value="34">34 años</option><option value="35">35 años</option> </select><br>
+                    <span id="esc_retro_v" style="display: none; ">Retroactivo mayo <select id="esc_retro"> <option value="0" selected="selected">No</option><option value="1">Sí</option></select></span>
+                    <input type="button" value="Generar" onclick="calculate()"/>
+                </th>
+            </tr>
                 <tr><th colspan="2"></th><th>Remunerativo</th><th>No Remunerativo</th><th>Descuentos</th></tr>
             </thead>
-            <tbody>
-                <tr><td>Sueldo básico</td><td></td><td class="moneda"><b>$</b>4.058,78</td><td></td><td></td></tr>
-                <tr><td>Presentismo</td><td>8,33 %</td><td class="moneda"><b>$</b>338,23</td><td></td><td></td></tr>
-                <tr><td>Presentismo</td><td>8,33 %</td><td></td><td class="moneda"><b>$</b>50,73</td><td></td></tr>
-                <tr><td>Jubilación</td><td>11,00 %</td><td></td><td></td><td class="moneda"><b>$</b>483,67</td></tr>
-                <tr><td>Ley 19032</td><td>3,00 %</td><td></td><td></td><td class="moneda"><b>$</b>131,91</td></tr>
-                <tr><td>Obra social</td><td>3,00 %</td><td></td><td></td><td class="moneda"><b>$</b>151,70</td></tr>
-                <tr><td>Faecys</td><td>0,50 %</td><td></td><td></td><td class="moneda"><b>$</b>25,28</td></tr>
-                <tr><td>Sindicato</td><td>2,00 %</td><td></td><td></td><td class="moneda"><b>$</b>101,13</td></tr>
+            <tbody id="table">
+                
             </tbody>
-            <tbody style="display: none; "></tbody>
-            <tbody>
-                <tr class="rec_total"><td>Totales</td><td></td><td class="moneda"><b>$</b>4.397,01</td><td class="moneda"><b>$</b>659,55</td><td class="moneda"><b>$</b>893,69</td></tr>
-                <tr class="rec_total_neto"><td>Sueldo neto a cobrar</td><td></td><td class="moneda"><b>$</b></td><td class="moneda"><b>$</b></td><td class="moneda"><b>$</b>4.162,87</td></tr>
-            </tbody></table>
-        <br/>
-        <br/>
-        <table id="table">
         </table>
     </body>
 </html>
