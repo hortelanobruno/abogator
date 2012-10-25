@@ -38,7 +38,6 @@ class Home extends Front_Controller {
      * @return void
      */
     public function index() {
-//        Template::render();
         $this->load->view('home/index');
     }
 

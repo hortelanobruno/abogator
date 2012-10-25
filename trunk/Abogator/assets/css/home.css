@@ -1,0 +1,360 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+body{
+	background-color: black;	
+}
+
+.main{
+	background-image:url(../img/background.jpg);
+
+
+
+	background-position:center; 
+	width: 800px;
+	
+    margin: 0px auto;
+}
+
+.main .top{
+
+
+	height: 400px;
+    margin: 0px auto;
+}
+
+.main .top .north{
+	height: 100px;	
+}
+
+.main .top .north .logo{
+	background-image:url(../img/logo.png);
+	background-position:center; 
+	width: 183px;
+	height: 125px;
+	position:absolute;
+    z-index:2;
+	margin-top: 32px;
+	margin-left: 20px;
+}
+
+.main .top .links{
+	color: white;
+	float: right;
+	margin-top: 60px;
+	margin-right: 44px;
+}
+
+.main .top .links ul
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.main .top .links ul li {
+	display: inline;
+	float: left;
+	height: 30px;
+	line-height: 30px; 
+	vertical-align:middle;
+}
+
+
+.main .top .links ul li a
+{
+	text-decoration: none;
+	padding: .2em 1em;
+	color: white;
+}
+
+.main .top .buttons{
+	margin-left:auto;
+	margin-right:auto;
+	width:100px;
+	height: 400px;
+}
+
+.main .top .buttons ul
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.main .top .buttons ul li {
+	display: inline;
+	float: left;
+	height: 30px;
+	line-height: 30px; 
+	vertical-align:middle;
+	margin-left: 5px;
+}
+
+
+.main .top .buttons ul li a
+{
+	text-decoration: none;
+	color: white;
+}
+
+.main .top .images{
+	background-image:url(../img/banner.jpg);
+	background-position:center; 
+	width: 700px;
+	height: 230px;
+    margin: 0px auto;
+	z-index: 1;
+	position: relative;
+}
+
+/*.main .top .images-shadow{
+	background-image:url(../img/banner-shadow.png);
+	background-position:center;
+	background-attachment:fixed;
+	background-repeat:no-repeat;
+	width: 700px;
+	height: 20px;
+    margin: 0px auto;
+	background-position: 0px 0px;
+}
+
+*/
+
+.main .top .images-shadow { 
+	width: 740px;
+	overflow: hidden;
+    margin: 0px auto;
+	z-index: 0;
+	position: relative;
+	margin-top: -39px; 
+}
+.main .top .images-shadow img { 
+	width: 738px;
+	margin: 0px auto; 
+}
+
+
+.main .toolbar{
+	border-top-style:solid;
+	border-top-color: white;
+	border-top-width: 2px;
+	border-bottom-style:solid;
+	border-bottom-color: white;
+	border-bottom-width: 2px;
+	width: 700px;
+	height: 200px;
+    margin: 0px auto;
+
+}
+
+.main .toolbar .recibo{
+	width: 33%;
+	height: 100%;
+	float:left;
+	position:relative;
+}
+
+.main .toolbar .recibo .container{
+	width: 120px;	
+	margin:0 auto;
+}
+
+.main .toolbar .recibo .img{
+	background-image:url(../img/sprite1.png);
+	background-position: 0px -7px;
+	height: 100px;
+	margin-top:37px; 
+}
+
+.main .toolbar .recibo .img:hover{
+	background-image:url(../img/sprite1.png);
+	background-position: 0px -138px;
+	width: 120px;
+	height: 100px;
+	margin:0 auto;
+	margin-top:37px; 
+	cursor:pointer;
+}
+
+.main .toolbar .recibo .label{
+	color:white;
+	margin:0 auto;
+	width: 120px;
+	margin-top:10px; 
+}
+
+.main .toolbar .liquidacion{
+	width: 33%;
+	height: 100%;
+	float:left;
+}
+
+.main .toolbar .liquidacion .container{
+	width: 120px;	
+	margin:0 auto;
+}
+
+.main .toolbar .liquidacion .img{
+	background-image:url(../img/sprite1.png);
+	background-position: -204px -7px;
+	height: 100px;
+	margin-top:37px; 
+}
+
+.main .toolbar .liquidacion .img:hover{
+	background-image:url(../img/sprite1.png);
+	background-position: -204px -138px;
+	width: 120px;
+	height: 100px;
+	margin:0 auto;
+	margin-top:37px; 
+	cursor:pointer;
+}
+
+.main .toolbar .liquidacion .label{
+	color:white;
+	margin:0 auto;
+	width: 100px;
+	margin-top:10px; 
+}
+
+.main .toolbar .escritos{
+	width: 33%;
+	height: 100%;
+	float:left;
+}
+
+.main .toolbar .escritos .container{
+	width: 120px;	
+	margin:0 auto;
+}
+
+.main .toolbar .escritos .img{
+	background-image:url(../img/sprite1.png);
+	background-position: 123px -7px;
+	height: 100px;
+	margin-top:37px; 
+}
+
+.main .toolbar .escritos .img:hover{
+	background-image:url(../img/sprite1.png);
+	background-position: 123px -138px;
+	width: 120px;
+	height: 100px;
+	margin:0 auto;
+	margin-top:37px; 
+	cursor:pointer;
+}
+
+.main .toolbar .escritos .label{
+	color:white;
+	margin:0 auto;
+	width: 60px;
+	margin-top:10px; 
+}
+
+.main .news{
+	padding-top: 50px;
+	width: 700px;
+    position: relative;
+	margin: 0px auto;
+}
+
+.main .news .border-top{
+	height: 20px;
+	margin: 0px auto;
+	width:700px;
+}
+
+.main .news .border-bottom{
+	height: 20px;
+	margin: 0px auto;
+	width:700px;
+}
+
+.main .news .content{
+	height: 400px;
+	position: relative;
+}
+
+.main .news .content .arriba{
+	margin-top: 10px;
+
+}
+
+.main .news .content .arriba .logo{
+	width: 20px;
+	height: 24px;
+	background: url(../img/sprite2.png);
+	background-position: 20px -11px;
+	float: left;
+	margin-left: 20px;
+}
+
+.main .news .content .arriba .title{
+	float: left;
+	color: white;
+	margin-left: 40px;
+}
+
+.main .news .content .bottom{
+	margin-top: 40px;
+	margin-left: 50px;
+	position: absolute;
+}
+
+.main .news .content .bottom .noticia{
+	margin-bottom: 10px;
+}
+
+.main .news .content .bottom .noticia .fecha{
+	color:white;
+}
+
+.main .news .content .bottom .noticia .title{
+		color:blue;
+}
+
+.main .news .content .bottom .noticia .description{
+		color:white;
+}
+
+.main .footer{
+	padding-top: 100px;
+	color: white;
+	height: 200px;
+    margin: 0px auto;
+	width: 700px;
+    position: relative;
+	margin: 0px auto;
+}
+
+.main .footer .msj{
+		width: 436px;
+		margin: 0px auto;
+}
+
+.twitter{
+	width: 30px;
+	height: 30px;
+	background: url(../img/sprite2.png);
+	background-position: 138px -2px;
+}
+
+.facebook{
+	width: 30px;
+	height: 30px;
+	background: url(../img/sprite2.png);
+	background-position: 102px -2px;
+}
+
+.button{
+	text-decoration: none;
+	display: block;
+	width: 15px;
+	height: 15px;
+	background: url(../img/sprite2.png);
+	background-position: 53px -15px;
+}
