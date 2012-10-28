@@ -25,7 +25,7 @@
             </div>
             <div class="step-content">
                 <div class="label">Elegir categoria</div>
-                <div class="elements"><select>
+                <div class="elements"><select id="esc_cat" onchange="calculateRecibo()">
                         <script type="text/javascript">                 
                             for(var i=0;i<=categorias.length;i++){
                                 document.write('<option value="'+i+'">'+categorias[i]+'</option>');};                         
@@ -101,7 +101,7 @@
                         </div>
                     </div>
                     <script type="text/javascript">                 
-                                    loadSelectDays();             
+                        loadSelectDays();             
                     </script>
                 </div>
             </div>
@@ -114,7 +114,7 @@
                 <div class="elements2">
                     <div class="col3">
                         <div class="col-title">Antiguedad</div>
-                        <div class="col-element"><select>
+                        <div class="col-element"><select id="esc_ant" onchange="calculateRecibo()">
                                 <script type="text/javascript">                 
                                     for(var i=0;i<=35;i++){
                                         document.write('<option value="'+i+'">'+i+' años</option>');};                         
@@ -123,13 +123,13 @@
                     </div>
                     <div class="col3">
                         <div class="col-title">Presentismo</div>
-                        <div class="col-element"><select>
+                        <div class="col-element"><select id="esc_pre" onchange="calculateRecibo()">
                                 <option value="1">Sí</option> <option selected="selected" value="0">No</option>
                             </select></div>
                     </div>
                     <div class="col3">
                         <div class="col-title">Mes</div>
-                        <div class="col-element"><select>
+                        <div class="col-element"><select id="esc_mes" onchange="calculateRecibo()">
                                 <script type="text/javascript">                 
                                     for(var i=0;i<=meses.length;i++){
                                         document.write('<option value="'+i+'">'+meses[i]+'</option>');};                         
@@ -141,6 +141,14 @@
         </div>
     </div>
     <div class="result">
-
+        <table id="esc_rec">
+            <thead>
+                <tr><th colspan="2"></th><th>Remunerativo</th><th>No Remunerativo</th><th>Descuentos</th></tr>
+            </thead>
+            <tbody id="bodyRecibo"></tbody>
+        </table>
     </div>
+    <script type="text/javascript">  
+        calculateRecibo();
+    </script>
 </div>
