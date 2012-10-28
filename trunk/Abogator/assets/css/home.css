@@ -513,3 +513,20 @@ body{
 .middle-recibo .steps .step2 .step-content .elements .day .select{
     float: left;
 }
+
+.middle-recibo .result{
+    background-color: white;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+/*    width: 700px;*/
+    padding: 25px 15px 25px 15px;
+    margin: 5px 5px 5px 10px;
+    
+}
+
+.middle-recibo .result table{
+    border: 1px solid black;
+    margin: 0px auto;
+}
