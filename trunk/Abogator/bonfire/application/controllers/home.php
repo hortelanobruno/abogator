@@ -38,7 +38,27 @@ class Home extends Front_Controller {
      * @return void
      */
     public function index() {
+        $this->load->view('home/template/top');
         $this->load->view('home/index');
+        $this->load->view('home/template/bottom');
+    }
+    
+    public function recibo() {
+        $this->load->view('home/template/top');
+        $this->load->view('home/recibo');
+        $this->load->view('home/template/bottom');
+    }
+    
+    public function liquidacion() {
+        $this->load->view('home/template/top');
+        $this->load->view('home/liquidacion');
+        $this->load->view('home/template/bottom');
+    }
+    
+    public function escritos() {
+        $this->load->view('home/template/top');
+        $this->load->view('home/escritos');
+        $this->load->view('home/template/bottom');
     }
 
  

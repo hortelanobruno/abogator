@@ -54,6 +54,14 @@ class Test extends Front_Controller {
     public function testpdf() {
         $this->load->view('test/testpdf');
     }
+    
+    public function slider() {
+        $this->load->view('test/slider');
+    }
+    
+    public function slider2() {
+        $this->load->view('test/slider2');
+    }
 
     public function recibo() {
         Assets::add_js('recibo.js');
