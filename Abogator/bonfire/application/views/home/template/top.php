@@ -9,8 +9,10 @@
         <div class="main">
             <div class="top">
                 <div class="north">
-                    <div class="logo">
-                    </div>
+                    <a href="/">
+                        <div class="logo">
+                        </div>
+                    </a>
                     <div class="links">
                         <ul>
                             <li><a>El estudio</a></li>
