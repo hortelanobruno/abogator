@@ -161,14 +161,7 @@ body{
     margin:0 auto;
 }
 
-.main .toolbar .recibo .img{
-    background-image:url(../img/sprite1.png);
-    background-position: 0px -7px;
-    height: 100px;
-    margin-top:37px; 
-}
-
-.main .toolbar .recibo .img:hover{
+.main .toolbar .recibo .container:hover .img{
     background-image:url(../img/sprite1.png);
     background-position: 0px -138px;
     width: 120px;
@@ -176,6 +169,13 @@ body{
     margin:0 auto;
     margin-top:37px; 
     cursor:pointer;
+}
+
+.main .toolbar .recibo .img{
+    background-image:url(../img/sprite1.png);
+    background-position: 0px -7px;
+    height: 100px;
+    margin-top:37px; 
 }
 
 .main .toolbar .recibo .label{
@@ -196,14 +196,7 @@ body{
     margin:0 auto;
 }
 
-.main .toolbar .liquidacion .img{
-    background-image:url(../img/sprite1.png);
-    background-position: -204px -7px;
-    height: 100px;
-    margin-top:37px; 
-}
-
-.main .toolbar .liquidacion .img:hover{
+.main .toolbar .liquidacion .container:hover .img{
     background-image:url(../img/sprite1.png);
     background-position: -204px -138px;
     width: 120px;
@@ -211,6 +204,13 @@ body{
     margin:0 auto;
     margin-top:37px; 
     cursor:pointer;
+}
+
+.main .toolbar .liquidacion .img{
+    background-image:url(../img/sprite1.png);
+    background-position: -204px -7px;
+    height: 100px;
+    margin-top:37px; 
 }
 
 .main .toolbar .liquidacion .label{
@@ -231,14 +231,7 @@ body{
     margin:0 auto;
 }
 
-.main .toolbar .escritos .img{
-    background-image:url(../img/sprite1.png);
-    background-position: 123px -7px;
-    height: 100px;
-    margin-top:37px; 
-}
-
-.main .toolbar .escritos .img:hover{
+.main .toolbar .escritos .container:hover .img{
     background-image:url(../img/sprite1.png);
     background-position: 123px -138px;
     width: 120px;
@@ -246,6 +239,13 @@ body{
     margin:0 auto;
     margin-top:37px; 
     cursor:pointer;
+}
+
+.main .toolbar .escritos .img{
+    background-image:url(../img/sprite1.png);
+    background-position: 123px -7px;
+    height: 100px;
+    margin-top:37px; 
 }
 
 .main .toolbar .escritos .label{
@@ -343,11 +343,27 @@ body{
     background-position: 138px -2px;
 }
 
+.twitter:hover{
+    width: 30px;
+    height: 30px;
+    background: url(../img/sprite2.png);
+    background-position: 138px -37px;
+    cursor: pointer;
+}
+
 .facebook{
     width: 30px;
     height: 30px;
     background: url(../img/sprite2.png);
     background-position: 102px -2px;
+}
+
+.facebook:hover{
+    width: 30px;
+    height: 30px;
+    background: url(../img/sprite2.png);
+    background-position: 102px -37px;
+    cursor: pointer;
 }
 
 .button{
@@ -431,7 +447,7 @@ body{
 
 
 .middle-recibo .steps .step1 .step-content select{
-/*    width: 100px;*/
+    /*    width: 100px;*/
     float: right;
 }
 
@@ -520,13 +536,167 @@ body{
     border-bottom-right-radius: 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-/*    width: 700px;*/
+    /*    width: 700px;*/
     padding: 25px 15px 25px 15px;
     margin: 5px 5px 5px 10px;
-    
+
 }
 
 .middle-recibo .result table{
     border: 1px solid black;
     margin: 0px auto;
+}
+
+
+.middle-liquidacion{
+    width: 700px;
+    margin: 0px auto;
+    border-top-style: solid;
+    border-top-color: white;
+    border-top-width: 2px;
+}
+
+.middle-liquidacion .title{
+    margin-top: 30px;
+    height: 50px;
+}
+
+
+.middle-liquidacion .title .text{
+    color:white;
+    float: left;
+    margin-left: 40px;
+    padding-top: 5px;
+}
+
+.middle-liquidacion .title .icon{
+    float: left;
+    width: 40px;
+    height: 40px;
+    background: url(../img/sprite2.png);
+    background-position: 235px 2px;
+}
+
+.middle-liquidacion .middle-content{
+    width: 700px;
+    margin: 0px auto;
+    background-color: white;
+    overflow: hidden;
+    border-bottom-style: solid;
+    border-bottom-color: grey;
+    border-bottom-width: 1px;
+}
+
+.middle-liquidacion .middle-content .col-datos{
+    float: left;
+    width: 350px;
+}
+
+.middle-liquidacion .middle-content .col-datos .header{
+    color: blue;
+    margin: 15px 0px 15px 15px;
+    border-bottom-style: solid;
+    border-bottom-color: grey;
+    border-bottom-width: 1px;
+}
+
+.middle-liquidacion .middle-content .col-datos .dato{
+    margin: 15px 15px 15px 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.middle-liquidacion .middle-content .col-datos .dato .label{
+    float: left;
+}
+
+.middle-liquidacion .middle-content .col-datos .dato .element{
+    float: right;
+}
+
+.middle-liquidacion .middle-content .col-datos .dato2{
+    margin: 15px 15px 15px 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.middle-liquidacion .middle-content .col-datos .dato2 .label{
+    color: blue;
+    margin-bottom: 15px;
+}
+
+.middle-liquidacion .middle-content .col-datos .dato2 .element{
+    float: left;
+    margin-left: 15px;
+}
+
+.middle-liquidacion .middle-content .col-datos .dato2 .element .day{
+    position: relative;
+    padding: 0 0 1em 0;
+    overflow: hidden;
+    width: 250px;
+}
+
+.middle-liquidacion .middle-content .col-datos .dato2 .element .day .check{
+    width: 80px;
+    float: left;
+}
+
+.middle-liquidacion .middle-content .col-datos .dato2 .element .day .select{
+    float: left;
+}
+
+.middle-liquidacion .middle-content .col-resultados{
+    float: left;
+    width: 350px;
+}
+
+.middle-liquidacion .middle-content .col-resultados .header{
+    color: blue;
+    margin: 15px 15px 15px 0px;
+    border-bottom-style: solid;
+    border-bottom-color: grey;
+    border-bottom-width: 1px;
+}
+
+.middle-liquidacion .middle-content .col-resultados .seccion{
+    color: blue;
+    margin-top: 5px;
+}
+
+.middle-liquidacion .middle-content .col-resultados .result{
+    position: relative;
+    overflow: hidden;
+    margin: 5px 25px 0px 15px;
+}
+
+.middle-liquidacion .middle-content .col-resultados .result .label{
+    float: left;
+}
+
+.middle-liquidacion .middle-content .col-resultados .result .value{
+    float: right;
+}
+
+.middle-liquidacion .generar{
+    width: 700px;
+    margin: 0px auto;
+    background-color: white;
+    overflow: hidden;
+}
+
+.middle-liquidacion .generar .button-generar{
+    float:right;
+    width: 100px;
+    height: 50px;
+    background-color: blue;
+    color: white;
+    margin: 5px 5px 5px 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display:table-cell; 
+    vertical-align:middle;
+
 }
