@@ -913,6 +913,7 @@ function generarDatos(){
     var indexmes = meses.indexOf(data.mes[0]);
     sueldo.rem[0][2]=data.sueldo[0];
     sueldo.rem[1][2]=data.sueldo[0]*sueldo.rem[1][1]*data.antiguedad[0];
+    sueldo.rem[1][1]=data.antiguedad[0]/100;
     sueldo.rem[2][2]=data.presentismo[0]?(sueldo.rem[0][2]+sueldo.rem[1][2])/12:0;
     sueldo.rem.total=total(sueldo.rem);
 			
