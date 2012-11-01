@@ -165,116 +165,124 @@
                 Indemninazion por despido
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">Antiguedad</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">Preaviso</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">Integracion</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">SAC S/ANT + PRE + INT</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">Dias trabajados</div>
+                <div class="value">$2000</div>
+            </div>
+            <div class="result">
+                <div class="label">Total</div>
                 <div class="value">$2000</div>
             </div>
             <div class="seccion">
                 Liquidacion final
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">Vacaciones completas</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">Vacaciones proporcionales</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">SAC S/Vacaciones completas</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">SAC S/Vacaciones proporcionales</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">SAC</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">SAC Proporcional</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
-                <div class="value">$2000</div>
-            </div>
-            <div class="seccion">
-                Diferencias salariales
-            </div>
-            <div class="result">
-                <div class="label">Presentacion demanda</div>
-                <div class="value">$2000</div>
-            </div>
-            <div class="result">
-                <div class="label">Presentacion demanda</div>
-                <div class="value">$2000</div>
-            </div>
-            <div class="result">
-                <div class="label">Presentacion demanda</div>
-                <div class="value">$2000</div>
-            </div>
-            <div class="result">
-                <div class="label">Presentacion demanda</div>
-                <div class="value">$2000</div>
-            </div>
-            <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">Total</div>
                 <div class="value">$2000</div>
             </div>
             <div class="seccion">
                 Diferencias salariales
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">Hoas extraordinarias al 50%</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">Horas extraordinarias al 100%</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">Horas nocturnas</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">Diferencias salariales por categoria</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">Total</div>
+                <div class="value">$2000</div>
+            </div>
+            <div class="seccion">
+                Multas
+            </div>
+            <div class="result">
+                <div class="label">MULTA LEY 25.323 ART 1</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">MULTA LEY 25.323 ART 2</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">MULTA LEY 24.013 ART 8</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">MULTA LEY 24.013 ART 9</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Presentacion demanda</div>
+                <div class="label">MULTA LEY 24.013 ART 10</div>
+                <div class="value">$2000</div>
+            </div>
+            <div class="result">
+                <div class="label">MULTA LEY 24.013 ART 15</div>
+                <div class="value">$2000</div>
+            </div>
+            <div class="result">
+                <div class="label">MULTA LEY 20.744 ART 80</div>
+                <div class="value">$2000</div>
+            </div>
+            <div class="result">
+                <div class="label">MULTA LEY 20.744 ART 132 BIS</div>
+                <div class="value">$2000</div>
+            </div>
+            <div class="result">
+                <div class="label">MULTA LEY 20.744 ART 182</div>
+                <div class="value">$2000</div>
+            </div>
+            <div class="result">
+                <div class="label">Total</div>
                 <div class="value">$2000</div>
             </div>
         </div>

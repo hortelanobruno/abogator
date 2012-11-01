@@ -919,6 +919,7 @@
             var indexmes = meses.indexOf(data.mes[0]);
             sueldo.rem[0][2]=data.sueldo[0];
             sueldo.rem[1][2]=data.sueldo[0]*sueldo.rem[1][1]*data.antiguedad[0];
+            sueldo.rem[1][1]=data.antiguedad[0]/100;
             sueldo.rem[2][2]=data.presentismo[0]?(sueldo.rem[0][2]+sueldo.rem[1][2])/12:0;
             sueldo.rem.total=total(sueldo.rem);
 			
@@ -985,14 +986,14 @@
                                         var newdiv = document.createElement('tr');
                                         newdiv.innerHTML = '<td>'+datos[i][det][j][0]+'</td>';
                                         if(datos[i][det][j][1]){
-                                            newdiv.innerHTML = newdiv.innerHTML+'<td>'+(datos[i][det][j][1]*100)+'%</td>';
+                                            newdiv.innerHTML = newdiv.innerHTML+'<td>'+(datos[i][det][j][1]*100).toFixed(2)+'%</td>';
                                         }else{
                                             newdiv.innerHTML = newdiv.innerHTML+'<td></td>';
                                         }
                                     
                                         for(var q=0; q<=2 ; q++){
                                             if(q==w){
-                                                newdiv.innerHTML = newdiv.innerHTML+ '<td>'+datos[i][det][j][2]+'</td>';
+                                                newdiv.innerHTML = newdiv.innerHTML+ '<td>'+(datos[i][det][j][2]).toFixed(2)+'</td>';
                                             }else{
                                                 newdiv.innerHTML = newdiv.innerHTML+ '<td></td>';
                                             }
@@ -1011,9 +1012,9 @@
                         totaldiv.innerHTML = '<td>Total</td><td></td>';
                     }
                     
-                    totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+datos[i].rem.total+'</td>';
-                    totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+datos[i].nrem.total+'</td>';
-                    totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+datos[i].desc.total+'</td>';
+                    totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+(datos[i].rem.total).toFixed(2)+'</td>';
+                    totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+(datos[i].nrem.total).toFixed(2)+'</td>';
+                    totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+(datos[i].desc.total).toFixed(2)+'</td>';
                     table.appendChild(totaldiv);
                     suma[0]+=datos[i].rem.total;
                     suma[1]+=datos[i].nrem.total;
@@ -1023,13 +1024,13 @@
             if(datos.length>1){
                 var totaldiv = document.createElement('tr');
                 totaldiv.innerHTML = '<td>Total</td><td></td>';
-                totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+suma[0]+'</td>';
-                totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+suma[1]+'</td>';
-                totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+suma[2]+'</td>';
+                totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+(suma[0]).toFixed(2)+'</td>';
+                totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+(suma[1]).toFixed(2)+'</td>';
+                totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+(suma[2]).toFixed(2)+'</td>';
                 table.appendChild(totaldiv);
             }
             var totalfull = document.createElement('tr');
-            totalfull.innerHTML = '<td>Sueldo neto a cobrar</td><td></td><td></td><td></td><td>'+(suma[0]+suma[1]-suma[2])+'</td>';
+            totalfull.innerHTML = '<td>Sueldo neto a cobrar</td><td></td><td></td><td></td><td>'+(suma[0]+suma[1]-suma[2]).toFixed(2)+'</td>';
             table.appendChild(totalfull);
         }
     </script>
