@@ -754,7 +754,183 @@ var db = [[1293.65,758.73,394.11,0,0],
 [5144.24,0,0,0,393.66],
 [5144.24,0,0,0,393.66],
 [5144.24,0,0,0,393.66],
-[5606.37,0,0,0,0]];//lista completa ordenada por categoria y mes, col sueldo y acuerdos
+[5606.37,0,0,0,0]];
+
+var db_maestranza = [[1750,0,0,100],
+[1912.5,30,0,100],
+[2075,30,0,100],
+[2075,30,0,100],
+[2075,30,0,100],
+[2075,30,0,100],
+[2075,30,0,100],
+[2075,30,0,100],
+[2075,30,0,100],
+[2075,30,200,0],
+[2075,30,200,100],
+[2075,30,200,200],
+[2075,30,200,200],
+[2075,30,200,200],
+[2225,80,200,200],
+[2225,80,200,200],
+[2225,250,200,300],
+[2325,275,200,200],
+[2325,275,200,200],
+[2425,275,200,200],
+[2625,300,200,100],
+[2825,325,200,0],
+[2825,325,200,0],
+[2825,325,200,0],
+[2825,325,200,0],
+[2825,325,200,0],
+[3025,325,335,0],
+[3025,325,335,0],
+[3180,450,390,0],
+[3180,450,390,0],
+[3180,450,390,0],
+[3330,450,390,0],
+[3330,450,390,0],
+[3330,450,390,0],
+[3330,450,390,0],
+[1751.66,0,0,100],
+[1914.33,30,0,100],
+[2076.98,30,0,100],
+[2076.98,30,0,100],
+[2076.98,30,0,100],
+[2076.98,30,0,100],
+[2076.98,30,0,100],
+[2076.98,30,0,100],
+[2076.98,30,0,100],
+[2076.98,30,200,0],
+[2076.98,30,200,100],
+[2076.98,30,200,200],
+[2076.98,30,200,200],
+[2076.98,30,200,200],
+[2226.98,80,200,200],
+[2226.98,80,200,200],
+[2226.98,250,200,300],
+[2326.98,275,200,200],
+[2326.98,275,200,200],
+[2426.98,275,200,200],
+[2626.98,300,200,100],
+[2826.98,325,200,0],
+[2826.98,325,200,0],
+[2826.98,325,200,0],
+[2826.98,325,200,0],
+[2826.98,325,200,0],
+[3026.98,325,335,0],
+[3026.98,325,335,0],
+[3181.98,450,390,0],
+[3181.98,450,390,0],
+[3181.98,450,390,0],
+[3331.98,450,390,0],
+[3331.98,450,390,0],
+[3331.98,450,390,0],
+[3331.98,450,390,0],
+[1772.33,0,0,100],
+[1937.16,30,0,100],
+[2101.63,30,0,100],
+[2101.63,30,0,100],
+[2101.63,30,0,100],
+[2101.63,30,0,100],
+[2101.63,30,0,100],
+[2101.63,30,0,100],
+[2101.63,30,0,100],
+[2101.63,30,200,0],
+[2101.63,30,200,100],
+[2101.63,30,200,200],
+[2101.63,30,200,200],
+[2101.63,30,200,200],
+[2251.63,80,200,200],
+[2251.63,80,200,200],
+[2251.63,250,200,300],
+[2351.63,275,200,200],
+[2351.63,275,200,200],
+[2451.63,275,200,200],
+[2651.63,300,200,100],
+[2851.63,325,200,0],
+[2851.63,325,200,0],
+[2851.63,325,200,0],
+[2851.63,325,200,0],
+[2851.63,325,200,0],
+[3051.63,325,335,0],
+[3051.63,325,335,0],
+[3206.63,450,390,0],
+[3206.63,450,390,0],
+[3206.63,450,390,0],
+[3356.63,450,390,0],
+[3356.63,450,390,0],
+[3356.63,450,390,0],
+[3356.63,450,390,0],
+[1807.9,0,0,100],
+[1976.43,30,0,100],
+[2144.02,30,0,100],
+[2144.02,30,0,100],
+[2144.02,30,0,100],
+[2144.02,30,0,100],
+[2144.02,30,0,100],
+[2144.02,30,0,100],
+[2144.02,30,0,100],
+[2144.02,30,200,0],
+[2144.02,30,200,100],
+[2144.02,30,200,200],
+[2144.02,30,200,200],
+[2144.02,30,200,200],
+[2294.02,80,200,200],
+[2294.02,80,200,200],
+[2294.02,250,200,300],
+[2394.02,275,200,200],
+[2394.02,275,200,200],
+[2494.02,275,200,200],
+[2694.02,300,200,100],
+[2894.02,325,200,0],
+[2894.02,325,200,0],
+[2894.02,325,200,0],
+[2894.02,325,200,0],
+[2894.02,325,200,0],
+[3094.02,325,335,0],
+[3094.02,325,335,0],
+[3249.02,450,390,0],
+[3249.02,450,390,0],
+[3249.02,450,390,0],
+[3399.02,450,390,0],
+[3399.02,450,390,0],
+[3399.02,450,390,0],
+[3399.02,450,390,0],
+[1848.17,0,0,100],
+[2020.88,30,0,100],
+[2192.01,30,0,100],
+[2192.01,30,0,100],
+[2192.01,30,0,100],
+[2192.01,30,0,100],
+[2192.01,30,0,100],
+[2192.01,30,0,100],
+[2192.01,30,0,100],
+[2192.01,30,200,0],
+[2192.01,30,200,100],
+[2192.01,30,200,200],
+[2192.01,30,200,200],
+[2192.01,30,200,200],
+[2342.01,80,200,200],
+[2342.01,80,200,200],
+[2342.01,250,200,300],
+[2442.01,275,200,200],
+[2442.01,275,200,200],
+[2542.01,275,200,200],
+[2742.01,300,200,100],
+[2942.01,325,200,0],
+[2942.01,325,200,0],
+[2942.01,325,200,0],
+[2942.01,325,200,0],
+[2942.01,325,200,0],
+[3142.01,325,335,0],
+[3142.01,325,335,0],
+[3297.01,450,390,0],
+[3297.01,450,390,0],
+[3297.01,450,390,0],
+[3447.01,450,390,0],
+[3447.01,450,390,0],
+[3447.01,450,390,0],
+[3447.01,450,390,0]];
     
     
 /**
@@ -798,11 +974,12 @@ var meses=["2010 Junio","2010 Julio","2010 Agosto","2010 Septiembre","2010 Octub
 "2011 Febrero","2011 Marzo","2011 Abril","2011 Mayo","2011 Junio","2011 Julio","2011 Agosto","2011 Septiembre","2011 Octubre",
 "2011 Noviembre","2011 Diciembre","2012 Enero","2012 Febrero","2012 Marzo","2012 Abril","2012 Mayo","2012 Junio","2012 Julio",
 "2012 Agosto","2012 Septiembre","2012 Octubre","2012 Noviembre","2012 Diciembre","2013 Enero","2013 Febrero","2013 Marzo","2013 Abril"];
-var convenios=["Comercio"];
+var convenios=["Comercio","Maestranza"];
 var categorias=["Maestranza y Servicios: A","Maestranza y Servicios: B","Maestranza y Servicios: C","Administrativo: A",
 "Administrativo: B","Administrativo: C","Administrativo: D","Administrativo: E","Administrativo: F","Cajero: A","Cajero: B",
 "Cajero: C","Personal Auxiliar: A","Personal Auxiliar: B","Personal Auxiliar: C","Auxiliar Especializado: A",
 "Auxiliar Especializado: B","Ventas: A","Ventas: B","Ventas: C","Ventas: D"];
+var categorias_maestranza=["Oficial","Oficial de primera","Coordinador A","Coordinador B/of Espec.","Coordinador C"];
 var acuerdos=["Adicional no remunerativo 2008-2009","Adicional no remunerativo 2010",
 "Adicional no remunerativo 2011","Acuerdo mayo 2012"]
 
@@ -811,7 +988,8 @@ var sueldo={
     rem:[
     ["Sueldo basico",false,0],
     ["Antiguedad",0,0],
-    ["Presentismo",1/12,0]
+    ["Presentismo",1/12,0],
+    ["Plus asistencia",0,0]
     ],
     nrem:[
     ["Adicional no remunerativo 2008-2009",false,0],
@@ -820,7 +998,9 @@ var sueldo={
     ["Acuerdo mayo 2012", false, 0],
     ["Retroactivo Acuerdo mayo-2011",false,0],
     ["Retroactivo Acuerdo mayo-2012",false,0],
-    ["Presentismo",1/12,0]
+    ["Presentismo",1/12,0],
+    ["Viaticos CCT",false,0],
+    ["Asignacion no remunerativa",false,0]
     ],
     desc:[
     ["Jubilacion",0.11,0],
@@ -871,41 +1051,85 @@ var data={
 		
                
 function cargarDatos(){
+    data.convenio[0]=convenios[document.getElementById('esc_conv').value];
     data.mes[0]=meses[document.getElementById('esc_mes').value];
-    data.categoria[0]=categorias[document.getElementById('esc_cat').value];
+    if(document.getElementById('esc_conv').value == 0){
+        //Comercio
+        data.categoria[0]=categorias[document.getElementById('esc_cat').value];
+        
+        if(document.getElementById('esc_pre').value==1){
+            data.presentismo[0]=true;
+        }else{
+            data.presentismo[0]=false;
+        }
+        data.antiguedad[0]=document.getElementById('esc_ant').value;
             
-    if(document.getElementById('esc_pre').value==1){
-        data.presentismo[0]=true;
-    }else{
-        data.presentismo[0]=false;
-    }
-    data.antiguedad[0]=document.getElementById('esc_ant').value;
             
+        var indexcat = categorias.indexOf(data.categoria[0]);
+        var indexmes = meses.indexOf(data.mes[0]);
+        data.sueldo[0] = db[(indexcat*36)+indexmes][0];
+        if(indexmes>5){
+            sueldo.rem[1][1] = 0.01;
+        }else{
+            sueldo.rem[1][1] = 0.0075;
+        }
             
-    var indexcat = categorias.indexOf(data.categoria[0]);
-    var indexmes = meses.indexOf(data.mes[0]);
-    data.sueldo[0] = db[(indexcat*36)+indexmes][0];
-    if(indexmes>5){
-        sueldo.rem[1][1] = 0.01;
-    }else{
-        sueldo.rem[1][1] = 0.0075;
-    }
-            
-    //limpio
-    for(var i=0;i<sueldo.nrem.length;i++){
-        sueldo.nrem[i][2]=0;
-    }
-    for(var i=0;i<sac.nrem.length;i++){
-        sac.nrem[i][2]=0;
-    }
-    for(var i=1;i<=5 ;i++){
-        if(db[(indexcat*36)+indexmes][i]){
-            sueldo.nrem[i-1][2]=db[(indexcat*36)+indexmes][i];
-            if((data.mes[0].indexOf("Junio") != -1)||(data.mes[0].indexOf("Diciembre") != -1)){
-                sac.nrem[i-1][2]=db[(indexcat*36)+indexmes][i]*0.5;
+        //limpio
+        for(var i=0;i<sueldo.nrem.length;i++){
+            sueldo.nrem[i][2]=0;
+        }
+        for(var i=0;i<sac.nrem.length;i++){
+            sac.nrem[i][2]=0;
+        }
+        for(var i=1;i<=5 ;i++){
+            if(db[(indexcat*36)+indexmes][i]){
+                sueldo.nrem[i-1][2]=db[(indexcat*36)+indexmes][i];
+                if((data.mes[0].indexOf("Junio") != -1)||(data.mes[0].indexOf("Diciembre") != -1)){
+                    sac.nrem[i-1][2]=db[(indexcat*36)+indexmes][i]*0.5;
+                }
             }
         }
+        
+        
+    }else if(document.getElementById('esc_conv').value == 1){
+        //Maestranza
+        data.categoria[0]=categorias_maestranza[document.getElementById('esc_cat').value];
+        
+        if(document.getElementById('esc_pre').value==1){
+            data.presentismo[0]=true;
+        }else{
+            data.presentismo[0]=false;
+        }
+        data.antiguedad[0]=document.getElementById('esc_ant').value;
+            
+            
+        var indexcat = categorias_maestranza.indexOf(data.categoria[0]);
+        var indexmes = meses.indexOf(data.mes[0]);
+        data.sueldo[0] = db_maestranza[(indexcat*36)+indexmes][0];
+        sueldo.rem[1][1] = 0.002;
+            
+        //limpio
+        for(var i=0;i<sueldo.nrem.length;i++){
+            sueldo.nrem[i][2]=0;
+        }
+        for(var i=0;i<sac.nrem.length;i++){
+            sac.nrem[i][2]=0;
+        }
+//        for(var i=1;i<=3 ;i++){
+//            if(db_maestranza[(indexcat*36)+indexmes][i]){
+//                sueldo.nrem[i-1][2]=db[(indexcat*36)+indexmes][i];
+//                if((data.mes[0].indexOf("Junio") != -1)||(data.mes[0].indexOf("Diciembre") != -1)){
+//                    sac.nrem[i-1][2]=db[(indexcat*36)+indexmes][i]*0.5;
+//                }
+//            }
+//        }
+
+        sueldo.rem[3][2]=db_maestranza[(indexcat*36)+indexmes][1];
+        sueldo.nrem[7][2]=db_maestranza[(indexcat*36)+indexmes][2];
+        sueldo.nrem[8][2]=db_maestranza[(indexcat*36)+indexmes][3];
+    
     }
+    
 }
 		
 function generarDatos(){
@@ -1055,4 +1279,34 @@ function loadSelectDay(selectId,selectedDay){
         option.innerHTML = i+' hs';
         select.appendChild(option);
     }
+}
+
+function cambiarCategorias(){
+    id_conv = document.getElementById('esc_conv').value
+    if(id_conv == 0){
+        //Comercio
+        var table = document.getElementById('esc_cat');
+        while (table.hasChildNodes()) {
+            table.removeChild(table.lastChild);
+        }
+        for(var i=0;i<categorias.length;i++){
+            var totaldiv = document.createElement('option');
+            totaldiv.setAttribute("value", i);
+            totaldiv.innerHTML = categorias[i];
+            table.appendChild(totaldiv);
+        };     
+    }else if(id_conv == 1){
+        //Maestranza
+        table = document.getElementById('esc_cat');
+        while (table.hasChildNodes()) {
+            table.removeChild(table.lastChild);
+        }
+        for(var i=0;i<categorias_maestranza.length;i++){
+            var totaldiv = document.createElement('option');
+            totaldiv.setAttribute("value", i);
+            totaldiv.innerHTML = categorias_maestranza[i];
+            table.appendChild(totaldiv);
+        };     
+    }
+    calculateRecibo();
 }

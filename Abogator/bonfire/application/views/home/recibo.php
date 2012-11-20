@@ -11,9 +11,9 @@
             </div>
             <div class="step-content">
                 <div class="label">Elegir convenio CCT</div>
-                <div class="elements"><select>
+                <div class="elements"><select id="esc_conv" onchange="cambiarCategorias()">
                         <script type="text/javascript">                 
-                            for(var i=0;i<=convenios.length;i++){
+                            for(var i=0;i<convenios.length;i++){
                                 document.write('<option value="'+i+'">'+convenios[i]+'</option>');};                         
                         </script>
                     </select></div>
@@ -27,7 +27,7 @@
                 <div class="label">Elegir categoria</div>
                 <div class="elements"><select id="esc_cat" onchange="calculateRecibo()">
                         <script type="text/javascript">                 
-                            for(var i=0;i<=categorias.length;i++){
+                            for(var i=0;i<categorias.length;i++){
                                 document.write('<option value="'+i+'">'+categorias[i]+'</option>');};                         
                         </script>
                     </select></div>
