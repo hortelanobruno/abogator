@@ -1021,7 +1021,9 @@ var sac={
     ["SAC Adicional no remunerativo 2008-2009",false,0],
     ["SAC Adicional no remunerativo 2010",false,0],
     ["SAC Adicional no remunerativo 2011",false,0],
-    ["SAC Adicional no remunerativo 2012",false,0]
+    ["SAC Adicional no remunerativo 2012",false,0],
+    ["Viaticos CCT",false,0],
+    ["Asignacion no remunerativa",false,0]
     ],
     desc:[
     ["Jubilacion",0.11,0],
@@ -1069,14 +1071,17 @@ function cargarDatos(){
         var indexmes = meses.indexOf(data.mes[0]);
         data.sueldo[0] = db[(indexcat*36)+indexmes][0];
         if(indexmes>5){
-            sueldo.rem[1][1] = 0.01;
+            sueldo.rem[1][1] = 0.01*data.antiguedad[0];
         }else{
-            sueldo.rem[1][1] = 0.0075;
+            sueldo.rem[1][1] = 0.0075*data.antiguedad[0];
         }
             
         //limpio
         for(var i=0;i<sueldo.nrem.length;i++){
             sueldo.nrem[i][2]=0;
+        }
+        for(var i=0;i<sueldo.desc.length;i++){
+            sueldo.desc[i][2]=0;
         }
         for(var i=0;i<sac.nrem.length;i++){
             sac.nrem[i][2]=0;
@@ -1106,28 +1111,26 @@ function cargarDatos(){
         var indexcat = categorias_maestranza.indexOf(data.categoria[0]);
         var indexmes = meses.indexOf(data.mes[0]);
         data.sueldo[0] = db_maestranza[(indexcat*36)+indexmes][0];
-        sueldo.rem[1][1] = 0.002;
+        sueldo.rem[1][1] = 0.002*data.antiguedad[0];
             
         //limpio
         for(var i=0;i<sueldo.nrem.length;i++){
             sueldo.nrem[i][2]=0;
         }
+        for(var i=0;i<sueldo.desc.length;i++){
+            sueldo.desc[i][2]=0;
+        }
         for(var i=0;i<sac.nrem.length;i++){
             sac.nrem[i][2]=0;
         }
-//        for(var i=1;i<=3 ;i++){
-//            if(db_maestranza[(indexcat*36)+indexmes][i]){
-//                sueldo.nrem[i-1][2]=db[(indexcat*36)+indexmes][i];
-//                if((data.mes[0].indexOf("Junio") != -1)||(data.mes[0].indexOf("Diciembre") != -1)){
-//                    sac.nrem[i-1][2]=db[(indexcat*36)+indexmes][i]*0.5;
-//                }
-//            }
-//        }
-
+        
         sueldo.rem[3][2]=db_maestranza[(indexcat*36)+indexmes][1];
         sueldo.nrem[7][2]=db_maestranza[(indexcat*36)+indexmes][2];
         sueldo.nrem[8][2]=db_maestranza[(indexcat*36)+indexmes][3];
-    
+        if((data.mes[0].indexOf("Junio") != -1)||(data.mes[0].indexOf("Diciembre") != -1)){
+            sac.nrem[4][2]=db_maestranza[(indexcat*36)+indexmes][2]*0.5;
+            sac.nrem[5][2]=db_maestranza[(indexcat*36)+indexmes][3]*0.5;
+        }
     }
     
 }
@@ -1137,7 +1140,6 @@ function generarDatos(){
     var indexmes = meses.indexOf(data.mes[0]);
     sueldo.rem[0][2]=data.sueldo[0];
     sueldo.rem[1][2]=data.sueldo[0]*sueldo.rem[1][1]*data.antiguedad[0];
-    sueldo.rem[1][1]=data.antiguedad[0]/100;
     sueldo.rem[2][2]=data.presentismo[0]?(sueldo.rem[0][2]+sueldo.rem[1][2])/12:0;
     sueldo.rem.total=total(sueldo.rem);
 			
@@ -1149,7 +1151,9 @@ function generarDatos(){
     sueldo.desc[2][2]=sueldo.desc[2][1]*(sueldo.rem.total+sueldo.nrem.total);
     sueldo.desc[3][2]=sueldo.desc[3][1]*(sueldo.rem.total+sueldo.nrem.total);
     sueldo.desc[4][2]=sueldo.desc[4][1]*(sueldo.rem.total+sueldo.nrem.total);
-    sueldo.desc[5][2]=(indexmes==0||indexmes==12||indexmes==13)?50:(indexmes==23?100:0);
+    if(data.convenio[0] == "Comercio"){
+        sueldo.desc[5][2]=(indexmes==0||indexmes==12||indexmes==13)?50:(indexmes==23?100:0);
+    }
     //sueldo.desc[6][2]=mes==24&&retro?100:0;
     sueldo.desc.total=total(sueldo.desc);
 			
