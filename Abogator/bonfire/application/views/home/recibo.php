@@ -142,10 +142,10 @@
     </div>
     <div class="result">
         <table id="esc_rec">
-            <thead>
-                <tr><th colspan="2"></th><th>Remunerativo</th><th>No Remunerativo</th><th>Descuentos</th></tr>
+            <thead class="top-table">
+                <tr ><th class="top-table-item" colspan="2"></th class="top-table-item"><th class="top-table-item">Remunerativo</th class="top-table-item"><th class="top-table-item">No Remunerativo</th><th class="top-table-item">Descuentos</th></tr>
             </thead>
-            <tbody id="bodyRecibo"></tbody>
+            <tbody class="middle-table" id="bodyRecibo"></tbody>
         </table>
     </div>
     <script type="text/javascript">  
