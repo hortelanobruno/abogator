@@ -5,12 +5,14 @@
 body{
     background-color: black;	
     background-image:url(../img/background.jpg);
-    background-position:center; 
+    background-position:center;
+    /*font-family: "helvetica neue",arial,sans-serif;*/
+    font: 16px arial,sans-serif;
 }
 
 .main{
-    
-    
+
+
     width: 800px;
 
     margin: 0px auto;
@@ -68,6 +70,11 @@ body{
     color: white;
 }
 
+.main .top .links ul li a:hover{
+    color: #2853A3;
+    cursor: pointer
+
+}
 .main .top .buttons{
     margin-left:auto;
     margin-right:auto;
@@ -391,7 +398,7 @@ body{
 .middle-recibo .title .text{
     color:white;
     float: left;
-    margin-left: 40px;
+    margin-left: 14px;
     padding-top: 5px;
 }
 
@@ -432,11 +439,18 @@ body{
     margin: 5px 5px 5px 10px;
     display:table-cell; 
     vertical-align:middle;
+    background: url(../img/background.png);
+    background-color: #EBEBEB;
+    background-repeat: repeat;
 }
 
 .middle-recibo .steps .step1 .step-content .label{
     width: 130px;
     float: left;
+    font-size: 13px;
+    font-weight: bold;
+    color: #221919;
+    margin-top: 4px;
 }
 
 .middle-recibo .steps .step1 .step-content .elements{
@@ -448,6 +462,13 @@ body{
 .middle-recibo .steps .step1 .step-content select{
     /*    width: 100px;*/
     float: right;
+    border: 1px solid #CCC;
+    -moz-box-shadow: inset 0 1px 2px #eee;
+    -ms-box-shadow: inset 0 1px 2px #eee;
+    -webkit-box-shadow: inset 0 1px 2px #EEE;
+    box-shadow: inset 0 1px 2px #EEE;
+
+
 }
 
 .middle-recibo .steps .step2{
@@ -471,15 +492,21 @@ body{
     border-top-right-radius: 5px;
     padding: 25px 15px 25px 15px;
     margin: 5px 5px 5px 10px;
-
     display:table-cell; 
     vertical-align:middle;
+    background: url(../img/background.png);
+    background-color: #EBEBEB;
+    background-repeat: repeat;
 }
 
 
 .middle-recibo .steps .step2 .step-content .label{
     width: 130px;
     float: left;
+    font-size: 13px;
+    font-weight: bold;
+    color: #221919;
+
 }
 
 .middle-recibo .steps .step2 .step-content .elements{
@@ -507,6 +534,10 @@ body{
 .middle-recibo .steps .step2 .step-content .elements2 .col3 .col-title{  
     width: 80px;
     float:left;
+    font-size: 13px;
+    font-weight: bold;
+    color: #221919;
+    margin-top: 5px;
 }
 
 .middle-recibo .steps .step2 .step-content .elements2 .col3 .col-element{    
@@ -523,6 +554,7 @@ body{
 .middle-recibo .steps .step2 .step-content .elements .day .check{
     width: 80px;
     float: left;
+    font-size: 13px;
 }
 
 .middle-recibo .steps .step2 .step-content .elements .day .select{
@@ -538,13 +570,48 @@ body{
     /*    width: 700px;*/
     padding: 25px 15px 25px 15px;
     margin: 5px 5px 5px 10px;
+    background: url(../img/background.png);
+    background-color: #EBEBEB;
+    background-repeat: repeat;
 
 }
 
 .middle-recibo .result table{
-    border: 1px solid black;
-    margin: 0px auto;
+    box-shadow: inset 0 1px white,0 1px 3px rgba(34, 25, 25, 0.4);
+    -moz-box-shadow: inset 0 1px #fff,0 1px 3px rgba(34,25,25,0.4);
+    -webkit-box-shadow: inset 0 1px white,0 1px 3px rgba(34, 25, 25, 0.4);
+    border-radius: 4px;
+    padding: 8px;
+    background-color: white;
+
+
 }
+
+
+.middle-recibo .result table .top-table{
+    background: url(../img/background.png);
+    background-color: #EBEBEB;
+    background-repeat: repeat;
+}
+
+
+.middle-recibo .result table .top-table .top-table-item{
+    padding: 5px;
+    font-size: 14px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #221919;
+
+
+}
+
+.middle-recibo .result table .top-table .middle-table{
+    background: url(../img/background.png);
+    background-color: #EBEBEB;
+    background-repeat: repeat;
+}
+
+
 
 
 .middle-liquidacion{
