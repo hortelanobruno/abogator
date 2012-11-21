@@ -181,15 +181,15 @@
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Dias trabajados</div>
-                <div class="value">$2000</div>
-            </div>
-            <div class="result">
                 <div class="label">Total</div>
                 <div class="value">$2000</div>
             </div>
             <div class="seccion">
                 Liquidacion final
+            </div>
+            <div class="result">
+                <div class="label">Dias trabajados</div>
+                <div class="value">$2000</div>
             </div>
             <div class="result">
                 <div class="label">Vacaciones completas</div>
@@ -235,7 +235,7 @@
                 <div class="value">$2000</div>
             </div>
             <div class="result">
-                <div class="label">Diferencias salariales por categoria</div>
+                <div class="label">Diferencias salariales</div>
                 <div class="value">$2000</div>
             </div>
             <div class="result">
