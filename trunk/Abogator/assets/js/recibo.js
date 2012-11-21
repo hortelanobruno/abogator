@@ -1022,8 +1022,7 @@ var sac={
     ["SAC Adicional no remunerativo 2010",false,0],
     ["SAC Adicional no remunerativo 2011",false,0],
     ["SAC Adicional no remunerativo 2012",false,0],
-    ["Viaticos CCT",false,0],
-    ["Asignacion no remunerativa",false,0]
+    ["SAC Adicional no remunerativo",false,0]
     ],
     desc:[
     ["Jubilacion",0.11,0],
@@ -1128,8 +1127,7 @@ function cargarDatos(){
         sueldo.nrem[7][2]=db_maestranza[(indexcat*36)+indexmes][2];
         sueldo.nrem[8][2]=db_maestranza[(indexcat*36)+indexmes][3];
         if((data.mes[0].indexOf("Junio") != -1)||(data.mes[0].indexOf("Diciembre") != -1)){
-            sac.nrem[4][2]=db_maestranza[(indexcat*36)+indexmes][2]*0.5;
-            sac.nrem[5][2]=db_maestranza[(indexcat*36)+indexmes][3]*0.5;
+            sac.nrem[4][2]=(db_maestranza[(indexcat*36)+indexmes][2]*0.5)+(db_maestranza[(indexcat*36)+indexmes][3]*0.5);
         }
     }
     

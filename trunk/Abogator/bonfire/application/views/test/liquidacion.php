@@ -169,7 +169,11 @@
                     while((min_date1.setMonth(min_date1.getMonth()+1)) <= fecha_egreso){
                         count_months++;
                     }
-
+                    
+                    if(count_months>24){
+                        count_months=24;
+                    }
+                    
                     return count_months * 4 * 5 * cant_horas_extras * valor_hora;
                 }else{
                     return 0;
@@ -177,21 +181,29 @@
             }
 
             function calculoHorasExtraordinariasAl100porciento(sueldo_real, hora_min, hora_max, hora_finde_min, hora_finde_max, fecha_ingreso_real, fecha_egreso){
-                dif_sem = (hora_max - hora_min)*5;
-                dif_finde = (hora_finde_max - hora_finde_min)*2;
+                if(hora_max<hora_min){
+                    dif_sem = ((24-hora_min) + hora_max)*5;
+                }else if(hora_max>hora_min){
+                    dif_sem = (hora_max - hora_min)*5;
+                }
+                if(hora_finde_max<hora_finde_min){
+                    dif_finde = ((24-hora_finde_min) + hora_finde_max)*2;
+                }else if(hora_finde_max>hora_finde_min){
+                    dif_finde = (hora_finde_max - hora_finde_min)*2;
+                }
                 
                 if((dif_sem+dif_finde)>=48){
                     valor_hora = ((sueldo_real / 30) / 8) * 2;
-                    if (hora_finde_min <= 13) {
-                        cant_horas_extras = (hora_finde_max - 13);
-                    } else {
-                        cant_horas_extras = (hora_finde_max - hora_finde_min);
-                    }
+                    cant_horas_extras = (dif_sem+dif_finde)-48;
 
                     var count_months = 0;
                     var min_date1 = new Date(fecha_ingreso_real);
                     while((min_date1.setMonth(min_date1.getMonth()+1)) <= fecha_egreso){
                         count_months++;
+                    }
+                    
+                    if(count_months>24){
+                        count_months=24;
                     }
 
                     return count_months * 4 * cant_horas_extras * valor_hora;
@@ -200,29 +212,54 @@
                 }
             }
 
-            function calculoHorasNocturnas(sueldo_real, hora_min, hora_max, fecha_ingreso_real, fecha_egreso){
+            function calculoHorasNocturnas(sueldo_real, hora_min, hora_max, fecha_ingreso_real, fecha_egreso, finde){
                 valor_minuto = ((sueldo_real / 30) / 8) / 60;
 
-                if ((hora_min >= 0 && hora_min < 6) || (hora_max >= 21 && hora_max <= 24)) {
+                if(hora_min>hora_max){
+                    if(hora_min<21){
+                        hora_min=21;
+                    }
+                }
+
+
+                if ((((hora_min >= 0 && hora_min <= 6) || (hora_min >= 21 && hora_min <= 24)))&&
+                    (((hora_max >= 0 && hora_max <= 6) || (hora_max >= 21 && hora_max <= 24)))){
+                    
                     var count_months = 0;
                     var min_date1 = new Date(fecha_ingreso_real);
                     while((min_date1.setMonth(min_date1.getMonth()+1)) <= fecha_egreso){
                         count_months++;
                     }
+                    
+                    if(count_months>24){
+                        count_months=24;
+                    }
 
-                    if (hora_min >= 0 && hora_min < 6) {
-                        return (6 - hora_min) * 8 * valor_minuto * count_months;
-                    } else if (hora_max >= 21 && hora_max <= 24) {
-                        return (24 - hora_max) * 8 * valor_minuto * count_months;
+                    var count_days = 0;
+                    if(hora_max<hora_min){
+                        //21-6
+                        count_days = hora_max + (24-hora_min);
+                    }else if(hora_max>hora_min){
+                        //0-6
+                        count_days = hora_max - hora_min -1;
+                    }else{
+                    }
+                    if(finde){
+                        return count_days * 4 * 8 * 2 * valor_minuto * count_months;
+                    }else{
+                        return count_days * 4 * 8 * 5 * valor_minuto * count_months;
                     }
                 }
 
                 return 0;
             }
 
-            function calculoDiferenciasSalarialesPorCategoria(sueldo_cct, sueldo_real, sueldo_falsa, fecha_ingreso_real, fecha_egreso){
-                dif = (sueldo_real - sueldo_falsa) / 30;
+            function calculoDiferenciasSalarialesPorCategoria(sueldo_cct, sueldo_real, fecha_ingreso_real, fecha_egreso){
+                dif = (sueldo_cct - sueldo_real) / 30;
                 count_days = countDays(fecha_ingreso_real, fecha_egreso);
+                if(count_days>730){
+                    count_days=730;
+                }
                 return count_days * dif;
             }
 			
@@ -230,21 +267,21 @@
                 if(isNaN(parseInt(sueldo_real))||isNaN(new Date(fecha_ingreso_real))||isNaN(new Date(fecha_egreso))){
                     return false;
                 }
-                if(hora1max<hora1min||hora2max<hora2min){
-                    return false;
-                }			
+                //                if(hora1max<hora1min||hora2max<hora2min){
+                //                    return false;
+                //                }			
                 return true;
             }
 			
             function countDays(date1, date2) {
-//                day1 = date1.getDate();
-//                day2 = date2.getDate();
-//                var i = 0;
-//                var min_date1 = new Date(date1.getTime());
-//                while((min_date1.setMonth(min_date1.getMonth()+1)) <= date2){
-//                    i++;
-//                }
-//                return (i-1)*30 + (30 - day1 + 1) + day2;
+                //                day1 = date1.getDate();
+                //                day2 = date2.getDate();
+                //                var i = 0;
+                //                var min_date1 = new Date(date1.getTime());
+                //                while((min_date1.setMonth(min_date1.getMonth()+1)) <= date2){
+                //                    i++;
+                //                }
+                //                return (i-1)*30 + (30 - day1 + 1) + day2;
 
                 var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
                 var firstDate = date1;
@@ -365,16 +402,26 @@
                     newdiv = document.createElement('p');
                     newdiv.innerHTML = 'horasExtraordinariasAl50porciento: '+horasExtraordinariasAl50porciento;
                     result.appendChild(newdiv);
-                    var horasExtraordinariasAl100porciento = calculoHorasExtraordinariasAl100porciento(sueldo_real, hora1min, hora1max, hora2min, hora2max, date_fecha_ingreso_real, date_fecha_egreso);
-                    newdiv = document.createElement('p');
-                    newdiv.innerHTML = 'horasExtraordinariasAl100porciento: '+horasExtraordinariasAl100porciento;
-                    result.appendChild(newdiv);
-                    var horasNocturnas = calculoHorasNocturnas(sueldo_real, hora1min, hora1max, date_fecha_ingreso_real, date_fecha_egreso);
-                    newdiv = document.createElement('p');
-                    newdiv.innerHTML = 'horasNocturnas: '+horasNocturnas;
-                    result.appendChild(newdiv);
+                    if(hora2min!=-1&&hora2max!=-1&&hora1min!=-1&&hora1max!=-1){
+                        var horasExtraordinariasAl100porciento = calculoHorasExtraordinariasAl100porciento(sueldo_real, hora1min, hora1max, hora2min, hora2max, date_fecha_ingreso_real, date_fecha_egreso);
+                        newdiv = document.createElement('p');
+                        newdiv.innerHTML = 'horasExtraordinariasAl100porciento: '+horasExtraordinariasAl100porciento;
+                        result.appendChild(newdiv);
+                    }
+                    if(hora2min!=-1&&hora2max!=-1){
+                        var horasNocturnas = calculoHorasNocturnas(sueldo_real, hora1min, hora1max, date_fecha_ingreso_real, date_fecha_egreso,false);
+                        newdiv = document.createElement('p');
+                        newdiv.innerHTML = 'horasNocturnas: '+horasNocturnas;
+                        result.appendChild(newdiv);
+                    }
+                    if(hora2min!=-1&&hora2max!=-1){
+                        var horasNocturnas = calculoHorasNocturnas(sueldo_real, hora2min, hora2max, date_fecha_ingreso_real, date_fecha_egreso,true);
+                        newdiv = document.createElement('p');
+                        newdiv.innerHTML = 'horasNocturnas finde: '+horasNocturnas;
+                        result.appendChild(newdiv);
+                    }
                     if(!isNaN(sueldo_falsa)){
-                        var diferenciasSalarialesPorCategoria = calculoDiferenciasSalarialesPorCategoria(sueldo_cct,sueldo_real, sueldo_falsa, date_fecha_ingreso_real, date_fecha_egreso);
+                        var diferenciasSalarialesPorCategoria = calculoDiferenciasSalarialesPorCategoria(sueldo_cct,sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
                         newdiv = document.createElement('p');
                         newdiv.innerHTML = 'diferenciasSalarialesPorCategoria: '+diferenciasSalarialesPorCategoria;
                         result.appendChild(newdiv);
@@ -398,6 +445,7 @@
             <tr><td>Fecha presentacion demanda:</td><td><input type="text" id="fecha_presentacion_demanda" name="fecha_presentacion_demanda" value="01/13/2013" /></td></tr>
             <tr><td>Horario Lun a Vier:</td><td>
                     <select id="hora1min">
+                        <option value="-1">--</option>
                         <option value="0">00</option>
                         <option value="1">01</option>
                         <option value="2">02</option>
@@ -425,6 +473,7 @@
                     </select>
                     a
                     <select id="hora1max">
+                        <option value="-1">--</option>
                         <option value="0">00</option>
                         <option value="1">01</option>
                         <option value="2">02</option>
@@ -453,6 +502,7 @@
                 </td></tr>
             <tr><td>Horario Sab y Dom:</td><td>
                     <select id="hora2min">
+                        <option value="-1">--</option>
                         <option value="0">00</option>
                         <option value="1">01</option>
                         <option value="2">02</option>
@@ -480,6 +530,7 @@
                     </select>
                     a
                     <select id="hora2max">
+                        <option value="-1">--</option>
                         <option value="0">00</option>
                         <option value="1">01</option>
                         <option value="2">02</option>
