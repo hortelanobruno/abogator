@@ -43,60 +43,60 @@
                     <div class="col1">
                         <div class="day">
                             <div class="check">
-                                <input type="checkbox"/>Lunes
+                                <input id="day1-check" type="checkbox" onchange="calculateRecibo()"/>Lunes
                             </div>
                             <div class="select">
-                                <select id="mon1"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="mon2"></select>
+                                <select id="mon1" onchange="calculateRecibo()"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="mon2" onchange="calculateRecibo()"></select>
                             </div>
                         </div>
                         <div class="day">
                             <div class="check">
-                                <input type="checkbox"/>Martes
+                                <input id="day2-check" type="checkbox" onchange="calculateRecibo()"/>Martes
                             </div>
                             <div class="select">
-                                <select id="tue1"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="tue2"></select>
+                                <select id="tue1" onchange="calculateRecibo()"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="tue2" onchange="calculateRecibo()"></select>
                             </div>
                         </div>
                         <div class="day">
                             <div class="check">
-                                <input type="checkbox"/>Miercoles
+                                <input id="day3-check" type="checkbox" onchange="calculateRecibo()"/>Miercoles
                             </div>
                             <div class="select">
-                                <select id="wed1"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="wed2"></select>
+                                <select id="wed1" onchange="calculateRecibo()"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="wed2" onchange="calculateRecibo()"></select>
                             </div>
                         </div>
                         <div class="day">
                             <div class="check">
-                                <input type="checkbox"/>Jueves
+                                <input id="day4-check" type="checkbox" onchange="calculateRecibo()"/>Jueves
                             </div>
                             <div class="select">
-                                <select id="thu1"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="thu2"></select>
+                                <select id="thu1" onchange="calculateRecibo()"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="thu2" onchange="calculateRecibo()"></select>
                             </div>
                         </div>
                         <div class="day">
                             <div class="check">
-                                <input type="checkbox"/>Viernes
+                                <input id="day5-check" type="checkbox" onchange="calculateRecibo()"/>Viernes
                             </div>
                             <div class="select">
-                                <select id="fri1"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="fri2"></select>
+                                <select id="fri1" onchange="calculateRecibo()"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="fri2" onchange="calculateRecibo()"></select>
                             </div>
                         </div>
                     </div>
                     <div class="col2">
                         <div class="day">
                             <div class="check">
-                                <input type="checkbox"/>Sabado
+                                <input id="day6-check" type="checkbox" onchange="calculateRecibo()"/>Sabado
                             </div>
                             <div class="select">
-                                <select id="sat1"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="sat2"></select>
+                                <select id="sat1" onchange="calculateRecibo()"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="sat2" onchange="calculateRecibo()"></select>
                             </div>
                         </div>
                         <div class="day">
                             <div class="check">
-                                <input type="checkbox"/>Domingo
+                                <input id="day7-check" type="checkbox" onchange="calculateRecibo()"/>Domingo
                             </div>
                             <div class="select">
-                                <select id="sun1"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="sun2"></select>
+                                <select id="sun1" onchange="calculateRecibo()"></select>&nbsp;&nbsp;a&nbsp;&nbsp;<select id="sun2" onchange="calculateRecibo()"></select>
                             </div>
                         </div>
                     </div>
@@ -135,6 +135,23 @@
                                         document.write('<option value="'+i+'">'+meses[i]+'</option>');};                         
                                 </script>
                             </select></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step2" id="maestranza-art">
+            <div class="step-title">
+                Paso 5
+            </div>
+            <div class="step-content">
+                <div class="elements2">
+                    <div class="col3">
+                        <div class="col-title">Art. 13</div>
+                        <div class="col-element"><input id="maestranza-art-13" type="checkbox" onchange="calculateRecibo()"/></div>
+                    </div>
+                    <div class="col3">
+                        <div class="col-title">Art. 28</div>
+                        <div class="col-element"><input id="maestranza-art-28" type="checkbox" onchange="calculateRecibo()"/></div>
                     </div>
                 </div>
             </div>

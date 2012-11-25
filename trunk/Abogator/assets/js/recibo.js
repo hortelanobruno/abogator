@@ -1050,40 +1050,99 @@ var data={
     domingo:[9,12,false]
 }
 		
+function cargarDatosComunos(){
+    if(document.getElementById('esc_pre').value==1){
+        data.presentismo[0]=true;
+    }else{
+        data.presentismo[0]=false;
+    }
+    data.antiguedad[0]=document.getElementById('esc_ant').value;
+    //limpio
+    for(var i=0;i<sueldo.nrem.length;i++){
+        sueldo.nrem[i][2]=0;
+    }
+    for(var i=0;i<sueldo.desc.length;i++){
+        sueldo.desc[i][2]=0;
+    }
+    for(var i=0;i<sac.nrem.length;i++){
+        sac.nrem[i][2]=0;
+    }
+    data.lunes[2] = document.getElementById('day1-check').checked;
+    data.lunes[0] = document.getElementById('mon1').value;
+    data.lunes[1] = document.getElementById('mon2').value;
+    data.martes[2] = document.getElementById('day2-check').checked;
+    data.martes[0] = document.getElementById('tue1').value;
+    data.martes[1] = document.getElementById('tue2').value;
+    data.miercoles[2] = document.getElementById('day3-check').checked;
+    data.miercoles[0] = document.getElementById('wed1').value;
+    data.miercoles[1] = document.getElementById('wed2').value;
+    data.jueves[2] = document.getElementById('day4-check').checked;
+    data.jueves[0] = document.getElementById('thu1').value;
+    data.jueves[1] = document.getElementById('thu2').value;
+    data.viernes[2] = document.getElementById('day5-check').checked;
+    data.viernes[0] = document.getElementById('fri1').value;
+    data.viernes[1] = document.getElementById('fri2').value;
+    data.sabado[2] = document.getElementById('day6-check').checked;
+    data.sabado[0] = document.getElementById('sat1').value;
+    data.sabado[1] = document.getElementById('sat2').value;
+    data.domingo[2] = document.getElementById('day7-check').checked;
+    data.domingo[0] = document.getElementById('sun1').value;
+    data.domingo[1] = document.getElementById('sun2').value;
+}
                
+function calcularCantHorasSemanales(){
+    var aux = 0;
+    
+    if(data.lunes[2]){
+       aux += parseInt(calcularCantHoras(parseInt(data.lunes[0]),parseInt(data.lunes[1])));
+    }
+    if(data.martes[2]){
+       aux += parseInt(calcularCantHoras(parseInt(data.martes[0]),parseInt(data.martes[1])));
+    }
+    if(data.miercoles[2]){
+       aux += parseInt(calcularCantHoras(parseInt(data.miercoles[0]),parseInt(data.miercoles[1])));
+    }
+    if(data.jueves[2]){
+       aux += parseInt(calcularCantHoras(parseInt(data.jueves[0]),parseInt(data.jueves[1])));
+    }
+    if(data.viernes[2]){
+       aux += parseInt(calcularCantHoras(parseInt(data.viernes[0]),parseInt(data.viernes[1])));
+    }
+    if(data.sabado[2]){
+       aux += parseInt(calcularCantHoras(parseInt(data.sabado[0]),parseInt(data.sabado[1])));
+    }
+    if(data.domingo[2]){
+       aux += parseInt(calcularCantHoras(parseInt(data.domingo[0]),parseInt(data.domingo[1])));
+    }
+    
+    return aux;
+}
+
+function calcularCantHoras(hora_min,hora_max){
+    if(hora_min<=hora_max){
+        return hora_max - hora_min;
+    }else{
+        return (24 - hora_min) + hora_max;
+    }
+}
+
 function cargarDatos(){
     data.convenio[0]=convenios[document.getElementById('esc_conv').value];
     data.mes[0]=meses[document.getElementById('esc_mes').value];
+    var indexcat;
+    var indexmes;
     if(document.getElementById('esc_conv').value == 0){
         //Comercio
+        cargarDivsComercio();
+        cargarDatosComunos();
         data.categoria[0]=categorias[document.getElementById('esc_cat').value];
-        
-        if(document.getElementById('esc_pre').value==1){
-            data.presentismo[0]=true;
-        }else{
-            data.presentismo[0]=false;
-        }
-        data.antiguedad[0]=document.getElementById('esc_ant').value;
-            
-            
-        var indexcat = categorias.indexOf(data.categoria[0]);
-        var indexmes = meses.indexOf(data.mes[0]);
+        indexcat = categorias.indexOf(data.categoria[0]);
+        indexmes = meses.indexOf(data.mes[0]);
         data.sueldo[0] = db[(indexcat*36)+indexmes][0];
         if(indexmes>5){
             sueldo.rem[1][1] = 0.01*data.antiguedad[0];
         }else{
             sueldo.rem[1][1] = 0.0075*data.antiguedad[0];
-        }
-            
-        //limpio
-        for(var i=0;i<sueldo.nrem.length;i++){
-            sueldo.nrem[i][2]=0;
-        }
-        for(var i=0;i<sueldo.desc.length;i++){
-            sueldo.desc[i][2]=0;
-        }
-        for(var i=0;i<sac.nrem.length;i++){
-            sac.nrem[i][2]=0;
         }
         for(var i=1;i<=5 ;i++){
             if(db[(indexcat*36)+indexmes][i]){
@@ -1097,37 +1156,25 @@ function cargarDatos(){
         
     }else if(document.getElementById('esc_conv').value == 1){
         //Maestranza
+        cargarDivsMaestranza();
+        cargarDatosComunos(); 
+        
+        var indice_jornada = 0;
+        if(calcularCantHorasSemanales()<36){
+            //media jornada
+            indice_jornada = 8;
+        }
+        
         data.categoria[0]=categorias_maestranza[document.getElementById('esc_cat').value];
-        
-        if(document.getElementById('esc_pre').value==1){
-            data.presentismo[0]=true;
-        }else{
-            data.presentismo[0]=false;
-        }
-        data.antiguedad[0]=document.getElementById('esc_ant').value;
-            
-            
-        var indexcat = categorias_maestranza.indexOf(data.categoria[0]);
-        var indexmes = meses.indexOf(data.mes[0]);
-        data.sueldo[0] = db_maestranza[(indexcat*36)+indexmes][0];
+        indexcat = categorias_maestranza.indexOf(data.categoria[0]);
+        indexmes = meses.indexOf(data.mes[0]);
+        data.sueldo[0] = db_maestranza[(indexcat*36)+indexmes][indice_jornada+0];
         sueldo.rem[1][1] = 0.002*data.antiguedad[0];
-            
-        //limpio
-        for(var i=0;i<sueldo.nrem.length;i++){
-            sueldo.nrem[i][2]=0;
-        }
-        for(var i=0;i<sueldo.desc.length;i++){
-            sueldo.desc[i][2]=0;
-        }
-        for(var i=0;i<sac.nrem.length;i++){
-            sac.nrem[i][2]=0;
-        }
-        
-        sueldo.rem[3][2]=db_maestranza[(indexcat*36)+indexmes][1];
-        sueldo.nrem[7][2]=db_maestranza[(indexcat*36)+indexmes][2];
-        sueldo.nrem[8][2]=db_maestranza[(indexcat*36)+indexmes][3];
+        sueldo.rem[3][2]=db_maestranza[(indexcat*36)+indexmes][indice_jornada+1];
+        sueldo.nrem[7][2]=db_maestranza[(indexcat*36)+indexmes][indice_jornada+2];
+        sueldo.nrem[8][2]=db_maestranza[(indexcat*36)+indexmes][indice_jornada+3];
         if((data.mes[0].indexOf("Junio") != -1)||(data.mes[0].indexOf("Diciembre") != -1)){
-            sac.nrem[4][2]=(db_maestranza[(indexcat*36)+indexmes][2]*0.5)+(db_maestranza[(indexcat*36)+indexmes][3]*0.5);
+            sac.nrem[4][2]=(db_maestranza[(indexcat*36)+indexmes][indice_jornada+2]*0.5)+(db_maestranza[(indexcat*36)+indexmes][indice_jornada+3]*0.5);
         }
     }
     
@@ -1255,6 +1302,11 @@ function calculateRecibo(){
 }
 
 function loadSelectDays(){
+    checkDay('day1-check');
+    checkDay('day2-check');
+    checkDay('day3-check');
+    checkDay('day4-check');
+    checkDay('day5-check');
     loadSelectDay('mon1',9);
     loadSelectDay('mon2',18);
     loadSelectDay('tue1',9);
@@ -1271,10 +1323,16 @@ function loadSelectDays(){
     loadSelectDay('sun2',0);
 }
 
+function checkDay(day){
+    var select = document.getElementById(day);
+    select.checked = true;
+}
+
 function loadSelectDay(selectId,selectedDay){
     var select = document.getElementById(selectId);
     for(var i=0;i<=23;i++){
         var option = document.createElement('option');
+        option.setAttribute("value", i);
         if(selectedDay==i){
             option.setAttribute('selected', 'selected');
         }
@@ -1311,4 +1369,12 @@ function cambiarCategorias(){
         };     
     }
     calculateRecibo();
+}
+
+function cargarDivsComercio(){
+    document.getElementById('maestranza-art').style.display = 'none';
+}
+
+function cargarDivsMaestranza(){
+    document.getElementById('maestranza-art').style.display = 'block';
 }
