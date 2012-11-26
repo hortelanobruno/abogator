@@ -159,32 +159,54 @@ function calculoLey20744Art182(sueldo_real){
 
 function calculoHorasExtraordinariasAl50porciento(sueldo_real, hora_min, hora_max, fecha_ingreso_real, fecha_egreso){
     valor_hora = ((sueldo_real / 30) / 8) * 1.5;
-    cant_horas_extras = (hora_max - hora_min) - 8;
+    cant_horas_extras = (hora_max - hora_min) - 9;
+    if(cant_horas_extras>0){
+        var count_months = 0;
+        var min_date1 = new Date(fecha_ingreso_real);
+        while((min_date1.setMonth(min_date1.getMonth()+1)) <= fecha_egreso){
+            count_months++;
+        }
 
-    var count_months = 0;
-    var min_date1 = fecha_ingreso_real;
-    while((min_date1.setMonth(min_date1.getMonth()+1)) <= fecha_egreso){
-        count_months++;
+        if(count_months>24){
+            count_months=24;
+        }
+
+        return count_months * 4 * 5 * cant_horas_extras * valor_hora;
+    }else{
+        return 0;
     }
-				
-    return count_months * 4 * 5 * cant_horas_extras * valor_hora;
 }
 
-function calculoHorasExtraordinariasAl100porciento(sueldo_real, hora_finde_min, hora_finde_max, fecha_ingreso_real, fecha_egreso){
-    valor_hora = ((sueldo_real / 30) / 8) * 2;
-    if (hora_finde_min <= 13) {
-        cant_horas_extras = (hora_finde_max - 13);
-    } else {
-        cant_horas_extras = (hora_finde_max - hora_finde_min);
+function calculoHorasExtraordinariasAl100porciento(sueldo_real, hora_min, hora_max, hora_finde_min, hora_finde_max, fecha_ingreso_real, fecha_egreso){
+    if(hora_max<hora_min){
+        dif_sem = ((24-hora_min) + hora_max)*5;
+    }else if(hora_max>hora_min){
+        dif_sem = (hora_max - hora_min)*5;
+    }
+    if(hora_finde_max<hora_finde_min){
+        dif_finde = ((24-hora_finde_min) + hora_finde_max)*2;
+    }else if(hora_finde_max>hora_finde_min){
+        dif_finde = (hora_finde_max - hora_finde_min)*2;
     }
 
-    var count_months = 0;
-    var min_date1 = fecha_ingreso_real;
-    while((min_date1.setMonth(min_date1.getMonth()+1)) <= fecha_egreso){
-        count_months++;
-    }
+    if((dif_sem+dif_finde)>=48){
+        valor_hora = ((sueldo_real / 30) / 8) * 2;
+        cant_horas_extras = (dif_sem+dif_finde)-48;
 
-    return count_months * 4 * cant_horas_extras * valor_hora;
+        var count_months = 0;
+        var min_date1 = new Date(fecha_ingreso_real);
+        while((min_date1.setMonth(min_date1.getMonth()+1)) <= fecha_egreso){
+            count_months++;
+        }
+
+        if(count_months>24){
+            count_months=24;
+        }
+
+        return count_months * 4 * cant_horas_extras * valor_hora;
+    }else{
+        return 0;
+    }
 }
 
 function calculoHorasNocturnas(sueldo_real, hora_min, hora_max, fecha_ingreso_real, fecha_egreso){
