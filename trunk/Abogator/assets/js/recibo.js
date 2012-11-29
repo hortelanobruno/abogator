@@ -991,7 +991,9 @@ var sueldo={
     ["Presentismo",1/12,0],
     ["Plus asistencia",0,0],
     ["Art 13 C.C.T. Basico",0,0],
-    ["Art 28 C.C.T. P. Asist.",0,0]
+    ["Art 28 C.C.T. P. Asist.",0,0],
+    ["Horas extras al 50%",false,0],
+    ["Horas extras al 100%",false,0]
     ],
     nrem:[
     ["Adicional no remunerativo 2008-2009",false,0],
@@ -1002,9 +1004,7 @@ var sueldo={
     ["Retroactivo Acuerdo mayo-2012",false,0],
     ["Presentismo",1/12,0],
     ["Viaticos CCT",false,0],
-    ["Asignacion no remunerativa",false,0],
-    ["Horas extras al 50%",false,0],
-    ["Horas extras al 100%",false,0]
+    ["Asignacion no remunerativa",false,0]
     ],
     desc:[
     ["Jubilacion",0.11,0],
@@ -1213,11 +1213,11 @@ function cargarDatos(){
     
     //Calculo horas extras
     if(horas_semanales>48){
-        sueldo.nrem[9][2] = calculoHorasExtraordinariasAl50porciento(data.sueldo[0],data);
-        sueldo.nrem[10][2] = calculoHorasExtraordinariasAl100porciento(data.sueldo[0],data,horas_semanales);
+        sueldo.rem[6][2] = calculoHorasExtraordinariasAl50porciento(data.sueldo[0],data);
+        sueldo.rem[7][2] = calculoHorasExtraordinariasAl100porciento(data.sueldo[0],data,horas_semanales);
     }else{
-        sueldo.nrem[9][2] = 0;
-        sueldo.nrem[10][2] = 0;
+        sueldo.rem[6][2] = 0;
+        sueldo.rem[7][2] = 0;
     }
     
 }
@@ -1265,7 +1265,7 @@ function calculoHorasExtraordinariasAl50porciento(sueldo_real, data){
         }
     }
     if(cant_horas_extras>0){
-        return 4 * 5 * cant_horas_extras * valor_hora;
+        return 4 * cant_horas_extras * valor_hora;
     }else{
         return 0;
     }
