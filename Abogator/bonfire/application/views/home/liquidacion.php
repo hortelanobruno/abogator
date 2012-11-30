@@ -74,6 +74,22 @@
                     <input id="fecha_ingerso_falsa" type="text" value="01/01/2011" onchange="calculateLiquidacion()"/>
                 </div>
             </div>
+            <div class="dato">
+                <div class="label">
+                    Presentacion demanda
+                </div>
+                <div class="element">
+                    <input id="fecha_presentacion_demanda" type="text" value="01/13/2013" onchange="calculateLiquidacion()"/>
+                </div>
+            </div>
+            <div class="dato">
+                <div class="label">
+                    Sueldo CCT
+                </div>
+                <div class="element">
+                    <input id="sueldo_cct" type="text" value="3000" onchange="calculateLiquidacion()" />
+                </div>
+            </div>
             <div class="dato2">
                 <div class="label">
                     Horarios de trabajo
@@ -140,22 +156,7 @@
                     loadSelectDays();             
                 </script>
             </div>
-            <div class="dato">
-                <div class="label">
-                    Presentacion demanda
-                </div>
-                <div class="element">
-                    <input id="fecha_presentacion_demanda" type="text" value="01/13/2013" onchange="calculateLiquidacion()"/>
-                </div>
-            </div>
-            <div class="dato">
-                <div class="label">
-                    Sueldo CCT
-                </div>
-                <div class="element">
-                    <input id="sueldo_cct" type="text" value="3000" onchange="calculateLiquidacion()" />
-                </div>
-            </div>
+            
             <script>
                 $(function() {
                     $("#fecha_ingreso_real").datepicker();

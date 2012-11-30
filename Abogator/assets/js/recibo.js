@@ -1040,6 +1040,7 @@ var sac={
 		
 var data={
     sueldo:[0],
+    jornada_completa:[0],
     antiguedad:[9],
     presentismo:[true],
     mes:["2011 Diciembre"],
@@ -1152,6 +1153,7 @@ function cargarDatos(){
         indexcat = categorias.indexOf(data.categoria[0]);
         indexmes = meses.indexOf(data.mes[0]);
         data.sueldo[0] = db[(indexcat*36)+indexmes][0]/indice_jornada;
+        data.jornada_completa[0] = db[(indexcat*36)+indexmes][0];
         if(indexmes>5){
             sueldo.rem[1][1] = 0.01*data.antiguedad[0]/indice_jornada;
         }else{
@@ -1184,6 +1186,7 @@ function cargarDatos(){
         indexcat = categorias_maestranza.indexOf(data.categoria[0]);
         indexmes = meses.indexOf(data.mes[0]);
         data.sueldo[0] = db_maestranza[(indexcat*36)+indexmes][indice_jornada+0];
+        data.jornada_completa[0] = db_maestranza[(indexcat*36)+indexmes][0]
         sueldo.rem[1][1] = 0.002*data.antiguedad[0];
         if(data.presentismo[0]){
             sueldo.rem[3][2]=db_maestranza[(indexcat*36)+indexmes][indice_jornada+1];
@@ -1211,12 +1214,11 @@ function cargarDatos(){
         }
     }
     
+    sueldo.rem[6][2] = calculoHorasExtraordinariasAl50porciento(data.jornada_completa[0],data);
     //Calculo horas extras
     if(horas_semanales>48){
-        sueldo.rem[6][2] = calculoHorasExtraordinariasAl50porciento(data.sueldo[0],data);
-        sueldo.rem[7][2] = calculoHorasExtraordinariasAl100porciento(data.sueldo[0],data,horas_semanales);
+        sueldo.rem[7][2] = calculoHorasExtraordinariasAl100porciento(data.jornada_completa[0],data,horas_semanales);
     }else{
-        sueldo.rem[6][2] = 0;
         sueldo.rem[7][2] = 0;
     }
     
