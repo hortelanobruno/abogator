@@ -234,16 +234,12 @@ function calculoHorasExtraordinariasAl100porciento(sueldo_real, dias, fecha_ingr
 function calculoHorasNocturnas(sueldo_real, dias, fecha_ingreso_real, fecha_egreso, finde){
     valor_minuto = ((sueldo_real / 30) / 8) / 60;
 
-    if(hora_min>hora_max){
-        if(hora_min<21){
-            hora_min=21;
-        }
-    }
+    
     var cant_horas = 0;
     if(finde){
-        cant_horas = calcularCantHorasFinde(dias);
+        cant_horas = calcularCantHorasNocturnasFinde(dias);
     }else{
-        cant_horas = calcularCantHorasEntreSemana(dias);
+        cant_horas = calcularCantHorasNocturnasEntreSemana(dias);
     }
     
 
@@ -260,9 +256,9 @@ function calculoHorasNocturnas(sueldo_real, dias, fecha_ingreso_real, fecha_egre
         }
 
         if(finde){
-            return cant_horas * 4 * 8 * 2 * valor_minuto * count_months;
+            return cant_horas * 4 * 8  * valor_minuto * count_months;
         }else{
-            return cant_horas * 4 * 8 * 5 * valor_minuto * count_months;
+            return cant_horas * 4 * 8 * valor_minuto * count_months;
         }
     }
 
@@ -377,6 +373,66 @@ function calcularCantHoras(hora_min,hora_max){
     }
 }
 
+function calcularCantHorasNocturnasEntreSemana(data){
+    var aux = 0;
+    
+    if(data.lunes[2]){
+        aux += parseInt(calcularCantNocturnasHoras(parseInt(data.lunes[0]),parseInt(data.lunes[1])));
+    }
+    if(data.martes[2]){
+        aux += parseInt(calcularCantNocturnasHoras(parseInt(data.martes[0]),parseInt(data.martes[1])));
+    }
+    if(data.miercoles[2]){
+        aux += parseInt(calcularCantNocturnasHoras(parseInt(data.miercoles[0]),parseInt(data.miercoles[1])));
+    }
+    if(data.jueves[2]){
+        aux += parseInt(calcularCantNocturnasHoras(parseInt(data.jueves[0]),parseInt(data.jueves[1])));
+    }
+    if(data.viernes[2]){
+        aux += parseInt(calcularCantNocturnasHoras(parseInt(data.viernes[0]),parseInt(data.viernes[1])));
+    }
+    
+    return aux;
+}
+
+function calcularCantHorasNocturnasFinde(data){
+    var aux = 0;
+    
+    if(data.sabado[2]){
+        aux += parseInt(calcularCantNocturnasHoras(parseInt(data.sabado[0]),parseInt(data.sabado[1])));
+    }
+    if(data.domingo[2]){
+        aux += parseInt(calcularCantNocturnasHoras(parseInt(data.domingo[0]),parseInt(data.domingo[1])));
+    }
+    
+    return aux;
+}
+
+function calcularCantNocturnasHoras(hora_min,hora_max){
+    var count_days = 0;
+    
+    if(hora_min>hora_max){
+        if(hora_min<21){
+            hora_min=21;
+        }
+    }
+
+
+    if ((((hora_min >= 0 && hora_min <= 6) || (hora_min >= 21 && hora_min <= 24)))&&
+        (((hora_max >= 0 && hora_max <= 6) || (hora_max >= 21 && hora_max <= 24)))){
+
+        var count_days = 0;
+        if(hora_max<hora_min){
+            //21-6
+            count_days = hora_max + (24-hora_min);
+        }else if(hora_max>hora_min){
+            //0-6
+            count_days = hora_max - hora_min -1;
+        }
+    }
+    return count_days;
+}
+
 function selectedSemanaCompleta(dias){
     var semana = false;
     var finde = false;
@@ -402,6 +458,30 @@ function selectedSemanaCompleta(dias){
         finde = true;
     }
     if(semana&&finde){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function selectedEntreSemana(dias){
+    var semana = false;
+    if(dias.lunes[2]){
+        semana = true;
+    }
+    if(dias.martes[2]){
+        semana = true;
+    }
+    if(dias.miercoles[2]){
+        semana = true;
+    }
+    if(dias.jueves[2]){
+        semana = true;
+    }
+    if(dias.viernes[2]){
+        semana = true;
+    }
+    if(semana){
         return true;
     }else{
         return false;
@@ -503,7 +583,7 @@ function calculateLiquidacion(){
         }
         document.getElementById("result-horas_extraordinarias_al_100").childNodes[3].innerHTML = "$ " + horasExtraordinariasAl100porciento.toFixed(2);
         var horasNocturnas = 0
-        if(selectedFinde(dias)){
+        if(selectedEntreSemana(dias)){
             horasNocturnas += calculoHorasNocturnas(sueldo_real, dias, date_fecha_ingreso_real, date_fecha_egreso,false);
         }
         if(selectedFinde(dias)){
