@@ -548,40 +548,56 @@ function calculateLiquidacion(){
 
         var antiguedad = calculoAntiguedad(sueldo_real,date_fecha_ingreso_real,date_fecha_egreso);
         document.getElementById("result-antiguedad").childNodes[3].innerHTML = "$ " + antiguedad.toFixed(2);
+        document.getElementsByName("resultantiguedad")[0].value = "$ " + antiguedad.toFixed(2);
         var preaviso = calculoPreaviso(sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
         document.getElementById("result-preaviso").childNodes[3].innerHTML = "$ " + preaviso.toFixed(2);
+        document.getElementsByName("resultpreaviso")[0].value = "$ " + preaviso.toFixed(2);
         var integracion = calculoIntegracion(sueldo_real, date_fecha_egreso);
         document.getElementById("result-integracion").childNodes[3].innerHTML = "$ " + integracion.toFixed(2);
+        document.getElementsByName("resultintegracion")[0].value = "$ " + integracion.toFixed(2);
         var sacMasIntegracionMasPreavisoMasIntegracion = calculoSACMasIntegracionMasPreavisoMasIntegracion(antiguedad,preaviso,integracion);
         document.getElementById("result-sac_pres_int").childNodes[3].innerHTML = "$ " + sacMasIntegracionMasPreavisoMasIntegracion.toFixed(2);
+        document.getElementsByName("resultsacpresint")[0].value = "$ " + sacMasIntegracionMasPreavisoMasIntegracion.toFixed(2);
         
-        document.getElementById("result-total1").childNodes[3].innerHTML = "$ " + (antiguedad+preaviso+integracion+sacMasIntegracionMasPreavisoMasIntegracion).toFixed(2);
+        var total1 = antiguedad+preaviso+integracion+sacMasIntegracionMasPreavisoMasIntegracion;
+        document.getElementById("result-total1").childNodes[3].innerHTML = "$ " + (total1).toFixed(2);
+        document.getElementsByName("resulttotal1")[0].value = document.getElementById("result-total1").childNodes[3].innerHTML;
         
         var diasTrabajados = calculoDiasTrabajados(sueldo_real, date_fecha_egreso);
         document.getElementById("result-dias_trabajados").childNodes[3].innerHTML = "$ " + diasTrabajados.toFixed(2);
+        document.getElementsByName("resultdiastrabajados")[0].value = document.getElementById("result-dias_trabajados").childNodes[3].innerHTML;
         var vacacionesCompletas = calculoVacacionesCompletas(sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
         document.getElementById("result-vacaciones_completas").childNodes[3].innerHTML = "$ " + vacacionesCompletas.toFixed(2);
+        document.getElementsByName("resultvacacionescompletas")[0].value = document.getElementById("result-vacaciones_completas").childNodes[3].innerHTML;
         var vacacionesProporcionales = calculoVacacionesProporcionales(sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
         document.getElementById("result-vacaciones_proporcionales").childNodes[3].innerHTML = "$ " + vacacionesProporcionales.toFixed(2);
+        document.getElementsByName("resultvacacionesproporcionales")[0].value = document.getElementById("result-vacaciones_proporcionales").childNodes[3].innerHTML;
         var sacSobreVacacionesCompletas = calculoSACSobreVacacionesCompletas(vacacionesCompletas);
         document.getElementById("result-sac_sobre_vacaciones_completas").childNodes[3].innerHTML = "$ " + sacSobreVacacionesCompletas.toFixed(2);
+        document.getElementsByName("resultsacsobrevacacionescompletas")[0].value = document.getElementById("result-sac_sobre_vacaciones_completas").childNodes[3].innerHTML;
         var sacSobreVacacionesProporcionales = calculoSACSobreVacacionesProporcionales(vacacionesProporcionales);
         document.getElementById("result-sac_sobre_vacaciones_proporcionales").childNodes[3].innerHTML = "$ " + sacSobreVacacionesProporcionales.toFixed(2);
+        document.getElementsByName("resultsacsobrevacacionesproporcionales")[0].value = document.getElementById("result-sac_sobre_vacaciones_proporcionales").childNodes[3].innerHTML;
         var sac = calculoSAC(sueldo_real);
         document.getElementById("result-sac").childNodes[3].innerHTML = "$ " + sac.toFixed(2);
+        document.getElementsByName("resultsac")[0].value = document.getElementById("result-sac").childNodes[3].innerHTML;
         var sacProporcional = calculoSACProporcional(sueldo_real, date_fecha_egreso);
         document.getElementById("result-sac_proporcional").childNodes[3].innerHTML = "$ " + sacProporcional.toFixed(2);
+        document.getElementsByName("resultsacproporcional")[0].value = document.getElementById("result-sac_proporcional").childNodes[3].innerHTML;
         
-        document.getElementById("result-total2").childNodes[3].innerHTML = "$ " + (diasTrabajados+vacacionesCompletas+vacacionesProporcionales+
-            sacSobreVacacionesCompletas+sacSobreVacacionesProporcionales).toFixed(2);
+        var total2 = diasTrabajados+vacacionesCompletas+vacacionesProporcionales+sacSobreVacacionesCompletas+sacSobreVacacionesProporcionales;
+        document.getElementById("result-total2").childNodes[3].innerHTML = "$ " + (total2).toFixed(2);
+        document.getElementsByName("resulttotal2")[0].value = document.getElementById("result-total2").childNodes[3].innerHTML;
     
         var horasExtraordinariasAl50porciento = calculoHorasExtraordinariasAl50porciento(sueldo_real, dias, date_fecha_ingreso_real, date_fecha_egreso);
         document.getElementById("result-horas_extraordinarias_al_50").childNodes[3].innerHTML = "$ " + horasExtraordinariasAl50porciento.toFixed(2);
+        document.getElementsByName("resulthorasextraordinariasal50")[0].value = document.getElementById("result-horas_extraordinarias_al_50").childNodes[3].innerHTML;
         var horasExtraordinariasAl100porciento = 0;
         if(selectedSemanaCompleta(dias)){
             horasExtraordinariasAl100porciento = calculoHorasExtraordinariasAl100porciento(sueldo_real, dias, date_fecha_ingreso_real, date_fecha_egreso);
         }
         document.getElementById("result-horas_extraordinarias_al_100").childNodes[3].innerHTML = "$ " + horasExtraordinariasAl100porciento.toFixed(2);
+        document.getElementsByName("resulthorasextraordinariasal100")[0].value = document.getElementById("result-horas_extraordinarias_al_100").childNodes[3].innerHTML;
         var horasNocturnas = 0
         if(selectedEntreSemana(dias)){
             horasNocturnas += calculoHorasNocturnas(sueldo_real, dias, date_fecha_ingreso_real, date_fecha_egreso,false);
@@ -590,48 +606,115 @@ function calculateLiquidacion(){
             horasNocturnas += calculoHorasNocturnas(sueldo_real, dias, date_fecha_ingreso_real, date_fecha_egreso,true);
         }
         document.getElementById("result-horas_nocturnas").childNodes[3].innerHTML = "$ " + horasNocturnas.toFixed(2);
+        document.getElementsByName("resulthorasnocturnas")[0].value = document.getElementById("result-horas_nocturnas").childNodes[3].innerHTML;
         var diferenciasSalarialesPorCategoria = 0;
         if(!isNaN(sueldo_falsa)){
             diferenciasSalarialesPorCategoria = calculoDiferenciasSalarialesPorCategoria(sueldo_cct,sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
             
         }
         document.getElementById("result-diferencias_salariales").childNodes[3].innerHTML = "$ " + diferenciasSalarialesPorCategoria.toFixed(2);
+        document.getElementsByName("resultdiferenciassalariales")[0].value = document.getElementById("result-diferencias_salariales").childNodes[3].innerHTML;
 
-        document.getElementById("result-total3").childNodes[3].innerHTML = "$ " + (horasExtraordinariasAl50porciento+horasExtraordinariasAl100porciento+horasNocturnas+
-            diferenciasSalarialesPorCategoria).toFixed(2);
+        var total3 = horasExtraordinariasAl50porciento+horasExtraordinariasAl100porciento+horasNocturnas+diferenciasSalarialesPorCategoria;
+        document.getElementById("result-total3").childNodes[3].innerHTML = "$ " + (total3).toFixed(2);
+        document.getElementsByName("resulttotal3")[0].value = document.getElementById("result-total3").childNodes[3].innerHTML;
         
-        var ley25324Art1 = calculoLey25324Art1(antiguedad);
-        document.getElementById("result-multa_ley_25323_art_1").childNodes[3].innerHTML = "$ " + ley25324Art1.toFixed(2);
-        var ley25324Art2 = calculoLey25324Art2(antiguedad,preaviso,integracion);
-        document.getElementById("result-multa_ley_25323_art_2").childNodes[3].innerHTML = "$ " + ley25324Art2.toFixed(2);
-        var ley24013Art8 = calculoLey24013Art8(sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
-        document.getElementById("result-multa_ley_24013_art_8").childNodes[3].innerHTML = "$ " + ley24013Art8.toFixed(2);
+        var ley25324Art1 = 0;
+        var ley24013Art8 = 0;
         var ley24013Art9 = 0;
         var ley24013Art10 = 0;
-        if(!isNaN(date_fecha_ingerso_falsa)){
-            ley24013Art9 = calculoLey24013Art9(sueldo_real, date_fecha_ingreso_real, date_fecha_ingerso_falsa);
-            if(!isNaN(sueldo_falsa)){
-                ley24013Art10 = calculoLey24013Art10(sueldo_real, sueldo_falsa, date_fecha_ingerso_falsa, date_fecha_egreso);
-            }
-        }
-        document.getElementById("result-multa_ley_24013_art_9").childNodes[3].innerHTML = "$ " + ley24013Art9.toFixed(2);
-        document.getElementById("result-multa_ley_24013_art_10").childNodes[3].innerHTML = "$ " + ley24013Art10.toFixed(2);
-        var ley24013Art15 = calculoLey24013Art15(antiguedad, preaviso, integracion);
-        document.getElementById("result-multa_ley_24013_art_15").childNodes[3].innerHTML = "$ " + ley24013Art15.toFixed(2);
-        var ley20744Art80 = calculoLey20744Art80(sueldo_real);
-        document.getElementById("result-multa_ley_20744_art_80").childNodes[3].innerHTML = "$ " + ley20744Art80.toFixed(2);
+        var ley25324Art2 = 0;
+        var ley24013Art15 = 0;
+        var ley20744Art80 = 0;
         var ley20744Art132bis = 0;
-        if(!isNaN(date_fecha_presentacion_demanda)){
-            ley20744Art132bis = calculoLey20744Art132Bis(sueldo_real, date_fecha_egreso, date_fecha_presentacion_demanda);
+        var ley20744Art182 = 0;
+        if(document.getElementById('check-multa_ley_25323_art_1').checked){
+            ley25324Art1 = calculoLey25324Art1(antiguedad);
+            document.getElementById("result-multa_ley_25323_art_1").childNodes[3].innerHTML = "$ " + ley25324Art1.toFixed(2);
+        }else{
+            document.getElementById("result-multa_ley_25323_art_1").childNodes[3].innerHTML = "$ 0";
         }
-        document.getElementById("result-multa_ley_20744_art_132_bis").childNodes[3].innerHTML = "$ " + ley20744Art132bis.toFixed(2);
-        var ley20744Art182 = calculoLey20744Art182(sueldo_real);
-        document.getElementById("result-multa_ley_20744_art_182").childNodes[3].innerHTML = "$ " + ley20744Art182.toFixed(2);
+        document.getElementsByName("resultmultaley25323art1")[0].value = document.getElementById("result-multa_ley_25323_art_1").childNodes[3].innerHTML;
+
+        if(document.getElementById('check-multa_ley_24013_art_8').checked){
+            ley24013Art8 = calculoLey24013Art8(sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
+            document.getElementById("result-multa_ley_24013_art_8").childNodes[3].innerHTML = "$ " + ley24013Art8.toFixed(2);
+        }else{
+            document.getElementById("result-multa_ley_24013_art_8").childNodes[3].innerHTML = "$ 0";
+        }
+        document.getElementsByName("resultmultaley24013art8")[0].value = document.getElementById("result-multa_ley_24013_art_8").childNodes[3].innerHTML;
+
+        if(document.getElementById('check-multa_ley_24013_art_9').checked || document.getElementById('check-multa_ley_24013_art_10').checked){
+            if(!isNaN(date_fecha_ingerso_falsa)){
+                ley24013Art9 = calculoLey24013Art9(sueldo_real, date_fecha_ingreso_real, date_fecha_ingerso_falsa);
+                if(!isNaN(sueldo_falsa)){
+                    ley24013Art10 = calculoLey24013Art10(sueldo_real, sueldo_falsa, date_fecha_ingerso_falsa, date_fecha_egreso);
+                }
+            }
+            if(document.getElementById('check-multa_ley_24013_art_9').checked){
+                document.getElementById("result-multa_ley_24013_art_9").childNodes[3].innerHTML = "$ " + ley24013Art9.toFixed(2);
+            }else{
+                document.getElementById("result-multa_ley_24013_art_9").childNodes[3].innerHTML = "$ 0";
+                ley24013Art9 = 0;
+            }
+            if(document.getElementById('check-multa_ley_24013_art_10').checked){
+                document.getElementById("result-multa_ley_24013_art_10").childNodes[3].innerHTML = "$ " + ley24013Art10.toFixed(2);
+            }else{
+                document.getElementById("result-multa_ley_24013_art_10").childNodes[3].innerHTML = "$ 0";
+                ley24013Art10 = 0;
+            }
+        }else{
+            document.getElementById("result-multa_ley_24013_art_9").childNodes[3].innerHTML = "$ 0";
+            document.getElementById("result-multa_ley_24013_art_10").childNodes[3].innerHTML = "$ 0";
+        }
+        document.getElementsByName("resultmultaley24013art9")[0].value = document.getElementById("result-multa_ley_24013_art_9").childNodes[3].innerHTML;
+        document.getElementsByName("resultmultaley24013art10")[0].value = document.getElementById("result-multa_ley_24013_art_10").childNodes[3].innerHTML;
         
-        document.getElementById("result-total4").childNodes[3].innerHTML = "$ " + (ley25324Art1+ley25324Art2+ley24013Art8+
-            ley24013Art9+ley24013Art10+ley24013Art15+ley20744Art80+ley20744Art132bis+ley20744Art182).toFixed(2);
         
+        if(document.getElementById('check-multa_ley_25323_art_2').checked){
+            ley25324Art2 = calculoLey25324Art2(antiguedad,preaviso,integracion);
+            document.getElementById("result-multa_ley_25323_art_2").childNodes[3].innerHTML = "$ " + ley25324Art2.toFixed(2);
+        }else{
+            document.getElementById("result-multa_ley_25323_art_2").childNodes[3].innerHTML = "$ 0";
+        }
+        document.getElementsByName("resultmultaley25323art2")[0].value = document.getElementById("result-multa_ley_25323_art_2").childNodes[3].innerHTML;
+        if(document.getElementById('check-multa_ley_24013_art_15').checked){
+            ley24013Art15 = calculoLey24013Art15(antiguedad, preaviso, integracion);
+            document.getElementById("result-multa_ley_24013_art_15").childNodes[3].innerHTML = "$ " + ley24013Art15.toFixed(2);
+        }else{
+            document.getElementById("result-multa_ley_24013_art_15").childNodes[3].innerHTML = "$ 0";
+        }
+        document.getElementsByName("resultmultaley24013art15")[0].value = document.getElementById("result-multa_ley_24013_art_15").childNodes[3].innerHTML;
+        if(document.getElementById('check-multa_ley_20744_art_80').checked){
+            ley20744Art80 = calculoLey20744Art80(sueldo_real);
+            document.getElementById("result-multa_ley_20744_art_80").childNodes[3].innerHTML = "$ " + ley20744Art80.toFixed(2);
+        }else{
+            document.getElementById("result-multa_ley_20744_art_80").childNodes[3].innerHTML = "$ 0";
+        }
+        document.getElementsByName("resultmultaley20744art80")[0].value = document.getElementById("result-multa_ley_20744_art_80").childNodes[3].innerHTML;
+        if(document.getElementById('check-multa_ley_20744_art_132_bis').checked){
+            if(!isNaN(date_fecha_presentacion_demanda)){
+                ley20744Art132bis = calculoLey20744Art132Bis(sueldo_real, date_fecha_egreso, date_fecha_presentacion_demanda);
+            }
+            document.getElementById("result-multa_ley_20744_art_132_bis").childNodes[3].innerHTML = "$ " + ley20744Art132bis.toFixed(2);
+        }else{
+            document.getElementById("result-multa_ley_20744_art_132_bis").childNodes[3].innerHTML = "$ 0";
+        } 
+        document.getElementsByName("resultmultaley20744art132bis")[0].value = document.getElementById("result-multa_ley_20744_art_132_bis").childNodes[3].innerHTML;
+        if(document.getElementById('check-multa_ley_20744_art_182').checked){
+            ley20744Art182 = calculoLey20744Art182(sueldo_real);
+            document.getElementById("result-multa_ley_20744_art_182").childNodes[3].innerHTML = "$ " + ley20744Art182.toFixed(2);
+        }else{
+            document.getElementById("result-multa_ley_20744_art_182").childNodes[3].innerHTML = "$ 0";
+        }
+        document.getElementsByName("resultmultaley20744art182")[0].value = document.getElementById("result-multa_ley_20744_art_182").childNodes[3].innerHTML;
         
+        var total4 = ley25324Art1+ley25324Art2+ley24013Art8+ley24013Art9+ley24013Art10+ley24013Art15+ley20744Art80+ley20744Art132bis+ley20744Art182;
+        document.getElementById("result-total4").childNodes[3].innerHTML = "$ " + (total4).toFixed(2);
+        document.getElementsByName("resulttotal4")[0].value = document.getElementById("result-total4").childNodes[3].innerHTML;
+
+        var total5 = total1 + total2 + total3 + total4;
+        document.getElementsByName("resulttotal5")[0].value = "$ "+total5.toFixed(2);
 
     }else{
         alert('Datos invalidos');
@@ -676,4 +759,31 @@ function loadSelectDay(selectId,selectedDay){
         option.innerHTML = i+' hs';
         select.appendChild(option);
     }
+}
+
+function calculateMultas(element){
+    
+    if(element.id == 'check-multa_ley_25323_art_1' && element.checked){
+        document.getElementById('check-multa_ley_24013_art_8').checked = false;
+        document.getElementById('check-multa_ley_24013_art_9').checked = false;
+        document.getElementById('check-multa_ley_24013_art_10').checked = false;
+        document.getElementById('check-multa_ley_24013_art_15').checked = false;
+    }
+    
+    if(element.id == 'check-multa_ley_24013_art_8' && element.checked){
+        document.getElementById('check-multa_ley_24013_art_9').checked = false;
+        document.getElementById('check-multa_ley_24013_art_10').checked = false;
+        document.getElementById('check-multa_ley_25323_art_1').checked = false;
+    }
+    
+    if((element.id == 'check-multa_ley_24013_art_9' || element.id == 'check-multa_ley_24013_art_10') && element.checked){
+        document.getElementById('check-multa_ley_24013_art_8').checked = false;
+        document.getElementById('check-multa_ley_25323_art_1').checked = false;
+    }
+    
+    calculateLiquidacion();
+}
+
+function generarReporte(){
+    document.forms["formLiquidacion"].submit();
 }

@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="/assets/css/home.css" />
-        <title>Untitled Document</title>
+        <title>Abogado del rey</title>
     </head>
     <body>
         <div class="main">
@@ -15,8 +15,8 @@
                     </a>
                     <div class="links">
                         <ul>
-                            <li><a>El estudio</a></li>
-                            <li><a>Contacto</a></li>
+                            <li><a href="/home/estudio">El estudio</a></li>
+                            <li><a href="/home/contacto">Contacto</a></li>
                             <li><div class="twitter" ></div></li>
                             <li><div class="facebook" ></div></li>
                         </ul>

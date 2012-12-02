@@ -644,6 +644,7 @@ body{
 }
 
 .middle-liquidacion .middle-content{
+    font-size: 14px;
     width: 700px;
     margin: 0px auto;
     background-color: white;
