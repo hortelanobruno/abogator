@@ -60,6 +60,26 @@ class Home extends Front_Controller {
         $this->load->view('home/escritos');
         $this->load->view('home/template/bottom');
     }
+    
+    public function estudio() {
+        $this->load->view('home/template/top');
+        $this->load->view('home/estudio');
+        $this->load->view('home/template/bottom');
+    }
+    
+    public function contacto() {
+        $this->load->view('home/template/top');
+        $this->load->view('home/contacto');
+        $this->load->view('home/template/bottom');
+    }
+    
+    public function generarliquidacion() {
+        
+        foreach($this->input->post() as $name=>$value){
+            $data[$name] = $value;
+        }
+        $this->load->view('home/liquidacion-reporte',$data);
+    }
 
  
     //--------------------------------------------------------------------
