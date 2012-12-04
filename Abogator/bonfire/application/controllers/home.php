@@ -80,6 +80,12 @@ class Home extends Front_Controller {
         }
         $this->load->view('home/liquidacion-reporte',$data);
     }
+    
+    public function noticia() {
+        $this->load->view('home/template/top');
+        $this->load->view('home/noticia');
+        $this->load->view('home/template/bottom');
+    }
 
  
     //--------------------------------------------------------------------

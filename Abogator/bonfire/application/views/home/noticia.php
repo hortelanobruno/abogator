@@ -1,0 +1,38 @@
+<div id="inside-content">
+    <div class="post">
+        <h2>
+            Indemnización por estrés laboral que produce ACV
+        </h2>
+        <div class="date">
+            28/09/10, Posted by Mirna at 17:43
+        </div>
+        <div class="single-entry">
+            <p style="text-align: left;"></p><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/_3V-cuRYgYX8/TKJTArbOeTI/AAAAAAAABvg/t7lG4k6LT1Q/s1600/estres1.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="238" src="http://2.bp.blogspot.com/_3V-cuRYgYX8/TKJTArbOeTI/AAAAAAAABvg/t7lG4k6LT1Q/s320/estres1.jpg" width="320"></a></div><br>
+            <br>
+            <br>
+            <span class="Apple-style-span" style="border-collapse: collapse;"><span style="color: #283a63; font-family: Arial; font-size: x-small;"><span class="azul" style="color: #283a63; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;"><b><span class="Apple-style-span" style="color: white;">ENFERMEDAD LABORAL. Trabajador que padeció un accidente cerebrovascular. ESTRÉS LABORAL. Influencia en el evento traumático. Valoración de las posibilidades. REALIZACIÓN DE TAREAS QUE REQUERÍAN ESFUERZO Y EXIGENCIA. RESPONSABILIDAD CIVIL DE LA EMPLEADORA. Procedencia. Citación de terceros. ART. Responsabilidad limitada al contrato de seguro. Procedencia. DISIDENCIA: Estrés. Inexistencia de un factor objetivo de atribución. Enfermedad resarcible en el marco de la normativa especial</span></b></span></span></span><br>
+            <span style="color: #283a63; font-family: Arial; font-size: x-small;"><b></b></span><br>
+            <span style="color: #283a63; font-family: Arial; font-size: x-small;"><b><a name="more"></a></b></span><br>
+            <div style="border-collapse: collapse;"></div><span class="Apple-style-span" style="border-collapse: collapse;"><span style="font-family: Arial; font-size: x-small;"><span class="azul" style="font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;"><span class="Apple-style-span" style="color: white;">“R. J. C. c/ Sig Marine S.A. s/ accidente acción civil” – CNTRAB – 09/08/2010</span></span></span></span><br>
+            <div style="border-collapse: collapse;"></div><div align="justify" style="border-collapse: collapse; margin-bottom: 0px; margin-top: 0px;"><span class="sumario" style="font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;"><span class="Apple-style-span" style="color: white;"><br>
+                        “El experto desinsaculado en autos ha dicho que aquel factor (stress) pudo haber influido en la producción del evento traumático, y las accionadas fundan su impugnación en la utilización del vocablo “pudo” que, según su parecer, exhibiría una imprecisión e insuficiencia que impediría relacionar causal o concausalmente la índole de las tareas con la afección. Ahora bien, el análisis de las apreciaciones presentadas revela que el mismo término “pudo”, adquiere también una fase positiva, tal como es que el stress resulta ser una de las causas determinantes de estos padecimientos, y en el caso se advierte que, esta causa, se encontraba presente en las tareas a cargo del actor.” (Del voto de la mayoría)<br>
+                        <br>
+                        “En efecto, los testimonios brindados por compañeros de trabajo, son certeros y coincidentes al relatar el esfuerzo y la exigencia de las tareas que tenían a cargo, así como también la presión que se derivaba del cumplimiento de aquellas en tiempo y forma, tal como aconteció con la inspección que iban a tener el día del accidente.” (Del voto de la mayoría)<br>
+                        <br>
+                        “Corresponde compartir la decisión de grado, que ha entendido que la condena a la aseguradora de riesgos de trabajo responde a su estricta función que es, justamente, la de responder por el evento dañoso producido en ocasión del trabajo y que, decidir su eximición de responsabilidad sería admitir un enriquecimiento sin causa…Por otra parte, no es cierto que se hubiere fallado extra petita, toda vez que la citación como tercero, requerida por la demandada, se fundó en la existencia de un contrato de seguro de riesgos de trabajo, que es, precisamente el que la apelante acordó con aquélla, y el que fue considerado como límite de responsabilidad de la recurrente.” (Del voto de la mayoría)<br>
+                        <br>
+                        “El actor, sufrió un accidente cerebrovascular, afección que relacionó genéricamente, con el “trabajo” y las tareas de esfuerzo y no con cosas riesgosas o viciosas de la que su empleador sea dueño o guardián. Aún sin soslayar las consideraciones efectuadas por el perito médico en su informe, entiendo que el stress -al que el profesional dijo que dicho factor pudo haber influido en la producción del evento traumático- no constituye un factor objetivo, sino que, en su aspecto negativo, traduce el modo en que diferentes sujetos reaccionan ante estímulos externos, generalmente en función de su propia estructura de personalidad.” (Del voto en disidencia del Dr. Morando)<br>
+                        <br>
+                        “Por lo demás, el “stress propio de sus tareas” no ha sido certeramente descripto, afirmación genérica que por insuficiente impide determinar la vinculación que se persigue. Igualmente, si bien las situaciones de stress pueden relacionarse con accesos de hipertensión, ello no equivale a afirmar que son aptas para generarlos, esto es que constituyen causas adecuadas de la enfermedad, antecedente lógico y jurídico imprescindible para su admisión como causas relevantes (artículos 901/906 del Código Civil).” (Del voto en disidencia del Dr. Morando)<br>
+                        <br>
+                        “En reiteradas oportunidades he señalado que el stress no es, en sí mismo, una enfermedad. Se trata de un síndrome general de adaptación que es manifestado por el organismo cuando responde a ciertas variaciones del entorno. En la medida en que la vida misma es un proceso de adaptación permanente, con el objeto de mantener el equilibrio dinámico dentro de un marco que permita la continuidad funcional del sistema viviente, el estrés se halla en cualquiera de los actos que componen la vida y sólo se detiene con la muerte. Desde luego, la necesidad de adaptarse a cambios drásticos o de superar dificultades graves provoca una mayor tensión capaz de desencadenar o agravar diversas patologías.” (Del voto en disidencia del Dr. Morando)<br>
+                        <br>
+                        “Lo que el pretensor ha descripto es una enfermedad que, en el caso de resultar resarcible, sólo hubiera sido en el marco de la legislación especial, del tipo de leyes de accidentes de trabajo 9688, 24.028 y 24.557, no, en la normativa civil, ya que no encuadra en ninguno de los supuestos regulados por el Libro II, Sección Segunda.” (Del voto en disidencia del Dr. Morando)<br>
+                    </span></span></div><div style="border-collapse: collapse;"><span style="font-family: Arial; font-size: x-small;"><span class="Apple-style-span" style="color: white;">Citar:&nbsp;</span><b><span class="Apple-style-span" style="color: white;">[elDial.com - AA6357]</span></b><span class="Apple-style-span" style="color: white;">&nbsp;</span></span></div><br>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="clear"></div>
+    <div class="clear"></div>
+</div>

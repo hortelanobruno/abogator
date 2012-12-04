@@ -49,17 +49,19 @@
 
                     <!--          <div id="time-indicator"></div>-->
                 </div>
-
+                <div class="images-shadow">
+                    <img src="/assets/img/banner-shadow.png">
+                </div>
                 <div id="slider-buttons">
-                    
-                        <ul id="controls">
-                            <li><a class="goto-slide current" href="#" data-slideindex="0"></a></li>
-                            <li><a class="goto-slide" href="#" data-slideindex="1"></a></li>
-                            <li><a class="goto-slide" href="#" data-slideindex="2"></a></li>
-                            <li><a class="goto-slide" href="#" data-slideindex="3"></a></li>
-                            <li><a class="goto-slide" href="#" data-slideindex="4"></a></li>
-                        </ul>
-                    
+
+                    <ul id="controls">
+                        <li><a class="goto-slide current" href="#" data-slideindex="0"></a></li>
+                        <li><a class="goto-slide" href="#" data-slideindex="1"></a></li>
+                        <li><a class="goto-slide" href="#" data-slideindex="2"></a></li>
+                        <li><a class="goto-slide" href="#" data-slideindex="3"></a></li>
+                        <li><a class="goto-slide" href="#" data-slideindex="4"></a></li>
+                    </ul>
+
                 </div>
 
 
