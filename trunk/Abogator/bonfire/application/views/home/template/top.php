@@ -23,60 +23,45 @@
                         </ul>
                     </div>
                 </div>
-<!--                                <div class="images"></div>
-                
-                                <div class="images-shadow">
-                                    <img src="/assets/img/banner-shadow.png" />
-                                </div>
-                                <div class="buttons">
-                                    <ul>
-                                        <li><a class="button"></a></li>
-                                        <li><a class="button"></a></li>
-                                        <li><a class="button"></a></li>
-                                        <li><a class="button"></a></li>
-                                    </ul>
-                                </div>-->
-
-                
-                    <div id="viewport-shadow">
-                        <!--
-                                  <a href="#" id="prev" title="go to the next slide"></a>
-                                  <a href="#" id="next" title="go to the next slide"></a>-->
-                        <div id="viewport">
-                            <div id="box">
-                                <figure class="slide">
-                                    <img src="/assets/img/banner.jpg"/>
-                                </figure>
-                                <figure class="slide">
-                                    <img src="/assets/img/banner2.jpg"/>
-                                </figure>
-                                <figure class="slide">
-                                    <img src="/assets/img/banner3.jpg"/>
-                                </figure>
-                                <figure class="slide">
-                                    <img src="/assets/img/banner4.jpg"/>
-                                </figure>
-                                <figure class="slide">
-                                    <img src="/assets/img/banner5.jpg"/>
-                                </figure>
-                            </div>
+                <div id="viewport-shadow">
+                    <!--
+                              <a href="#" id="prev" title="go to the next slide"></a>
+                              <a href="#" id="next" title="go to the next slide"></a>-->
+                    <div id="viewport">
+                        <div id="box">
+                            <figure class="slide">
+                                <img src="/assets/img/banner.jpg"/>
+                            </figure>
+                            <figure class="slide">
+                                <img src="/assets/img/banner2.jpg"/>
+                            </figure>
+                            <figure class="slide">
+                                <img src="/assets/img/banner3.jpg"/>
+                            </figure>
+                            <figure class="slide">
+                                <img src="/assets/img/banner4.jpg"/>
+                            </figure>
+                            <figure class="slide">
+                                <img src="/assets/img/banner5.jpg"/>
+                            </figure>
                         </div>
-
-                        <!--          <div id="time-indicator"></div>-->
                     </div>
 
-                    <footer>
-                        <nav class="slider-controls">
-                            <ul id="controls">
-                                <li><a class="goto-slide current" href="#" data-slideindex="0"></a></li>
-                                <li><a class="goto-slide" href="#" data-slideindex="1"></a></li>
-                                <li><a class="goto-slide" href="#" data-slideindex="2"></a></li>
-                                <li><a class="goto-slide" href="#" data-slideindex="3"></a></li>
-                                <li><a class="goto-slide" href="#" data-slideindex="4"></a></li>
-                            </ul>
-                        </nav>
-                    </footer>
-                
+                    <!--          <div id="time-indicator"></div>-->
+                </div>
+
+                <div id="slider-buttons">
+                    
+                        <ul id="controls">
+                            <li><a class="goto-slide current" href="#" data-slideindex="0"></a></li>
+                            <li><a class="goto-slide" href="#" data-slideindex="1"></a></li>
+                            <li><a class="goto-slide" href="#" data-slideindex="2"></a></li>
+                            <li><a class="goto-slide" href="#" data-slideindex="3"></a></li>
+                            <li><a class="goto-slide" href="#" data-slideindex="4"></a></li>
+                        </ul>
+                    
+                </div>
+
 
                 <div class="division"></div>
             </div>
