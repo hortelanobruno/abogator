@@ -30,3 +30,12 @@ ERROR - 2012-12-04 20:17:54 --> 404 Page Not Found -->
 ERROR - 2012-12-04 20:18:59 --> 404 Page Not Found --> 
 ERROR - 2012-12-04 20:20:27 --> 404 Page Not Found --> 
 ERROR - 2012-12-04 20:21:25 --> 404 Page Not Found --> 
+ERROR - 2012-12-04 21:25:42 --> Could not find the language line "bf_context_contextprueba"
+ERROR - 2012-12-04 21:25:46 --> Could not find the language line "bf_context_contextprueba"
+ERROR - 2012-12-04 21:25:49 --> Could not find the language line "bf_context_contextprueba"
+ERROR - 2012-12-04 21:26:10 --> Could not find the language line "bf_context_contextprueba"
+ERROR - 2012-12-04 21:26:13 --> Could not find the language line "bf_context_contextprueba"
+ERROR - 2012-12-04 21:26:16 --> Could not find the language line "bf_context_contextprueba"
+ERROR - 2012-12-04 21:26:20 --> Could not find the language line "bf_context_contextprueba"
+ERROR - 2012-12-04 21:26:22 --> Could not find the language line "bf_context_contextprueba"
+ERROR - 2012-12-04 21:27:45 --> Could not find the language line "bf_context_contextprueba"

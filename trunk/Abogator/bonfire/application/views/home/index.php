@@ -46,17 +46,19 @@
             </div>
         </div>
         <div class="bottom">
-            <div class="noticia">
-                <div class="fecha">
-                    10/10/2012
+            <a href="/home/noticia">
+                <div class="noticia">
+                    <div class="fecha">
+                        10/10/2012
+                    </div>
+                    <div class="title">
+                        Titulo de la noticia
+                    </div>
+                    <div class="description">
+                        Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen
+                    </div>
                 </div>
-                <div class="title">
-                    Titulo de la noticia
-                </div>
-                <div class="description">
-                    Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen
-                </div>
-            </div>
+            </a>
             <div class="noticia">
                 <div class="fecha">
                     10/10/2012
