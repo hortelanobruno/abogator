@@ -46,20 +46,23 @@
             </div>
         </div>
         <div class="bottom">
-            <a href="/home/noticia">
-                <div class="noticia">
-                    <div class="fecha">
-                        10/10/2012
+            <?php foreach ($noticias as $noticia): ?>
+                <a href="/noticia/<?php echo $noticia['id'] ?>">
+                    <div class="noticia">
+                        <div class="fecha">
+                            <?php echo $noticia['fecha'] ?>
+                        </div>
+                        <div class="title">
+                            <?php echo $noticia['titulo'] ?>
+                        </div>
+                        <div class="description">
+                            <?php echo $noticia['descripcion'] ?>
+                        </div>
                     </div>
-                    <div class="title">
-                        Titulo de la noticia
-                    </div>
-                    <div class="description">
-                        Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen
-                    </div>
-                </div>
-            </a>
-            <div class="noticia">
+                </a>
+            <?php endforeach ?>
+
+<!--            <div class="noticia">
                 <div class="fecha">
                     10/10/2012
                 </div>
@@ -102,7 +105,7 @@
                 <div class="description">
                     Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen Resumen
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
     <img class="border-bottom" src="assets/img/noticias-2.png" />

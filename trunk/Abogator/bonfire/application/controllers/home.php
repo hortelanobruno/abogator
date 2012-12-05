@@ -32,14 +32,20 @@ if (!defined('BASEPATH'))
  */
 class Home extends Front_Controller {
 
+    
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('noticias_model');
+    }
     /**
      * Displays the homepage of the Bonfire app
      *
      * @return void
      */
     public function index() {
+        $data['noticias'] = $this->noticias_model->get_all_noticias();
         $this->load->view('home/template/top');
-        $this->load->view('home/index');
+        $this->load->view('home/index',$data);
         $this->load->view('home/template/bottom');
     }
     

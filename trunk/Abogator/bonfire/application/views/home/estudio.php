@@ -5,8 +5,13 @@
     margin: 0px auto;color: white;">
     <br/>
     <div style="font-size: 36px">
-        <div class="logo"></div>
-        <div class="titulo" style="margin-left: 50px">El estudio</div>
+        <div class="logo" style="width: 50px;
+height: 35px;
+background: url(/assets/img/Sprites3.png);
+background-position: 85px 4px;
+float: left;
+margin-left: 20px;"></div>
+        <div class="titulo" style="margin-left: 100px">El estudio</div>
     </div>
     <br/>
     <div class="foto" style="width: 115px;height: 115px; background-color: red;float: right;"></div>
