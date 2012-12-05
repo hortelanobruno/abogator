@@ -2,17 +2,17 @@
     <div class="post">
         <h2>
             <?php
-                  echo  $noticia['noticias_titulo'];
+                  echo  $noticia['titulo'];
             ?>
         </h2>
         <div class="date">
             <?php
-                  echo  $noticia['noticias_fecha'];
+                  echo  $noticia['fecha'];
             ?>
         </div>
         <div class="single-entry">
             <?php
-                  echo  $noticia['noticias_texto'];
+                  echo  $noticia['contenido'];
             ?>
         </div>
         <div class="clear"></div>

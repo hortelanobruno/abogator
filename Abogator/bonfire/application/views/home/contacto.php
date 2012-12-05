@@ -6,7 +6,12 @@
     <br/>
     <div style="width: 350px;float: left;">
         <div style="font-size: 24px">
-            <div class="logo"></div>
+            <div class="logo" style="width: 44px;
+height: 39px;
+background: url(/assets/img/Sprites3.png);
+background-position: 236px 0px;
+float: left;
+margin-left: 20px;"></div>
             <div class="titulo" style="margin-left: 50px">Ubicacion</div>
         </div>
         <br/>
@@ -15,7 +20,12 @@
     </div>
     <div style="width: 350px;float: right">
         <div style="font-size: 24px">
-            <div class="logo"></div>
+            <div class="logo" style="width: 50px;
+height: 38px;
+background: url(/assets/img/Sprites3.png);
+background-position: 189px -1px;
+float: left;
+margin-left: 20px;"></div>
             <div class="titulo" style="margin-left: 50px">Formulario de consultas</div>
         </div>
         <br/>
