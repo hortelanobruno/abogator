@@ -111,3 +111,5 @@ ERROR - 2012-12-05 22:08:54 --> Could not find the language line "bf_context_con
 ERROR - 2012-12-05 22:09:39 --> Could not find the language line "bf_context_contextprueba"
 ERROR - 2012-12-05 22:09:41 --> Could not find the language line "bf_context_contextprueba"
 ERROR - 2012-12-05 22:10:20 --> Could not find the language line "bf_context_contextprueba"
+ERROR - 2012-12-05 22:15:54 --> Could not find the language line "bf_context_contextprueba"
+ERROR - 2012-12-05 22:15:56 --> Could not find the language line "bf_context_contextprueba"
