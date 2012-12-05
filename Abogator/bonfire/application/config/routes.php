@@ -41,6 +41,9 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
+$route['noticia/(:any)'] = 'noticia/index/$1';
+
+
 // Authorization
 $route['login']					= 'users/login';
 $route['register']				= 'users/register';
