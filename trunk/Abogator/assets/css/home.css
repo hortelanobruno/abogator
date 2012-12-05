@@ -15,12 +15,12 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 body{
@@ -172,7 +172,7 @@ body{
     border-bottom-width: 2px;
     width: 700px;
     height: 200px;
-    margin: 0px auto;
+    margin: 0px 50px 50px auto;
 
 }
 
@@ -283,10 +283,11 @@ body{
 }
 
 .main .news{
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     width: 700px;
     position: relative;
     margin: 0px auto;
+    background-image:url(../img/backNews.png);
 }
 
 .main .news .border-top{
@@ -304,10 +305,34 @@ body{
 .main .news .content{
     height: 400px;
     position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: rgba(125,125,125,80.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(125,125,125,80.8); 
 }
 
 .main .news .content .arriba{
-    margin-top: 10px;
+    margin-top: 5px;
 
 }
 
@@ -330,6 +355,7 @@ body{
     margin-top: 40px;
     margin-left: 50px;
     position: absolute;
+
 }
 
 .main .news .content .bottom .noticia{
@@ -817,13 +843,13 @@ body{
 
 /* line 29, sass/screen.scss */
 #viewport, #box, .slide {
-/*    width: 680px;
-    height: 260px;*/
-width: 700px;
-height: 230px;
-margin: 0px auto;
-z-index: 1;
-position: relative;
+    /*    width: 680px;
+        height: 260px;*/
+    width: 700px;
+    height: 230px;
+    margin: 0px auto;
+    z-index: 1;
+    position: relative;
 }
 
 #box img{
@@ -851,7 +877,7 @@ position: relative;
 
 /* line 37, sass/screen.scss */
 #controls {
-    
+
 }
 /* line 44, sass/screen.scss */
 #controls li {
@@ -874,7 +900,7 @@ position: relative;
 }
 /* line 62, sass/screen.scss */
 .goto-slide.current {
-    background-color: #2edbac;
+    background-color: #660033;
 }
 
 /* line 66, sass/screen.scss */
