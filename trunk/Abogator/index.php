@@ -26,6 +26,7 @@ if (is_dir(dirname(__FILE__).'/install') == true)
  *
  */
 	define('ENVIRONMENT', 'development');
+//        define('ENVIRONMENT', 'production');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
