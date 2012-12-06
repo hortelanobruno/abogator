@@ -1,11 +1,11 @@
-<div id="inside-content">
-    <div class="post">
-        <h2>
+<div id="inside-content" class="containerNews">
+    <div class="contentNews">
+          <div class="contentNewsTitle">
             <?php
                   echo  $noticia['titulo'];
             ?>
-        </h2>
-        <div class="date">
+        </div>
+        <div class="contentNewsDate">
             <?php
                   echo  $noticia['fecha'];
             ?>

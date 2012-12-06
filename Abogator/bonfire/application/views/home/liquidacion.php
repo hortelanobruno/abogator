@@ -329,8 +329,9 @@
     </form>
     <div class="generar">
         <a onclick="generarReporte()" >
-            <div class="button-generar">
+            <div class="button2 blue">
                 Generar
+                
             </div>
         </a>
     </div>
