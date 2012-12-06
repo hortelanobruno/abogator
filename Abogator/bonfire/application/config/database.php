@@ -42,10 +42,10 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'root';
-$db['default']['database'] = 'abogator_dev';
-$db['default']['dbdriver'] = 'mysql';
+$db['default']['username'] = 'gw000274_abo';
+$db['default']['password'] = 'Abogator123';
+$db['default']['database'] = 'gw000274_abogator_dev';
+$db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = 'bf_';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
