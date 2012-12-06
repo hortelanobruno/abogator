@@ -45,3 +45,6 @@ ERROR - 2012-12-06 19:49:03 --> Query error: Table 'abogator_dev.bf_settings' do
 ERROR - 2012-12-06 19:49:10 --> Query error: Table 'abogator_dev.bf_settings' doesn't exist
 ERROR - 2012-12-06 19:50:44 --> Could not find the language line "bf_context_contextprueba"
 ERROR - 2012-12-06 19:51:06 --> Could not find the language line "bf_context_contextprueba"
+ERROR - 2012-12-06 20:04:49 --> Severity: Warning  --> mysqli_connect() [<a href='function.mysqli-connect'>function.mysqli-connect</a>]: (28000/1045): Access denied for user 'gw000274_abo'@'localhost' (using password: YES) C:\Users\brunoli\Documents\NetBeansProjects\Abogator\bonfire\codeigniter\database\drivers\mysqli\mysqli_driver.php 76
+ERROR - 2012-12-06 20:04:49 --> Unable to connect to the database
+ERROR - 2012-12-06 20:44:07 --> Severity: Notice  --> Undefined variable: enviado C:\Users\brunoli\Documents\NetBeansProjects\Abogator\bonfire\application\views\home\contacto.php 80

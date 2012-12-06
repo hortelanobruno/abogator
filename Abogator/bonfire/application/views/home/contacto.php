@@ -7,11 +7,11 @@
     <div style="width: 350px;float: left;">
         <div style="font-size: 24px">
             <div class="logo" style="width: 44px;
-height: 39px;
-background: url(/assets/img/Sprites3.png);
-background-position: 236px 0px;
-float: left;
-margin-left: 20px;"></div>
+                 height: 39px;
+                 background: url(/assets/img/Sprites3.png);
+                 background-position: 236px 0px;
+                 float: left;
+                 margin-left: 20px;"></div>
             <div class="titulo" style="margin-left: 50px">Ubicacion</div>
         </div>
         <br/>
@@ -21,25 +21,25 @@ margin-left: 20px;"></div>
     <div style="width: 350px;float: right">
         <div style="font-size: 24px">
             <div class="logo" style="width: 50px;
-height: 38px;
-background: url(/assets/img/Sprites3.png);
-background-position: 189px -1px;
-float: left;
-margin-left: 20px;"></div>
+                 height: 38px;
+                 background: url(/assets/img/Sprites3.png);
+                 background-position: 189px -1px;
+                 float: left;
+                 margin-left: 20px;"></div>
             <div class="titulo" style="margin-left: 50px">Formulario de consultas</div>
         </div>
         <br/>
         <br/>
         <div style="   background-color: white;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    padding: 25px 15px 25px 15px;
-    margin: 5px 5px 5px 10px;
-    display:table-cell; 
-    vertical-align:middle;color: blue">
-            <form>
+             border-bottom-left-radius: 5px;
+             border-bottom-right-radius: 5px;
+             border-top-left-radius: 5px;
+             border-top-right-radius: 5px;
+             padding: 25px 15px 25px 15px;
+             margin: 5px 5px 5px 10px;
+             display:table-cell; 
+             vertical-align:middle;color: blue">
+            <form name="contacto" action="/home/sendmail" method="post">
                 <table>
                     <tr>
                         <td>
@@ -70,7 +70,7 @@ margin-left: 20px;"></div>
                             Consulta*
                         </td>
                         <td>
-                            <textarea rows="9" cols="27" style="border: solid 1px #CCC;">
+                            <textarea name="consulta" rows="9" cols="27" style="border: solid 1px #CCC;">
                             
                             </textarea>
                         </td>
@@ -80,14 +80,14 @@ margin-left: 20px;"></div>
                             
                         </td>
                         <td style="float: right; margin-top: 10px">
+                            <?php if (isset($enviado)) { 
+                                echo $enviado;
+                            } ?>
                             <input type="submit" value="Enviar" style="width: 100px;height: 31px;"/>
                         </td>
                     </tr>
                 </table>
-                
-                
             </form>
-            
         </div>
     </div>
 </div>
@@ -100,30 +100,30 @@ margin-left: 20px;"></div>
      height: 140px;
      margin: 0px auto;color: white;">
     <br/>
-        <div style="width: 350px;float: left;">
-            <div style="font-size: 20px">
-                <div class="logo"></div>
-                <div class="titulo">Contacto:</div>
-            </div>
-            <br/>
-            <div style="font-size: 16px">
-                Uruguay N*328 Piso 2 Of 3 C.A.B.A
-                <br/>
-                Telefono: (011) 4371-8999
-                <br/>
-                Celular: (011) 15-5864-3274
-            </div>
+    <div style="width: 350px;float: left;">
+        <div style="font-size: 20px">
+            <div class="logo"></div>
+            <div class="titulo">Contacto:</div>
         </div>
-        <div style="width: 350px;float: right">
-            <div style="font-size: 20px">
-                <div class="logo"></div>
-                <div class="titulo">Consultas via e-mail:</div>
-            </div>
+        <br/>
+        <div style="font-size: 16px">
+            Uruguay N*328 Piso 2 Of 3 C.A.B.A
             <br/>
-            <div style="font-size: 16px">
-                particulares@abogadodelrey.com.ar
-                <br/>
-                empresas@abogadodelrey.com.ar
-            </div>
+            Telefono: (011) 4371-8999
+            <br/>
+            Celular: (011) 15-5864-3274
         </div>
     </div>
+    <div style="width: 350px;float: right">
+        <div style="font-size: 20px">
+            <div class="logo"></div>
+            <div class="titulo">Consultas via e-mail:</div>
+        </div>
+        <br/>
+        <div style="font-size: 16px">
+            particulares@abogadodelrey.com.ar
+            <br/>
+            empresas@abogadodelrey.com.ar
+        </div>
+    </div>
+</div>
