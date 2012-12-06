@@ -937,15 +937,18 @@ body{
 
 
 .tr1{
-    background-color: #CCC;  }
+    background-color: #CCC;  
+}
 
 .tr2{
-    background-color: #ddd;  }
-
-td{
-    border: 1px solid #ddd;
-
+    background-color: #ddd;  
 }
+
+.td{
+    border: 1px solid #ddd;
+}
+
+
 .middle-liquidacion{
     width: 700px;
     margin: 0px auto;
