@@ -500,6 +500,8 @@ function selectedFinde(dias){
 }
         
 function calculateLiquidacion(){
+    var email = document.getElementById('email').value;
+    
     var sueldo_real = parseInt(document.getElementById('sueldo_real').value);
     var sueldo_falsa = parseInt(document.getElementById('sueldo_falsa').value);
     var fecha_ingreso_real = document.getElementById('fecha_ingreso_real').value;
@@ -537,13 +539,19 @@ function calculateLiquidacion(){
     dias.domingo[0] = document.getElementById('sun1').value;
     dias.domingo[1] = document.getElementById('sun2').value;
     
+    var aa = fecha_ingreso_real.split("/")[1]+"/"+fecha_ingreso_real.split("/")[0]+"/"+fecha_ingreso_real.split("/")[2];
+    var date_fecha_ingreso_real = new Date(aa);
+    aa = fecha_ingerso_falsa.split("/")[1]+"/"+fecha_ingreso_real.split("/")[0]+"/"+fecha_ingreso_real.split("/")[2];
+    var date_fecha_ingerso_falsa = new Date(aa);
+    aa = fecha_egreso.split("/")[1]+"/"+fecha_ingreso_real.split("/")[0]+"/"+fecha_ingreso_real.split("/")[2];
+    var date_fecha_egreso = new Date(aa);
+    aa = fecha_presentacion_demanda.split("/")[1]+"/"+fecha_ingreso_real.split("/")[0]+"/"+fecha_ingreso_real.split("/")[2];
+    var date_fecha_presentacion_demanda = new Date(aa);
     
-    var date_fecha_ingreso_real = new Date(fecha_ingreso_real);
-    var date_fecha_ingerso_falsa = new Date(fecha_ingerso_falsa);
-    var date_fecha_egreso = new Date(fecha_egreso);
-    var date_fecha_presentacion_demanda = new Date(fecha_presentacion_demanda);
+    
+    
     var sueldo_cct = document.getElementById('sueldo_cct').value;
-    if(validData(sueldo_real,sueldo_falsa,date_fecha_ingreso_real,date_fecha_ingerso_falsa,date_fecha_egreso,date_fecha_presentacion_demanda,dias)){
+    if(validateEmail(email)&&validData(sueldo_real,sueldo_falsa,date_fecha_ingreso_real,date_fecha_ingerso_falsa,date_fecha_egreso,date_fecha_presentacion_demanda,dias)){
 					
 
         var antiguedad = calculoAntiguedad(sueldo_real,date_fecha_ingreso_real,date_fecha_egreso);
@@ -718,6 +726,63 @@ function calculateLiquidacion(){
 
     }else{
         alert('Datos invalidos');
+        document.getElementById("result-antiguedad").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultantiguedad")[0].value = "$ 0";
+        document.getElementById("result-preaviso").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultpreaviso")[0].value = "$ 0";
+        document.getElementById("result-integracion").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultintegracion")[0].value = "$ 0";
+        document.getElementById("result-sac_pres_int").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultsacpresint")[0].value = "$ 0";
+        document.getElementById("result-total1").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resulttotal1")[0].value = "$ 0";
+        document.getElementById("result-dias_trabajados").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultdiastrabajados")[0].value = "$ 0";
+        document.getElementById("result-vacaciones_completas").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultvacacionescompletas")[0].value = "$ 0";
+        document.getElementById("result-vacaciones_proporcionales").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultvacacionesproporcionales")[0].value = "$ 0";
+        document.getElementById("result-sac_sobre_vacaciones_completas").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultsacsobrevacacionescompletas")[0].value = "$ 0";
+        document.getElementById("result-sac_sobre_vacaciones_proporcionales").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultsacsobrevacacionesproporcionales")[0].value = "$ 0";
+        document.getElementById("result-sac").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultsac")[0].value = document.getElementById("result-sac").childNodes[3].innerHTML;
+        document.getElementById("result-sac_proporcional").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultsacproporcional")[0].value = document.getElementById("result-sac_proporcional").childNodes[3].innerHTML;
+        document.getElementById("result-total2").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resulttotal2")[0].value = document.getElementById("result-total2").childNodes[3].innerHTML;
+        document.getElementById("result-horas_extraordinarias_al_50").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resulthorasextraordinariasal50")[0].value = document.getElementById("result-horas_extraordinarias_al_50").childNodes[3].innerHTML;
+        document.getElementById("result-horas_extraordinarias_al_100").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resulthorasextraordinariasal100")[0].value = document.getElementById("result-horas_extraordinarias_al_100").childNodes[3].innerHTML;
+        document.getElementById("result-horas_nocturnas").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resulthorasnocturnas")[0].value = document.getElementById("result-horas_nocturnas").childNodes[3].innerHTML;
+        document.getElementById("result-diferencias_salariales").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultdiferenciassalariales")[0].value = document.getElementById("result-diferencias_salariales").childNodes[3].innerHTML;
+        document.getElementById("result-total3").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resulttotal3")[0].value = document.getElementById("result-total3").childNodes[3].innerHTML;
+        document.getElementById("result-multa_ley_25323_art_1").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultmultaley25323art1")[0].value = document.getElementById("result-multa_ley_25323_art_1").childNodes[3].innerHTML;
+        document.getElementById("result-multa_ley_24013_art_8").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultmultaley24013art8")[0].value = document.getElementById("result-multa_ley_24013_art_8").childNodes[3].innerHTML;
+        document.getElementById("result-multa_ley_24013_art_9").childNodes[3].innerHTML = "$ 0";
+        document.getElementById("result-multa_ley_24013_art_10").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultmultaley24013art9")[0].value = document.getElementById("result-multa_ley_24013_art_9").childNodes[3].innerHTML;
+        document.getElementsByName("resultmultaley24013art10")[0].value = document.getElementById("result-multa_ley_24013_art_10").childNodes[3].innerHTML;
+        document.getElementById("result-multa_ley_25323_art_2").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultmultaley25323art2")[0].value = document.getElementById("result-multa_ley_25323_art_2").childNodes[3].innerHTML;
+        document.getElementById("result-multa_ley_24013_art_15").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultmultaley24013art15")[0].value = document.getElementById("result-multa_ley_24013_art_15").childNodes[3].innerHTML;
+        document.getElementById("result-multa_ley_20744_art_80").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultmultaley20744art80")[0].value = document.getElementById("result-multa_ley_20744_art_80").childNodes[3].innerHTML;
+        document.getElementById("result-multa_ley_20744_art_132_bis").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultmultaley20744art132bis")[0].value = document.getElementById("result-multa_ley_20744_art_132_bis").childNodes[3].innerHTML;
+        document.getElementById("result-multa_ley_20744_art_182").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resultmultaley20744art182")[0].value = document.getElementById("result-multa_ley_20744_art_182").childNodes[3].innerHTML;
+        document.getElementById("result-total4").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resulttotal4")[0].value = document.getElementById("result-total4").childNodes[3].innerHTML;
+        document.getElementsByName("resulttotal5")[0].value = "$ 0";
     }
 				
 }
@@ -785,5 +850,15 @@ function calculateMultas(element){
 }
 
 function generarReporte(){
-    document.forms["formLiquidacion"].submit();
+    var nombre = document.getElementById('nombre').value;
+    if(nombre.length > 0){
+        document.forms["formLiquidacion"].submit();
+    }else{
+        alert('Tenes que completar el nombre');
+    }
 }
+
+function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+} 

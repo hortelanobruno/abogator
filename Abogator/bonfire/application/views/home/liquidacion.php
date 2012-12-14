@@ -24,7 +24,7 @@
                         Nombre
                     </div>
                     <div class="element">
-                        <input name="nombre" type="text" value="Bruno"/>
+                        <input id="nombre" name="nombre" type="text" value=""/>
                     </div>
                 </div>
                 <div class="dato">
@@ -32,7 +32,7 @@
                         Email
                     </div>
                     <div class="element">
-                        <input name="email" type="text" value="email@email.com"/>
+                        <input id="email" name="email" type="text" value="" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
@@ -40,7 +40,7 @@
                         Remuneracion (real)
                     </div>
                     <div class="element">
-                        <input id="sueldo_real" name="sueldo_real" type="text" value="2000" onchange="calculateLiquidacion()"/>
+                        <input id="sueldo_real" name="sueldo_real" type="text" value="" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
@@ -48,7 +48,7 @@
                         Fecha ingreso (real)
                     </div>
                     <div class="element">
-                        <input id="fecha_ingreso_real" type="text" value="01/01/2010" onchange="calculateLiquidacion()" />
+                        <input id="fecha_ingreso_real" type="text" value="" onchange="calculateLiquidacion()" />
                     </div>
                 </div>
                 <div class="dato">
@@ -56,7 +56,7 @@
                         Fecha egreso
                     </div>
                     <div class="element">
-                        <input id="fecha_egreso" type="text" value="01/13/2012" onchange="calculateLiquidacion()"/>
+                        <input id="fecha_egreso" type="text" value="" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
@@ -64,7 +64,7 @@
                         Remuneracion (falsa)
                     </div>
                     <div class="element">
-                        <input id="sueldo_falsa" type="text" value="1000" onchange="calculateLiquidacion()"/>
+                        <input id="sueldo_falsa" type="text" value="" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
@@ -72,7 +72,7 @@
                         Fecha ingreso (falsa)
                     </div>
                     <div class="element">
-                        <input id="fecha_ingerso_falsa" type="text" value="01/01/2011" onchange="calculateLiquidacion()"/>
+                        <input id="fecha_ingerso_falsa" type="text" value="" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
@@ -80,7 +80,7 @@
                         Presentacion demanda
                     </div>
                     <div class="element">
-                        <input id="fecha_presentacion_demanda" type="text" value="01/13/2013" onchange="calculateLiquidacion()"/>
+                        <input id="fecha_presentacion_demanda" type="text" value="" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
@@ -88,7 +88,7 @@
                         Sueldo CCT
                     </div>
                     <div class="element">
-                        <input id="sueldo_cct" type="text" value="3000" onchange="calculateLiquidacion()" />
+                        <input id="sueldo_cct" type="text" value="" onchange="calculateLiquidacion()" />
                     </div>
                 </div>
                 <div class="dato2">
@@ -160,10 +160,10 @@
 
                 <script>
                     $(function() {
-                        $("#fecha_ingreso_real").datepicker();
-                        $("#fecha_egreso").datepicker();
-                        $("#fecha_ingerso_falsa").datepicker();
-                        $("#fecha_presentacion_demanda").datepicker();
+                        $("#fecha_ingreso_real").datepicker({ dateFormat: 'dd/mm/yy' });
+                        $("#fecha_egreso").datepicker({ dateFormat: 'dd/mm/yy' });
+                        $("#fecha_ingerso_falsa").datepicker({ dateFormat: 'dd/mm/yy' });
+                        $("#fecha_presentacion_demanda").datepicker({ dateFormat: 'dd/mm/yy' });
                     });
                 </script>
             </div>
@@ -337,7 +337,7 @@
     </div>
 </div>
 <script type="text/javascript">                 
-    calculateLiquidacion();             
+//    calculateLiquidacion();             
 </script>
 <br/>
 <br/>

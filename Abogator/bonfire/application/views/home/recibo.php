@@ -132,7 +132,9 @@
                         <div class="col-element"><select id="esc_mes" onchange="calculateRecibo()">
                                 <script type="text/javascript">                 
                                     for(var i=0;i<meses.length;i++){
-                                        document.write('<option value="'+i+'">'+meses[i]+'</option>');};                         
+                                        document.write('<option value="'+i+'">'+meses[i]+'</option>');
+                                    }
+                                    selectMoth();             
                                 </script>
                             </select></div>
                     </div>
