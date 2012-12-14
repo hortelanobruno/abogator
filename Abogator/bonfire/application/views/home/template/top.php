@@ -16,10 +16,14 @@
                     </a>
                     <div class="links">
                         <ul>
+
+                            <li><a href="/home">Inicio</a></li>
                             <li><a href="/home/estudio">El estudio</a></li>
                             <li><a href="/home/contacto">Contacto</a></li>
-                            <li><div class="twitter" ></div></li>
-                            <li><div class="facebook" ></div></li>
+
+                            <li><a target="_blank" style="padding:0px" href="https://twitter.com/abogadodelrey"><div class="twitter" ></div></a></li>
+
+                            <li><a target="_blank" style="padding:0px" href="https://www.facebook.com/abogado.delrey " ><div class="facebook" ></div></a></li>
                         </ul>
                     </div>
                 </div>

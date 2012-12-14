@@ -1315,5 +1315,82 @@ body{
 
 }
 
+.titleEstudioEmpresas{
+    position: absolute;
+}
+
+.titleEstudioHogares{
+    position: absolute;
+    margin-left: 370px;
+    margin-top: 0px;
+}
+
+.iconEmpresas {
+    float: left;
+    width: 30px;
+    height: 31px;
+    background: url(../img/icono-empresas.png);
+    background-position: 180px -1px;
+}
+
+.iconHogares {
+    float: left;
+    width: 32px;
+    height: 30px;
+    background: url(../img/icono-hogares.png);
+    background-position: 186px -1px;
+}
+
+.textHogares{
+   margin-left: 44px;
+margin-top: 7px;
+font-size: 20px;
+}
 
 
+.textEmpresas{
+   margin-left: 44px;
+margin-top: 7px;
+font-size: 20px;
+}
+
+.mainServiciosEmpresas{
+
+    color: #221919;
+    width: 300px;
+    height: 505px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 10px 15px 0px 15px;
+    margin: 5px 5px 5px 10px;
+    background: url(../img/background.png);
+    background-color: #EBEBEB;
+    background-repeat: repeat;
+    margin: 0px auto;
+    position: absolute;
+    margin-top: 40px;
+   font-size: 15px;
+}
+
+.mainServiciosParticulares{
+    /*font-size: 15px;
+ font-weight: bold;*/
+    color: #221919;
+    width: 300px;
+    height: 505px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 10px 15px 0px 15px;
+    margin: 5px 5px 5px 10px;
+    background: url(../img/background.png);
+    background-color: #EBEBEB;
+    background-repeat: repeat;
+    margin: 0px auto;
+    Float:right;
+    margin-top: 40px;
+    font-size: 15px;
+}
