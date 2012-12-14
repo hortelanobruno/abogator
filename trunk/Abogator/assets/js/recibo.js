@@ -1099,25 +1099,25 @@ function calcularCantHorasSemanales(){
     var aux = 0;
     
     if(data.lunes[2]){
-       aux += parseInt(calcularCantHoras(parseInt(data.lunes[0]),parseInt(data.lunes[1])));
+        aux += parseInt(calcularCantHoras(parseInt(data.lunes[0]),parseInt(data.lunes[1])));
     }
     if(data.martes[2]){
-       aux += parseInt(calcularCantHoras(parseInt(data.martes[0]),parseInt(data.martes[1])));
+        aux += parseInt(calcularCantHoras(parseInt(data.martes[0]),parseInt(data.martes[1])));
     }
     if(data.miercoles[2]){
-       aux += parseInt(calcularCantHoras(parseInt(data.miercoles[0]),parseInt(data.miercoles[1])));
+        aux += parseInt(calcularCantHoras(parseInt(data.miercoles[0]),parseInt(data.miercoles[1])));
     }
     if(data.jueves[2]){
-       aux += parseInt(calcularCantHoras(parseInt(data.jueves[0]),parseInt(data.jueves[1])));
+        aux += parseInt(calcularCantHoras(parseInt(data.jueves[0]),parseInt(data.jueves[1])));
     }
     if(data.viernes[2]){
-       aux += parseInt(calcularCantHoras(parseInt(data.viernes[0]),parseInt(data.viernes[1])));
+        aux += parseInt(calcularCantHoras(parseInt(data.viernes[0]),parseInt(data.viernes[1])));
     }
     if(data.sabado[2]){
-       aux += parseInt(calcularCantHoras(parseInt(data.sabado[0]),parseInt(data.sabado[1])));
+        aux += parseInt(calcularCantHoras(parseInt(data.sabado[0]),parseInt(data.sabado[1])));
     }
     if(data.domingo[2]){
-       aux += parseInt(calcularCantHoras(parseInt(data.domingo[0]),parseInt(data.domingo[1])));
+        aux += parseInt(calcularCantHoras(parseInt(data.domingo[0]),parseInt(data.domingo[1])));
     }
     
     return aux;
@@ -1277,7 +1277,7 @@ function generarDatos(){
     var ret=[sueldo,false];
     var indexmes = meses.indexOf(data.mes[0]);
     sueldo.rem[0][2]=data.sueldo[0];
-    sueldo.rem[1][2]=data.sueldo[0]*sueldo.rem[1][1]*data.antiguedad[0];
+    sueldo.rem[1][2]=data.sueldo[0]*sueldo.rem[1][1];
     if(data.convenio[0]==0){
         //Es comercio, muestro presentismo
         sueldo.rem[2][2]=data.presentismo[0]?(sueldo.rem[0][2]+sueldo.rem[1][2])/12:0;
@@ -1473,4 +1473,15 @@ function cargarDivsComercio(){
 
 function cargarDivsMaestranza(){
     document.getElementById('maestranza-art').style.display = 'block';
+}
+
+function selectMoth(){
+    var aux = "2013 Abril";
+    try{
+        aux = d.getFullYear()+" "+mes_nombre[d.getMonth()];
+    }catch(err){
+    }
+    var d = new Date();
+    var select = document.getElementById("esc_mes").options[meses.indexOf(aux)];
+    select.setAttribute('selected', 'selected');
 }
