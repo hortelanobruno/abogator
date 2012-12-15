@@ -158,6 +158,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <div class="result">
         <table id="esc_rec">
@@ -166,6 +167,21 @@
             </thead>
             <tbody class="middle-table" id="bodyRecibo"></tbody>
         </table>
+    </div>
+    <br/>
+    <br/>
+    <div class="steps">
+        <div class="step2">
+            <div class="step-content">
+                <div class="elements2">
+                    Adhierase para recibir informacion sobre su convenio:
+                    <form>
+                        <input type="text" name="email" />
+                        <input type="submit" name="email" value="Enviar" />
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     <script type="text/javascript">  
         calculateRecibo();

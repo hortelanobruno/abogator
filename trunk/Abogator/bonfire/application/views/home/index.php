@@ -24,7 +24,7 @@
     </div>
     <div class="escritos">
         <div class="container" >                            
-            <a href="/home/escritos">
+            <a href="http://abogadodelrey.blogspot.com.ar">
                 <div class="img">
                 </div>
                 <div class="label">
