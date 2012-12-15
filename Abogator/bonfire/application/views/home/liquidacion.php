@@ -1,5 +1,5 @@
 <script type="text/javascript" src="/assets/js/liquidacion.js"></script>
-<script type="text/javascript" src="/assets/js/jquery-1.8.2.js"></script>
+<!--<script type="text/javascript" src="/assets/js/jquery-1.8.2.js"></script>-->
 <script type="text/javascript" src="/assets/js/jquery-ui-1.9.1.custom.min.js"></script>
 <link rel="stylesheet" href="/assets/css/smoothness/jquery-ui-1.9.1.custom.min.css" />
 <style type="text/css">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="dato">
                     <div class="label">
-                        Nombre
+                        Nombre *
                     </div>
                     <div class="element">
                         <input id="nombre" name="nombre" type="text" value=""/>
@@ -29,34 +29,34 @@
                 </div>
                 <div class="dato">
                     <div class="label">
-                        Email
+                        Email *
                     </div>
                     <div class="element">
-                        <input id="email" name="email" type="text" value="" onchange="calculateLiquidacion()"/>
+                        <input id="email" name="email" type="text" value="asd@asd.com" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
                     <div class="label">
-                        Remuneracion (real)
+                        Remuneracion (real) *
                     </div>
                     <div class="element">
-                        <input id="sueldo_real" name="sueldo_real" type="text" value="" onchange="calculateLiquidacion()"/>
+                        <input id="sueldo_real" name="sueldo_real" type="text" value="2000" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
                     <div class="label">
-                        Fecha ingreso (real)
+                        Fecha ingreso (real) *
                     </div>
                     <div class="element">
-                        <input id="fecha_ingreso_real" type="text" value="" onchange="calculateLiquidacion()" />
+                        <input id="fecha_ingreso_real" type="text" value="1/1/2010" onchange="calculateLiquidacion()" />
                     </div>
                 </div>
                 <div class="dato">
                     <div class="label">
-                        Fecha egreso
+                        Fecha egreso *
                     </div>
                     <div class="element">
-                        <input id="fecha_egreso" type="text" value="" onchange="calculateLiquidacion()"/>
+                        <input id="fecha_egreso" type="text" value="1/1/2012" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
@@ -64,7 +64,7 @@
                         Remuneracion (falsa)
                     </div>
                     <div class="element">
-                        <input id="sueldo_falsa" type="text" value="" onchange="calculateLiquidacion()"/>
+                        <input id="sueldo_falsa" type="text" value="1000" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
@@ -72,7 +72,7 @@
                         Fecha ingreso (falsa)
                     </div>
                     <div class="element">
-                        <input id="fecha_ingerso_falsa" type="text" value="" onchange="calculateLiquidacion()"/>
+                        <input id="fecha_ingreso_falsa" type="text" value="" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
@@ -202,13 +202,27 @@
                 <div class="seccion">
                     Liquidacion final
                 </div>
+                <div class="result" id="result-haberes">
+                    <div class="label"><input id="checkhaberes" name="checkhaberes" type="checkbox" onchange="calculateLiquidacion()"/>
+                        <select id="cant-haberes" onchange="calculateLiquidacion()">
+                            <option value="1">1 mes</option>
+                            <option value="2">2 meses</option>
+                            <option value="3">3 meses</option>
+                            <option value="4">4 meses</option>
+                            <option value="5">5 meses</option>
+                            <option value="6">6 meses</option>
+                        </select>
+                        Haberes adeudados</div>
+                    <div class="value">$0</div>
+                    <input type="hidden" name="resulthaberes" value=""/>
+                </div>
                 <div class="result" id="result-dias_trabajados">
                     <div class="label">Dias trabajados</div>
                     <div class="value">$0</div>
                     <input type="hidden" name="resultdiastrabajados" value=""/>
                 </div>
                 <div class="result" id="result-vacaciones_completas">
-                    <div class="label">Vacaciones completas</div>
+                    <div class="label"><input id="checkvacacionescompletas" name="checkvacacionescompletas" type="checkbox" onchange="calculateLiquidacion()"/>Vacaciones completas adeudadas</div>
                     <div class="value">$0</div>
                     <input type="hidden" name="resultvacacionescompletas" value=""/>
                 </div>
@@ -228,7 +242,7 @@
                     <input type="hidden" name="resultsacsobrevacacionesproporcionales" value=""/>
                 </div>
                 <div class="result" id="result-sac">
-                    <div class="label">SAC</div>
+                    <div class="label"><input id="checksac" name="checksac" type="checkbox" onchange="calculateLiquidacion()"/>SAC adeudado</div>
                     <div class="value">$0</div>
                     <input type="hidden" name="resultsac" value=""/>
                 </div>

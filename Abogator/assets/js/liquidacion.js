@@ -21,19 +21,23 @@ function calculoPreaviso(sueldo_real, fecha_ingreso_real, fecha_egreso){
             return sueldo_real;
         }
     } else {
-        return 0;
+        return sueldo_real/2;
     }
 }
 
-function calculoIntegracion(sueldo_real, fecha_egreso){
-    valor_dia = sueldo_real / 30;
-
-    days_in_month = 30;
-    day = fecha_egreso.getDate();
-    resto = days_in_month - (day + 1);
-    if (resto > 0) {
-        return resto * valor_dia;
-    } else {
+function calculoIntegracion(sueldo_real, fecha_ingreso_real, fecha_egreso){
+    months = countDays(fecha_ingreso_real,fecha_egreso)/30;
+    if (months >= 3) {
+        valor_dia = sueldo_real / 30;
+        days_in_month = 30;
+        day = fecha_egreso.getDate();
+        resto = days_in_month - (day + 1);
+        if (resto > 0) {
+            return resto * valor_dia;
+        } else {
+            return 0;
+        }
+    }else{
         return 0;
     }
 }
@@ -274,9 +278,15 @@ function calculoDiferenciasSalarialesPorCategoria(sueldo_cct, sueldo_real, fecha
     return count_days * dif;
 }
 			
-function validData(sueldo_real,sueldo_falsa,fecha_ingreso_real,fecha_ingerso_falsa,fecha_egreso,fecha_presentacion_demanda,dias){
-    if(isNaN(parseInt(sueldo_real))||isNaN(new Date(fecha_ingreso_real))||isNaN(new Date(fecha_egreso))){
+function validData(sueldo_real,sueldo_falsa,fecha_ingreso_real,fecha_ingreso_falsa,fecha_egreso,fecha_presentacion_demanda,dias){
+    var date_real = new Date(fecha_ingreso_real);
+    var date_egreso = new Date(fecha_egreso);
+    if(isNaN(parseInt(sueldo_real))||isNaN(date_real)||isNaN(date_egreso)){
         return false;
+    }else{
+        if(date_real>date_egreso){
+            return false;
+        }
     }
     //                if(hora1max<hora1min||hora2max<hora2min){
     //                    return false;
@@ -505,7 +515,7 @@ function calculateLiquidacion(){
     var sueldo_real = parseInt(document.getElementById('sueldo_real').value);
     var sueldo_falsa = parseInt(document.getElementById('sueldo_falsa').value);
     var fecha_ingreso_real = document.getElementById('fecha_ingreso_real').value;
-    var fecha_ingerso_falsa = document.getElementById('fecha_ingerso_falsa').value;
+    var fecha_ingreso_falsa = document.getElementById('fecha_ingreso_falsa').value;
     var fecha_egreso = document.getElementById('fecha_egreso').value;
     var fecha_presentacion_demanda = document.getElementById('fecha_presentacion_demanda').value;
     var dias={
@@ -539,19 +549,13 @@ function calculateLiquidacion(){
     dias.domingo[0] = document.getElementById('sun1').value;
     dias.domingo[1] = document.getElementById('sun2').value;
     
-    var aa = fecha_ingreso_real.split("/")[1]+"/"+fecha_ingreso_real.split("/")[0]+"/"+fecha_ingreso_real.split("/")[2];
-    var date_fecha_ingreso_real = new Date(aa);
-    aa = fecha_ingerso_falsa.split("/")[1]+"/"+fecha_ingreso_real.split("/")[0]+"/"+fecha_ingreso_real.split("/")[2];
-    var date_fecha_ingerso_falsa = new Date(aa);
-    aa = fecha_egreso.split("/")[1]+"/"+fecha_ingreso_real.split("/")[0]+"/"+fecha_ingreso_real.split("/")[2];
-    var date_fecha_egreso = new Date(aa);
-    aa = fecha_presentacion_demanda.split("/")[1]+"/"+fecha_ingreso_real.split("/")[0]+"/"+fecha_ingreso_real.split("/")[2];
-    var date_fecha_presentacion_demanda = new Date(aa);
-    
-    
+    var date_fecha_ingreso_real = new Date(fecha_ingreso_real.split("/")[1]+"/"+fecha_ingreso_real.split("/")[0]+"/"+fecha_ingreso_real.split("/")[2]);
+    var date_fecha_ingreso_falsa = new Date(fecha_ingreso_falsa.split("/")[1]+"/"+fecha_ingreso_falsa.split("/")[0]+"/"+fecha_ingreso_falsa.split("/")[2]);
+    var date_fecha_egreso = new Date(fecha_egreso.split("/")[1]+"/"+fecha_egreso.split("/")[0]+"/"+fecha_egreso.split("/")[2]);
+    var date_fecha_presentacion_demanda = new Date(fecha_presentacion_demanda.split("/")[1]+"/"+fecha_presentacion_demanda.split("/")[0]+"/"+fecha_presentacion_demanda.split("/")[2]);
     
     var sueldo_cct = document.getElementById('sueldo_cct').value;
-    if(validateEmail(email)&&validData(sueldo_real,sueldo_falsa,date_fecha_ingreso_real,date_fecha_ingerso_falsa,date_fecha_egreso,date_fecha_presentacion_demanda,dias)){
+    if(validateEmail(email)&&validData(sueldo_real,sueldo_falsa,date_fecha_ingreso_real,date_fecha_ingreso_falsa,date_fecha_egreso,date_fecha_presentacion_demanda,dias)){
 					
 
         var antiguedad = calculoAntiguedad(sueldo_real,date_fecha_ingreso_real,date_fecha_egreso);
@@ -560,7 +564,7 @@ function calculateLiquidacion(){
         var preaviso = calculoPreaviso(sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
         document.getElementById("result-preaviso").childNodes[3].innerHTML = "$ " + preaviso.toFixed(2);
         document.getElementsByName("resultpreaviso")[0].value = "$ " + preaviso.toFixed(2);
-        var integracion = calculoIntegracion(sueldo_real, date_fecha_egreso);
+        var integracion = calculoIntegracion(sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
         document.getElementById("result-integracion").childNodes[3].innerHTML = "$ " + integracion.toFixed(2);
         document.getElementsByName("resultintegracion")[0].value = "$ " + integracion.toFixed(2);
         var sacMasIntegracionMasPreavisoMasIntegracion = calculoSACMasIntegracionMasPreavisoMasIntegracion(antiguedad,preaviso,integracion);
@@ -571,29 +575,48 @@ function calculateLiquidacion(){
         document.getElementById("result-total1").childNodes[3].innerHTML = "$ " + (total1).toFixed(2);
         document.getElementsByName("resulttotal1")[0].value = document.getElementById("result-total1").childNodes[3].innerHTML;
         
+        
+        var haberesadeudados = 0;
+        if(document.getElementById('checkhaberes').checked){
+            haberesadeudados = parseInt(document.getElementById('cant-haberes').value)*sueldo_real;
+        }
+        document.getElementById("result-haberes").childNodes[3].innerHTML = "$ " + haberesadeudados.toFixed(2);
+        document.getElementsByName("resulthaberes")[0].value = document.getElementById("result-haberes").childNodes[3].innerHTML;
+        
         var diasTrabajados = calculoDiasTrabajados(sueldo_real, date_fecha_egreso);
         document.getElementById("result-dias_trabajados").childNodes[3].innerHTML = "$ " + diasTrabajados.toFixed(2);
         document.getElementsByName("resultdiastrabajados")[0].value = document.getElementById("result-dias_trabajados").childNodes[3].innerHTML;
-        var vacacionesCompletas = calculoVacacionesCompletas(sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
+        var vacacionesCompletas = 0;
+        if(document.getElementById('checkvacacionescompletas').checked){
+            vacacionesCompletas = calculoVacacionesCompletas(sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
+        }
         document.getElementById("result-vacaciones_completas").childNodes[3].innerHTML = "$ " + vacacionesCompletas.toFixed(2);
         document.getElementsByName("resultvacacionescompletas")[0].value = document.getElementById("result-vacaciones_completas").childNodes[3].innerHTML;
         var vacacionesProporcionales = calculoVacacionesProporcionales(sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
         document.getElementById("result-vacaciones_proporcionales").childNodes[3].innerHTML = "$ " + vacacionesProporcionales.toFixed(2);
         document.getElementsByName("resultvacacionesproporcionales")[0].value = document.getElementById("result-vacaciones_proporcionales").childNodes[3].innerHTML;
+        
+        
+        
         var sacSobreVacacionesCompletas = calculoSACSobreVacacionesCompletas(vacacionesCompletas);
         document.getElementById("result-sac_sobre_vacaciones_completas").childNodes[3].innerHTML = "$ " + sacSobreVacacionesCompletas.toFixed(2);
         document.getElementsByName("resultsacsobrevacacionescompletas")[0].value = document.getElementById("result-sac_sobre_vacaciones_completas").childNodes[3].innerHTML;
         var sacSobreVacacionesProporcionales = calculoSACSobreVacacionesProporcionales(vacacionesProporcionales);
         document.getElementById("result-sac_sobre_vacaciones_proporcionales").childNodes[3].innerHTML = "$ " + sacSobreVacacionesProporcionales.toFixed(2);
         document.getElementsByName("resultsacsobrevacacionesproporcionales")[0].value = document.getElementById("result-sac_sobre_vacaciones_proporcionales").childNodes[3].innerHTML;
-        var sac = calculoSAC(sueldo_real);
+        
+        var sac = 0;
+        if(document.getElementById('checksac').checked){
+            sac = calculoSAC(sueldo_real);
+        }
         document.getElementById("result-sac").childNodes[3].innerHTML = "$ " + sac.toFixed(2);
         document.getElementsByName("resultsac")[0].value = document.getElementById("result-sac").childNodes[3].innerHTML;
+        
         var sacProporcional = calculoSACProporcional(sueldo_real, date_fecha_egreso);
         document.getElementById("result-sac_proporcional").childNodes[3].innerHTML = "$ " + sacProporcional.toFixed(2);
         document.getElementsByName("resultsacproporcional")[0].value = document.getElementById("result-sac_proporcional").childNodes[3].innerHTML;
         
-        var total2 = diasTrabajados+vacacionesCompletas+vacacionesProporcionales+sacSobreVacacionesCompletas+sacSobreVacacionesProporcionales;
+        var total2 = diasTrabajados+vacacionesCompletas+vacacionesProporcionales+sacSobreVacacionesCompletas+sacSobreVacacionesProporcionales+haberesadeudados;
         document.getElementById("result-total2").childNodes[3].innerHTML = "$ " + (total2).toFixed(2);
         document.getElementsByName("resulttotal2")[0].value = document.getElementById("result-total2").childNodes[3].innerHTML;
     
@@ -616,9 +639,8 @@ function calculateLiquidacion(){
         document.getElementById("result-horas_nocturnas").childNodes[3].innerHTML = "$ " + horasNocturnas.toFixed(2);
         document.getElementsByName("resulthorasnocturnas")[0].value = document.getElementById("result-horas_nocturnas").childNodes[3].innerHTML;
         var diferenciasSalarialesPorCategoria = 0;
-        if(!isNaN(sueldo_falsa)){
+        if(sueldo_cct.length>0&&!isNaN(sueldo_cct)&&sueldo_real<sueldo_cct){
             diferenciasSalarialesPorCategoria = calculoDiferenciasSalarialesPorCategoria(sueldo_cct,sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
-            
         }
         document.getElementById("result-diferencias_salariales").childNodes[3].innerHTML = "$ " + diferenciasSalarialesPorCategoria.toFixed(2);
         document.getElementsByName("resultdiferenciassalariales")[0].value = document.getElementById("result-diferencias_salariales").childNodes[3].innerHTML;
@@ -653,10 +675,14 @@ function calculateLiquidacion(){
         document.getElementsByName("resultmultaley24013art8")[0].value = document.getElementById("result-multa_ley_24013_art_8").childNodes[3].innerHTML;
 
         if(document.getElementById('check-multa_ley_24013_art_9').checked || document.getElementById('check-multa_ley_24013_art_10').checked){
-            if(!isNaN(date_fecha_ingerso_falsa)){
-                ley24013Art9 = calculoLey24013Art9(sueldo_real, date_fecha_ingreso_real, date_fecha_ingerso_falsa);
+            if(!isNaN(date_fecha_ingreso_falsa)){
+                ley24013Art9 = calculoLey24013Art9(sueldo_real, date_fecha_ingreso_real, date_fecha_ingreso_falsa);
                 if(!isNaN(sueldo_falsa)){
-                    ley24013Art10 = calculoLey24013Art10(sueldo_real, sueldo_falsa, date_fecha_ingerso_falsa, date_fecha_egreso);
+                    ley24013Art10 = calculoLey24013Art10(sueldo_real, sueldo_falsa, date_fecha_ingreso_falsa, date_fecha_egreso);
+                }
+            }else{
+                if(!isNaN(sueldo_falsa)){
+                    ley24013Art10 = calculoLey24013Art10(sueldo_real, sueldo_falsa, date_fecha_ingreso_real, date_fecha_egreso);
                 }
             }
             if(document.getElementById('check-multa_ley_24013_art_9').checked){
@@ -736,6 +762,8 @@ function calculateLiquidacion(){
         document.getElementsByName("resultsacpresint")[0].value = "$ 0";
         document.getElementById("result-total1").childNodes[3].innerHTML = "$ 0";
         document.getElementsByName("resulttotal1")[0].value = "$ 0";
+        document.getElementById("result-haberes").childNodes[3].innerHTML = "$ 0";
+        document.getElementsByName("resulthaberes")[0].value = document.getElementById("result-haberes").childNodes[3].innerHTML;
         document.getElementById("result-dias_trabajados").childNodes[3].innerHTML = "$ 0";
         document.getElementsByName("resultdiastrabajados")[0].value = "$ 0";
         document.getElementById("result-vacaciones_completas").childNodes[3].innerHTML = "$ 0";
@@ -851,8 +879,13 @@ function calculateMultas(element){
 
 function generarReporte(){
     var nombre = document.getElementById('nombre').value;
+    var re = document.getElementsByName("resulttotal5")[0].value;
     if(nombre.length > 0){
-        document.forms["formLiquidacion"].submit();
+        if(re.length>0 && re != '$ 0' && re != '$ 0.00'){
+            document.forms["formLiquidacion"].submit();
+        }else{
+            alert('Completar datos');
+        }
     }else{
         alert('Tenes que completar el nombre');
     }
