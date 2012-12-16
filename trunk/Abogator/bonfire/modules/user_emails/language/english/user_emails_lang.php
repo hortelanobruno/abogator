@@ -1,0 +1,30 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+$lang['user_emails_manage']			= 'Manage User Emails';
+$lang['user_emails_edit']				= 'Edit';
+$lang['user_emails_true']				= 'True';
+$lang['user_emails_false']				= 'False';
+$lang['user_emails_create']			= 'Create';
+$lang['user_emails_list']				= 'List';
+$lang['user_emails_new']				= 'New';
+$lang['user_emails_edit_text']			= 'Edit this to suit your needs';
+$lang['user_emails_no_records']			= 'There aren\'t any user_emails in the system.';
+$lang['user_emails_create_new']			= 'Create a new User Emails.';
+$lang['user_emails_create_success']			= 'User Emails successfully created.';
+$lang['user_emails_create_failure']			= 'There was a problem creating the user_emails: ';
+$lang['user_emails_create_new_button']			= 'Create New User Emails';
+$lang['user_emails_invalid_id']			= 'Invalid User Emails ID.';
+$lang['user_emails_edit_success']			= 'User Emails successfully saved.';
+$lang['user_emails_edit_failure']			= 'There was a problem saving the user_emails: ';
+$lang['user_emails_delete_success']			= 'record(s) successfully deleted.';
+$lang['user_emails_delete_failure']			= 'We could not delete the record: ';
+$lang['user_emails_delete_error']			= 'You have not selected any records to delete.';
+$lang['user_emails_actions']			= 'Actions';
+$lang['user_emails_cancel']			= 'Cancel';
+$lang['user_emails_delete_record']			= 'Delete this User Emails';
+$lang['user_emails_delete_confirm']			= 'Are you sure you want to delete this user_emails?';
+$lang['user_emails_edit_heading']			= 'Edit User Emails';
+
+// Activities
+$lang['user_emails_act_create_record']			= 'Created record with ID';
+$lang['user_emails_act_edit_record']			= 'Updated record with ID';
+$lang['user_emails_act_delete_record']			= 'Deleted record with ID';

@@ -35,6 +35,7 @@ class Home extends Front_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('noticias_model');
+        $this->load->model('email_model');
         $this->load->library('emailer/emailer');
     }
 
@@ -79,12 +80,23 @@ class Home extends Front_Controller {
         $this->load->view('home/contacto');
         $this->load->view('home/template/bottom');
     }
-
-    public function generarliquidacion() {
-
+    
+    public function savemail(){
         foreach ($this->input->post() as $name => $value) {
             $data[$name] = $value;
         }
+        $this->email_model->save_email($data['email'],'recibo');
+        $data['enviado'] = 'Enviado!';
+        $this->load->view('home/template/top');
+        $this->load->view('home/recibo',$data);
+        $this->load->view('home/template/bottom');
+    }
+
+    public function generarliquidacion() {
+        foreach ($this->input->post() as $name => $value) {
+            $data[$name] = $value;
+        }
+        $this->email_model->save_email($data['email'],'liquidacion');
         $this->load->view('home/liquidacion-reporte', $data);
     }
 

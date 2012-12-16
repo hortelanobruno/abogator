@@ -42,7 +42,7 @@
 			
 				<td><?php e($record->fecha) ?></td>
 				<td><?php e($record->descripcion) ?></td>
-				<td><?php e($record->contenido) ?></td>
+				<td><?php // e($record->contenido) ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>
