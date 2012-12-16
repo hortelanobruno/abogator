@@ -1370,8 +1370,10 @@ function calculateRecibo(){
             }	
             var totaldiv = document.createElement('tr');
             if(datos.length>1){
+                totaldiv.setAttribute("class", "tr2");
                 totaldiv.innerHTML = '<td>Subtotal</td><td></td>';
             }else{
+                totaldiv.setAttribute("class", "tr1");
                 totaldiv.innerHTML = '<td>Total</td><td></td>';
             }
                     
@@ -1386,6 +1388,7 @@ function calculateRecibo(){
     }
     if(datos.length>1){
         var totaldiv = document.createElement('tr');
+        totaldiv.setAttribute("class", "tr1");
         totaldiv.innerHTML = '<td>Total</td><td></td>';
         totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+(suma[0]).toFixed(2)+'</td>';
         totaldiv.innerHTML = totaldiv.innerHTML + '<td>'+(suma[1]).toFixed(2)+'</td>';

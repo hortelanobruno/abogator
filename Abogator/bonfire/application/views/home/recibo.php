@@ -175,9 +175,12 @@
             <div class="step-content">
                 <div class="elements2">
                     Adhierase para recibir informacion sobre su convenio:
-                    <form>
-                        <input type="text" name="email" />
-                        <input type="submit" name="email" value="Enviar" />
+                    <form name="contacto" action="/home/savemail" method="post">
+                        <input type="text" id="email" name="email" />
+                        <input type="submit" value="Enviar" />
+                        <?php if (isset($enviado)) { 
+                                echo $enviado;
+                            } ?>
                     </form>
                 </div>
             </div>
