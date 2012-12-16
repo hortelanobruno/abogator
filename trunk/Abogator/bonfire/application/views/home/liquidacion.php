@@ -32,7 +32,7 @@
                         Email *
                     </div>
                     <div class="element">
-                        <input id="email" name="email" type="text" value="asd@asd.com" onchange="calculateLiquidacion()"/>
+                        <input id="email" name="email" type="text" value="" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
@@ -40,7 +40,7 @@
                         Remuneracion (real) *
                     </div>
                     <div class="element">
-                        <input id="sueldo_real" name="sueldo_real" type="text" value="2000" onchange="calculateLiquidacion()"/>
+                        <input id="sueldo_real" name="sueldo_real" type="text" value="" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
@@ -48,7 +48,7 @@
                         Fecha ingreso (real) *
                     </div>
                     <div class="element">
-                        <input id="fecha_ingreso_real" type="text" value="1/1/2010" onchange="calculateLiquidacion()" />
+                        <input id="fecha_ingreso_real" type="text" value="" onchange="calculateLiquidacion()" />
                     </div>
                 </div>
                 <div class="dato">
@@ -56,7 +56,7 @@
                         Fecha egreso *
                     </div>
                     <div class="element">
-                        <input id="fecha_egreso" type="text" value="1/1/2012" onchange="calculateLiquidacion()"/>
+                        <input id="fecha_egreso" type="text" value="" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
@@ -64,7 +64,7 @@
                         Remuneracion (falsa)
                     </div>
                     <div class="element">
-                        <input id="sueldo_falsa" type="text" value="1000" onchange="calculateLiquidacion()"/>
+                        <input id="sueldo_falsa" type="text" value="" onchange="calculateLiquidacion()"/>
                     </div>
                 </div>
                 <div class="dato">
