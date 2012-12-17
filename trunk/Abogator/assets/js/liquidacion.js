@@ -49,7 +49,7 @@ function calculoSACMasIntegracionMasPreavisoMasIntegracion(antiguedad,preaviso,i
 function calculoDiasTrabajados(sueldo_real, fecha_egreso){
     valor_dia = sueldo_real / 30;
 
-    count_days = countDays(new Date(fecha_egreso.getFullYear(),01,01), fecha_egreso);
+    count_days = countDays(new Date(fecha_egreso.getFullYear(),fecha_egreso.getMonth(),01), fecha_egreso) + 1;
     return count_days * valor_dia;
 }
 
@@ -113,7 +113,12 @@ function calculoSAC(sueldo_real){
 
 function calculoSACProporcional(sueldo_real, fecha_egreso){
     valor_dia = sueldo_real;
-    count_days = countDays(new Date(fecha_egreso.getFullYear(),01,01), fecha_egreso);
+    if(fecha_egreso.getMonth()<6){
+        count_days = countDays(new Date(fecha_egreso.getFullYear(),01,01), fecha_egreso) +1;
+    }else{
+        count_days = countDays(new Date(fecha_egreso.getFullYear(),06,01), fecha_egreso) +1;
+    }
+    
     return (valor_dia * count_days ) / 365;
 }
 
@@ -751,7 +756,7 @@ function calculateLiquidacion(){
         document.getElementsByName("resulttotal5")[0].value = "$ "+total5.toFixed(2);
 
     }else{
-        alert('Datos invalidos');
+//        alert('Datos invalidos');
         document.getElementById("result-antiguedad").childNodes[3].innerHTML = "$ 0";
         document.getElementsByName("resultantiguedad")[0].value = "$ 0";
         document.getElementById("result-preaviso").childNodes[3].innerHTML = "$ 0";
