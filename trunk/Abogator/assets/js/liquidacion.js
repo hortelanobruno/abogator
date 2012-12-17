@@ -31,7 +31,7 @@ function calculoIntegracion(sueldo_real, fecha_ingreso_real, fecha_egreso){
         valor_dia = sueldo_real / 30;
         days_in_month = 30;
         day = fecha_egreso.getDate();
-        resto = days_in_month - (day + 1);
+        resto = days_in_month - (day);
         if (resto > 0) {
             return resto * valor_dia;
         } else {
