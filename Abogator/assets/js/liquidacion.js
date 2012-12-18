@@ -597,7 +597,11 @@ function calculateLiquidacion(){
         }
         document.getElementById("result-vacaciones_completas").childNodes[3].innerHTML = "$ " + vacacionesCompletas.toFixed(2);
         document.getElementsByName("resultvacacionescompletas")[0].value = document.getElementById("result-vacaciones_completas").childNodes[3].innerHTML;
-        var vacacionesProporcionales = calculoVacacionesProporcionales(sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
+        
+        var vacacionesProporcionales = 0;
+        if(document.getElementById('checkvacacionesproporcionales').checked){
+            vacacionesProporcionales = calculoVacacionesProporcionales(sueldo_real, date_fecha_ingreso_real, date_fecha_egreso);
+        }
         document.getElementById("result-vacaciones_proporcionales").childNodes[3].innerHTML = "$ " + vacacionesProporcionales.toFixed(2);
         document.getElementsByName("resultvacacionesproporcionales")[0].value = document.getElementById("result-vacaciones_proporcionales").childNodes[3].innerHTML;
         

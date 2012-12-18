@@ -227,7 +227,7 @@
                     <input type="hidden" name="resultvacacionescompletas" value=""/>
                 </div>
                 <div class="result" id="result-vacaciones_proporcionales">
-                    <div class="label">Vacaciones proporcionales</div>
+                    <div class="label"><input id="checkvacacionesproporcionales" name="checkvacacionesproporcionales" type="checkbox" onchange="calculateLiquidacion()"/>Vacaciones proporcionales</div>
                     <div class="value">$0</div>
                     <input type="hidden" name="resultvacacionesproporcionales" value=""/>
                 </div>
