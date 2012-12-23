@@ -165,8 +165,14 @@ function calculoLey20744Art182(sueldo_real){
     return sueldo_real * 12;
 }
 
-function calculoHorasExtraordinariasAl50porciento(sueldo_real, dias, fecha_ingreso_real, fecha_egreso){
+function calculoHorasExtraordinariasAl50porciento(sueldo_real, dias, fecha_ingreso_real, fecha_egreso, valor_hora_al_50){
     valor_hora = ((sueldo_real / 30) / 8) * 1.5;
+    try{
+        if(valor_hora_al_50.length>0){
+            valor_hora = parseInt(valor_hora_al_50);
+        }
+    }catch(e){
+    }
     var cant_horas_extras = 0;
     var aux;
     if(dias.lunes[2]){
@@ -216,12 +222,18 @@ function calculoHorasExtraordinariasAl50porciento(sueldo_real, dias, fecha_ingre
     }
 }
 
-function calculoHorasExtraordinariasAl100porciento(sueldo_real, dias, fecha_ingreso_real, fecha_egreso){
+function calculoHorasExtraordinariasAl100porciento(sueldo_real, dias, fecha_ingreso_real, fecha_egreso, valor_hora_al_100){
     
     var horas_semanales = calcularCantHorasSemanales(dias);
                 
     if(horas_semanales>48){
         valor_hora = ((sueldo_real / 30) / 8) * 2;
+        try{
+            if(valor_hora_al_100.length>0){
+                valor_hora = parseInt(valor_hora_al_100);
+            }
+        }catch(e){
+        }
         cant_horas_extras = (horas_semanales)-48;
 
         var count_months = 0;
@@ -523,6 +535,8 @@ function calculateLiquidacion(){
     var fecha_ingreso_falsa = document.getElementById('fecha_ingreso_falsa').value;
     var fecha_egreso = document.getElementById('fecha_egreso').value;
     var fecha_presentacion_demanda = document.getElementById('fecha_presentacion_demanda').value;
+    var valor_hora_al_50 = document.getElementById('valor_hora_al_50').value;
+    var valor_hora_al_100 = document.getElementById('valor_hora_al_100').value;
     var dias={
         lunes:[9,18,true],
         martes:[9,18,true],
@@ -629,12 +643,12 @@ function calculateLiquidacion(){
         document.getElementById("result-total2").childNodes[3].innerHTML = "$ " + (total2).toFixed(2);
         document.getElementsByName("resulttotal2")[0].value = document.getElementById("result-total2").childNodes[3].innerHTML;
     
-        var horasExtraordinariasAl50porciento = calculoHorasExtraordinariasAl50porciento(sueldo_real, dias, date_fecha_ingreso_real, date_fecha_egreso);
+        var horasExtraordinariasAl50porciento = calculoHorasExtraordinariasAl50porciento(sueldo_real, dias, date_fecha_ingreso_real, date_fecha_egreso,valor_hora_al_50);
         document.getElementById("result-horas_extraordinarias_al_50").childNodes[3].innerHTML = "$ " + horasExtraordinariasAl50porciento.toFixed(2);
         document.getElementsByName("resulthorasextraordinariasal50")[0].value = document.getElementById("result-horas_extraordinarias_al_50").childNodes[3].innerHTML;
         var horasExtraordinariasAl100porciento = 0;
         if(selectedSemanaCompleta(dias)){
-            horasExtraordinariasAl100porciento = calculoHorasExtraordinariasAl100porciento(sueldo_real, dias, date_fecha_ingreso_real, date_fecha_egreso);
+            horasExtraordinariasAl100porciento = calculoHorasExtraordinariasAl100porciento(sueldo_real, dias, date_fecha_ingreso_real, date_fecha_egreso,valor_hora_al_100);
         }
         document.getElementById("result-horas_extraordinarias_al_100").childNodes[3].innerHTML = "$ " + horasExtraordinariasAl100porciento.toFixed(2);
         document.getElementsByName("resulthorasextraordinariasal100")[0].value = document.getElementById("result-horas_extraordinarias_al_100").childNodes[3].innerHTML;
@@ -760,7 +774,7 @@ function calculateLiquidacion(){
         document.getElementsByName("resulttotal5")[0].value = "$ "+total5.toFixed(2);
 
     }else{
-//        alert('Datos invalidos');
+        //        alert('Datos invalidos');
         document.getElementById("result-antiguedad").childNodes[3].innerHTML = "$ 0";
         document.getElementsByName("resultantiguedad")[0].value = "$ 0";
         document.getElementById("result-preaviso").childNodes[3].innerHTML = "$ 0";
