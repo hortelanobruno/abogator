@@ -157,7 +157,22 @@
                         loadSelectDays();             
                     </script>
                 </div>
-
+                <div class="dato">
+                    <div class="label">
+                        Valor hora al 50%
+                    </div>
+                    <div class="element">
+                        <input id="valor_hora_al_50" type="text" value="" onchange="calculateLiquidacion()"/>
+                    </div>
+                </div>
+                <div class="dato">
+                    <div class="label">
+                        Valor hora al 100%
+                    </div>
+                    <div class="element">
+                        <input id="valor_hora_al_100" type="text" value="" onchange="calculateLiquidacion()" />
+                    </div>
+                </div>
                 <script>
                     $(function() {
                         $("#fecha_ingreso_real").datepicker({ dateFormat: 'dd/mm/yy' });
