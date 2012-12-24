@@ -677,7 +677,7 @@ function calculateLiquidacion(){
         document.getElementById("result-sac_proporcional").childNodes[3].innerHTML = "$ " + sacProporcional.toFixed(2);
         document.getElementsByName("resultsacproporcional")[0].value = document.getElementById("result-sac_proporcional").childNodes[3].innerHTML;
         
-        var total2 = diasTrabajados+vacacionesCompletas+vacacionesProporcionales+sacSobreVacacionesCompletas+sacSobreVacacionesProporcionales+haberesadeudados;
+        var total2 = diasTrabajados+vacacionesCompletas+vacacionesProporcionales+sacSobreVacacionesCompletas+sacSobreVacacionesProporcionales+haberesadeudados+sac+sacProporcional;
         document.getElementById("result-total2").childNodes[3].innerHTML = "$ " + (total2).toFixed(2);
         document.getElementsByName("resulttotal2")[0].value = document.getElementById("result-total2").childNodes[3].innerHTML;
     
