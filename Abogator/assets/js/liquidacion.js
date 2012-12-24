@@ -480,6 +480,9 @@ function calcularCantNocturnasHoras(hora_min,hora_max){
         if(hora_min<21){
             hora_min=21;
         }
+        if(hora_max>6){
+            hora_max=6;
+        }
     }
 
 
