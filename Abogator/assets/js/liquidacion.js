@@ -235,6 +235,8 @@ function calculoHorasExtraordinariasAl100porciento(sueldo_real, dias, fecha_ingr
         }catch(e){
         }
         cant_horas_extras = (horas_semanales)-48;
+        
+        cant_horas_al_100 = calcularCantHorasAl100(dias);
 
         var count_months = 0;
         var min_date1 = new Date(fecha_ingreso_real);
@@ -246,7 +248,7 @@ function calculoHorasExtraordinariasAl100porciento(sueldo_real, dias, fecha_ingr
             count_months=24;
         }
 
-        return count_months * 4 * cant_horas_extras * valor_hora;
+        return count_months * 4 * cant_horas_al_100 * valor_hora;
     }else{
         return 0;
     }
@@ -327,7 +329,7 @@ function countDays(date1, date2) {
 
     return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
 }
-	
+
         
 function calcularCantHorasSemanales(data){
     var aux = 0;
@@ -379,14 +381,50 @@ function calcularCantHorasEntreSemana(data){
     return aux;
 }
 
-function calcularCantHorasFinde(data){
+function calcularCantHorasAl100(data){
     var aux = 0;
+    var sab = new Array();
+    var dom = new Array();
+    for(var i=0;i<24;i++){
+        sab[i] = 0;
+        dom[i] = 0;
+    }
     
     if(data.sabado[2]){
-        aux += parseInt(calcularCantHoras(parseInt(data.sabado[0]),parseInt(data.sabado[1])));
+        if(parseInt(data.sabado[0])<=parseInt(data.sabado[1])){
+            for(i=parseInt(data.sabado[0]);i<parseInt(data.sabado[1]);i++){
+                sab[i]=1;
+            }
+        }else{
+            for(i=parseInt(data.sabado[0]);i<24;i++){
+                sab[i]=1;
+            }
+            for(i=0;i<parseInt(data.sabado[1]);i++){
+                dom[i]=1;
+            }
+        }
     }
     if(data.domingo[2]){
-        aux += parseInt(calcularCantHoras(parseInt(data.domingo[0]),parseInt(data.domingo[1])));
+        if(parseInt(data.domingo[0])<=parseInt(data.domingo[1])){
+            for(i=parseInt(data.domingo[0]);i<parseInt(data.domingo[1]);i++){
+                dom[i]=1;
+            }
+        }else{
+            for(i=parseInt(data.domingo[0]);i<24;i++){
+                dom[i]=1;
+            }
+        }
+    }
+    for(i=0;i<13;i++){
+        sab[i] = 0;
+    }
+    for(i=0;i<24;i++){
+        if(sab[i] == 1){
+            aux += 1;
+        }
+        if(dom[i] == 1){
+            aux += 1;
+        }
     }
     
     return aux;
