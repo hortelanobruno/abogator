@@ -45,9 +45,9 @@
                             <figure class="slide">
                                 <img src="/assets/img/banner4.jpg"/>
                             </figure>
-                            <figure class="slide">
+<!--                            <figure class="slide">
                                 <img src="/assets/img/banner5.jpg"/>
-                            </figure>
+                            </figure>-->
                         </div>
                     </div>
 
@@ -63,7 +63,7 @@
                         <li><a class="goto-slide" href="#" data-slideindex="1"></a></li>
                         <li><a class="goto-slide" href="#" data-slideindex="2"></a></li>
                         <li><a class="goto-slide" href="#" data-slideindex="3"></a></li>
-                        <li><a class="goto-slide" href="#" data-slideindex="4"></a></li>
+                        <!--<li><a class="goto-slide" href="#" data-slideindex="4"></a></li>-->
                     </ul>
 
                 </div>
